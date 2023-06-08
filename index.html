@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submarine Sonar</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="sonar"></div>
+    <div id="loading">Loading...</div>
+    <div id="buttonContainer">
+        <button id="detect">Lancer la détection</button>
+        <div id="errorMessage" style="display: none;"></div>
+    </div>
+    <select id="radius">
+        <option value="15">15km</option>
+        <option value="50">50km</option>
+        <option value="150" selected>150km</option>
+        <option value="500">500km</option>
+    </select>
+    <div id="panel">
+        <div id="pageDetails"></div>
+
+        <img id="loading-icon" src="loading.gif" style="display: none;" />
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
