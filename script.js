@@ -90,6 +90,18 @@ function displayPageDetails(pageId) {
     // Clear any existing content in the panel
     panel.innerHTML = '';
 
+    // Remove 'selected' class from any dot that might have it
+    const selectedDot = document.querySelector('.dot.selected');
+    if (selectedDot) {
+        selectedDot.classList.remove('selected');
+    }
+
+    // Add 'selected' class to the clicked dot
+    const clickedDot = document.getElementById(pageId);
+    if (clickedDot) {
+        clickedDot.classList.add('selected');
+    }
+
     // Send a GET request to the Elastic Search endpoint /page/record/{id}
     fetch(`https://data.gchange.fr/page/record/${pageId}`)
         .then(response => response.json())

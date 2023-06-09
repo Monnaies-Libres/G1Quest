@@ -71,5 +71,13 @@ body {
     background-color: #00ff00;
     border-radius: 50%;
     transform: translate(-50%, -50%); /* center the dot relative to the calculated position */
+
+    cursor: pointer;
 }
+
+.dot.selected {
+    background-color: white; /* Red color */
+    /* You can add other properties as per your design */
+}
+
 
