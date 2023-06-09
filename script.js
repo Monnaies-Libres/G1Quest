@@ -81,7 +81,46 @@ function getRecords(userLocation) {
                         }
 
                     }
-                ]
+                ],
+
+                should: [
+                    {
+                        bool: {
+                            must: [
+                                { term: { type: "offer" } },
+                                { nested: {
+                                    path: "category",
+                                    query: {
+                                        bool: { must_not: [
+                                            { term: { "category.id": "cat81" } },  // Filtre anti-Annunakis ; celle-là elle est pour pour toi, FredB ;-)
+                                            { term: { "category.id": "cat31" } }, // Prestation de services
+                                            { term: { "category.parent": "cat31" } }
+                                        ] }
+                                    }
+                                } }
+                            ]
+                        }
+                    },
+                    {
+                        bool: {
+                            must: [
+                                { term: { type: "need" } },
+                                { nested: {
+                                    path: "category",
+                                    query: {
+                                        bool: { should: [
+                                            { term: { "category.parent": "cat31" } },
+                                            { term: { "category.id": "cat31" } },
+                                            { term: { "category.parent": "cat56" } }, // Matériel professionnel
+                                            { term: { "category.id": "cat56" } }
+                                        ] }
+                                    }
+                                } }
+                            ]
+                        }
+                    }
+                ],
+                minimum_should_match: 1
             }
         },
 
@@ -92,7 +131,7 @@ function getRecords(userLocation) {
 
         _source: ['geoPoint', '_id', 'time'],
 
-        size: 60
+        size: 500
     };
 
     // Send the HTTP request
@@ -203,11 +242,18 @@ function displayRecordDetails(recordId) {
             const description = document.createElement('p');
             description.textContent = data._source.description;
 
+            const gchangeLink       = document.createElement('a');
+            gchangeLink.href = 'https://www.gchange.fr/#/app/market/view/' + data._id + '/';
+            gchangeLink.textContent = 'Voir sur Gchange'
+            const gchangeLink_outer = document.createElement('p');
+            gchangeLink_outer.appendChild(gchangeLink);
+
             const address = document.createElement('p');
             address.textContent = data._source.address;
 
             // Append the elements to the panel
             panel.appendChild(title);
+            panel.appendChild(gchangeLink_outer);
 
             if (image !== null) {
                 panel.appendChild(image);
