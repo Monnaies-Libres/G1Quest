@@ -7,7 +7,7 @@ body {
     background-color: #000;
 }
 
-#sonar {
+#sonar, #recordsSonar {
     height: 90vh;
     width: 90vh;
     border: 2px solid #0f0;
@@ -78,6 +78,7 @@ body {
 .dot.selected {
     background-color: white; /* Red color */
     /* You can add other properties as per your design */
+    opacity: 1 !important;
 }
 
 

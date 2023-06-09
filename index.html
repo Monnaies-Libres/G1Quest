@@ -5,7 +5,10 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="sonar"></div>
+    <button id="switchScreen">latent</button>
+    <div id="sonar" style="display: none;"></div>
+    <div id="recordsSonar"></div>
+
     <div id="loading">Loading...</div>
     <div id="buttonContainer">
         <button id="detect">Lancer la détection</button>
@@ -18,7 +21,7 @@
         <option value="500">500km</option>
     </select>
     <div id="panel">
-        <div id="pageDetails"></div>
+        <div id="panel-details"></div>
 
         <img id="loading-icon" src="loading.gif" style="display: none;" />
     </div>
