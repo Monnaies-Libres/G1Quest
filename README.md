@@ -8,11 +8,11 @@ J'ai demandé à ChatGPT-4 de m'aider à coder un radar à annonces et pages Gch
 
 Voici ma conversation avec lui, telle qu'elle est jusqu'au 8 juin :
 
-https://chat.openai.com/share/6609c8bf-b1e0-4e7b-b96d-18083303c9fe
+https://chat.openai.com/share/2f77c119-66e0-49c3-8cf8-3d19fde45b33
 
 Le nom, la description, et même la suite de ce README été générés avec l'aide de ChatGPT :
 
-https://chat.openai.com/share/a340325d-4572-44fa-af9b-b6d35d3d5fb7
+https://chat.openai.com/share/4ca56723-ba73-464a-a225-68c8e0eb73cf
 
 ## ChatGPT vous présente le projet
 
