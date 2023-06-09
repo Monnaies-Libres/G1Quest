@@ -52,7 +52,10 @@ function getRecords(userLocation) {
     const radiusSelect = document.getElementById('radius');
     const radius = radiusSelect.options[radiusSelect.selectedIndex].value;
 
-    const threeMonthsAgoTimestamp = Date.now() - 7776000;  // 3 months in seconds
+    const threeMonthsAgoTimestamp = Math.floor((Date.now() - (90 * 24 * 60 * 60 * 1000)) / 1000);
+
+    console.log('Date.now() :', Date.now());
+    console.log('threeMonthsAgoTimestamp :', threeMonthsAgoTimestamp);
 
     // Form the query
     const body = {
