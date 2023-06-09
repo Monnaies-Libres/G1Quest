@@ -92,7 +92,7 @@ function getRecords(userLocation) {
 
         _source: ['geoPoint', '_id', 'time'],
 
-        size: 500
+        size: 60
     };
 
     // Send the HTTP request
@@ -149,7 +149,7 @@ function displayRecords(records, userLocation, radius, minTime, maxTime) {
         dot.style.left = `calc(50% + ${x}%)`;
         dot.style.top = `calc(50% - ${y}%)`;
 
-        let opacity = calculateDotOpacity(0.25, 1, minTime, maxTime, record._source.time)
+        let opacity = calculateDotOpacity(0.10, 1, minTime, maxTime, record._source.time)
         dot.style.opacity = opacity.toString();
 
         // Add the dot to the sonar
@@ -377,7 +377,7 @@ function displayPageDetails(pageId) {
 function calculateDotOpacity(minOpacity, maxOpacity, minTime, maxTime, dotTime) {
 
     let relativeTime = (dotTime - minTime) / (maxTime - minTime);
-    let opacity = 0.25 + (relativeTime * 0.75);
+    let opacity = minOpacity + (relativeTime * (maxOpacity - minOpacity));
 
     return opacity;
 }
