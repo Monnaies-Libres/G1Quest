@@ -2,7 +2,9 @@ let userLocation = null;
 let currentScreen = 'records';  // Indicates the current screen ('pages' or 'records')
 const threeMonthsAgoTimestamp = Math.floor((Date.now() - (90 * 24 * 60 * 60 * 1000)) / 1000);
 
-document.getElementById('recordsSonar').addEventListener('click', function () {
+document.getElementById('recordsSonar').addEventListener('click', function (event) {
+
+    event.currentTarget.classList = 'active';
 
     // Remove 'selected' class from any dot that might have it
     const selectedDot = document.querySelector('.dot.selected');
@@ -62,9 +64,6 @@ function getRecords (userLocation) {
 
     const radiusSelect = document.getElementById('radius');
     const radius = radiusSelect.options[radiusSelect.selectedIndex].value;
-
-    console.log('Date.now() :', Date.now());
-    console.log('threeMonthsAgoTimestamp :', threeMonthsAgoTimestamp);
 
     // Form the query
     const body = {
@@ -208,7 +207,13 @@ function getBlinkDuration(recordTime, minTime, maxTime) {
 }
 */
 
+function getBaseCategory (record) {
+
+    return (typeof record._source.category.parent !== 'undefined') ? record._source.category.parent : record._source.category.id;
+}
+
 function displayRecords (records, userLocation, radius, minTime, maxTime) {
+
     const sonar = document.getElementById('recordsSonar');
     sonar.innerHTML = '';  // Clear the sonar for new display
 
@@ -221,12 +226,16 @@ function displayRecords (records, userLocation, radius, minTime, maxTime) {
 
         const recordType = record._source.type;
 
+        const recordCategory = record._source.category.id;;
+
         // Create a dot for each record
         const dot = document.createElement('div');
 
         dot.classList.add('dot');
+        dot.classList.add('fa');
         dot.classList.add('record');
         dot.classList.add(recordType);
+        dot.classList.add(recordCategory);
 
         dot.id = record._id;
 
@@ -240,6 +249,8 @@ function displayRecords (records, userLocation, radius, minTime, maxTime) {
 
         // Add event listener for when the dot is clicked
         dot.addEventListener('click', (event) => {
+
+            event.currentTarget.parentElement.classList = 'inactive';
 
             // Remove 'selected' class from any dot that might have it
             const selectedDot = document.querySelector('.dot.selected');
@@ -266,11 +277,10 @@ function displayRecords (records, userLocation, radius, minTime, maxTime) {
         dot.style.left = `calc(50% + ${x}%)`;
         dot.style.top = `calc(50% - ${y}%)`;
 
-        let opacity = calculateDotOpacity(0.10, 1, minTime, maxTime, record._source.time)
-        dot.style.opacity = opacity.toString();
+        let opacity = calculateDotOpacity(0.50, 1, minTime, maxTime, record._source.time)
+        // dot.style.opacity = opacity.toString();
 
         dot.style.zIndex = currentRecordZIndex.toString();
-        console.log('currentRecordZIndex :', currentRecordZIndex);
         --currentRecordZIndex;
 
         // Add the dot to the sonar
@@ -329,12 +339,16 @@ function displayRecordDetails (recordId) {
             const lastEditDate = document.createElement('p');
             lastEditDate.textContent = recordDate.from(now);
 
+            const category = document.createElement('p');
+            category.textContent = data._source.category.id + ' : ' + data._source.category.name;
+
             const address = document.createElement('p');
             address.textContent = data._source.address;
 
             // Append the elements to the panel
             panel.appendChild(title);
             panel.appendChild(lastEditDate);
+            panel.appendChild(category);
             panel.appendChild(gchangeLink_outer);
 
             if (image !== null) {

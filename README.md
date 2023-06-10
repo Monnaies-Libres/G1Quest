@@ -31,3 +31,6 @@ De plus, Ğ1Quest offre une immersion dans divers univers thématiques, augmenta
 Icône loading.gif : Creative Commons 0 (Public Domain) :
 https://commons.wikimedia.org/wiki/File:YouTube_loading_symbol_3_(transparent).gif
 
+FontAwesome : Creative Commons BY 4.0
+
+
