@@ -69,19 +69,47 @@ body {
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #00ff00;
+    background-color: white;
     border-radius: 50%;
     transform: translate(-50%, -50%); /* center the dot relative to the calculated position */
 
     cursor: pointer;
 }
 
+.dot.record.offer {
+
+    background-color: hsl(120, 100%, 50%);
+}
+
+.dot.record.need {
+
+    background-color: hsl(0, 100%, 50%);
+}
+
 .dot.selected {
-    background-color: red;
+
+    background-color: white;
     /* You can add other properties as per your design */
     opacity: 1 !important;
     animation: none !important;
 }
+
+.dot.record.selected.offer {
+
+    background-color: hsl(120, 100%, 50%);
+    box-shadow:
+        0 0 3px 3px hsl(120, 100%, 50%),
+        0 0 3px 6px hsl(120, 100%,  0%);
+}
+
+.dot.record.selected.need {
+
+    background-color: hsl(0, 100%, 50%);
+    box-shadow:
+        0 0 3px 3px hsl(0, 100%, 50%),
+        0 0 3px 6px hsl(0, 100%,  0%);
+}
+
 
 .dot.visited {
 
@@ -93,10 +121,16 @@ body {
     display:block;
 }
 
-@keyframes blink {
+@keyframes blink-offer {
     0% { background-color: hsl(120, 12%, 12%); }      /* Black color in HSL */
     50% { background-color: hsl(120, 100%, 50%); }    /* Lime color in HSL */
     100% { background-color: hsl(120, 12%, 12%); }      /* Black color in HSL */
+}
+
+@keyframes blink-need {
+    0% { background-color: hsl(0, 12%, 12%); }      /* Black color in HSL */
+    50% { background-color: hsl(0, 100%, 50%); }    /* Lime color in HSL */
+    100% { background-color: hsl(0, 12%, 12%); }      /* Black color in HSL */
 }
 
 

@@ -58,7 +58,8 @@ document.getElementById('switchScreen').addEventListener('click', function () {
     }
 });
 
-function getRecords(userLocation) {
+function getRecords (userLocation) {
+
     const radiusSelect = document.getElementById('radius');
     const radius = radiusSelect.options[radiusSelect.selectedIndex].value;
 
@@ -147,7 +148,7 @@ function getRecords(userLocation) {
             "_score"
         ],
 
-        _source: ['geoPoint', '_id', 'time'],
+        _source: ['geoPoint', '_id', 'time', 'category.id', 'category.parent', 'type'],
 
         size: 90
     };
@@ -180,7 +181,7 @@ function getRecords(userLocation) {
     });
 }
 
-function getBlinkDuration(timestamp, minTime, maxTime) {
+function getBlinkDuration (timestamp, minTime, maxTime) {
     const maxDuration = 10; // blink duration for oldest record
     const minDuration = 0.3; // blink duration for most recent record
 
@@ -207,7 +208,7 @@ function getBlinkDuration(recordTime, minTime, maxTime) {
 }
 */
 
-function displayRecords(records, userLocation, radius, minTime, maxTime) {
+function displayRecords (records, userLocation, radius, minTime, maxTime) {
     const sonar = document.getElementById('recordsSonar');
     sonar.innerHTML = '';  // Clear the sonar for new display
 
@@ -218,17 +219,24 @@ function displayRecords(records, userLocation, radius, minTime, maxTime) {
 
     records.forEach(record => {
 
+        const recordType = record._source.type;
+
         // Create a dot for each record
         const dot = document.createElement('div');
+
         dot.classList.add('dot');
+        dot.classList.add('record');
+        dot.classList.add(recordType);
+
         dot.id = record._id;
 
+        const blinkDuration = getBlinkDuration(
+            record._source.time,
+            threeMonthsAgoTimestamp,
+            Math.floor(Date.now()/1000)
+        );
 
-        const blinkDuration = getBlinkDuration(record._source.time,
-                                               threeMonthsAgoTimestamp,
-                                               Math.floor(Date.now()/1000));
-
-        dot.style.animation = `blink ${blinkDuration}s infinite`;
+        dot.style.animation = `blink-${recordType} ${blinkDuration}s infinite`;
 
         // Add event listener for when the dot is clicked
         dot.addEventListener('click', (event) => {
@@ -270,7 +278,8 @@ function displayRecords(records, userLocation, radius, minTime, maxTime) {
     });
 }
 
-function displayRecordDetails(recordId) {
+function displayRecordDetails (recordId) {
+
     // Get the panel element
     const panel = document.getElementById('panel-details');
 
@@ -362,7 +371,7 @@ document.getElementById('radius').addEventListener('change', function () {
 
 
 
-function getPages(userLocation) {
+function getPages (userLocation) {
     const radiusSelect = document.getElementById('radius');
     const radius = radiusSelect.options[radiusSelect.selectedIndex].value;
 
@@ -421,7 +430,7 @@ function getPages(userLocation) {
 
 
 
-function displayPageDetails(pageId) {
+function displayPageDetails (pageId) {
     // Get the panel element
     const panel = document.getElementById('panel-details');
 
@@ -493,7 +502,7 @@ function displayPageDetails(pageId) {
         });
 }
 
-function calculateDotOpacity(minOpacity, maxOpacity, minTime, maxTime, dotTime) {
+function calculateDotOpacity (minOpacity, maxOpacity, minTime, maxTime, dotTime) {
 
     let relativeTime = (dotTime - minTime) / (maxTime - minTime);
     let opacity = minOpacity + (relativeTime * (maxOpacity - minOpacity));
@@ -564,7 +573,7 @@ function calculateRelativePosition(userLocation, pageLocation, radius) {
 */
 
 
-function calculateRelativePosition(userLocation, pageLocation, radius) {
+function calculateRelativePosition (userLocation, pageLocation, radius) {
     // The number of km per degree of latitude is approximately constant
     const kmPerDegreeLat = 111;
 
@@ -582,6 +591,6 @@ function calculateRelativePosition(userLocation, pageLocation, radius) {
     return {x, y};
 }
 
-function toRadians(degrees) {
+function toRadians (degrees) {
     return degrees * (Math.PI / 180);
 }
