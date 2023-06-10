@@ -1,5 +1,15 @@
 let userLocation = null;
 let currentScreen = 'records';  // Indicates the current screen ('pages' or 'records')
+const threeMonthsAgoTimestamp = Math.floor((Date.now() - (90 * 24 * 60 * 60 * 1000)) / 1000);
+
+document.getElementById('recordsSonar').addEventListener('click', function () {
+
+    // Remove 'selected' class from any dot that might have it
+    const selectedDot = document.querySelector('.dot.selected');
+    if (selectedDot) {
+        selectedDot.classList.remove('selected');
+    }
+});
 
 document.getElementById('detect').addEventListener('click', function () {
     this.style.display = 'none'; // hide button
@@ -52,8 +62,6 @@ function getRecords(userLocation) {
     const radiusSelect = document.getElementById('radius');
     const radius = radiusSelect.options[radiusSelect.selectedIndex].value;
 
-    const threeMonthsAgoTimestamp = Math.floor((Date.now() - (90 * 24 * 60 * 60 * 1000)) / 1000);
-
     console.log('Date.now() :', Date.now());
     console.log('threeMonthsAgoTimestamp :', threeMonthsAgoTimestamp);
 
@@ -83,6 +91,13 @@ function getRecords(userLocation) {
                             }
                         }
 
+                    }, {
+
+                        range: {
+                            stock: {
+                                gte: 1
+                            }
+                        }
                     }
                 ],
 
@@ -134,7 +149,7 @@ function getRecords(userLocation) {
 
         _source: ['geoPoint', '_id', 'time'],
 
-        size: 500
+        size: 90
     };
 
     // Send the HTTP request
@@ -165,19 +180,71 @@ function getRecords(userLocation) {
     });
 }
 
+function getBlinkDuration(timestamp, minTime, maxTime) {
+    const maxDuration = 10; // blink duration for oldest record
+    const minDuration = 0.3; // blink duration for most recent record
+
+    // The ratio of how far the timestamp is in the range from minTime to maxTime
+    let ratio = (timestamp - minTime) / (maxTime - minTime);
+
+    // Calculate the blink duration by interpolating between minDuration and maxDuration
+    let blinkDuration = minDuration + ((1 - ratio) * (maxDuration - minDuration));
+
+    return blinkDuration;
+}
+/*
+function getBlinkDuration(recordTime, minTime, maxTime) {
+    const maxDuration = 10;
+    const minDuration = 0.5;
+
+    // Normalize recordTime between 0 and 1
+    let t = (recordTime - minTime) / (maxTime - minTime);
+
+    // Interpolate to get the duration
+    let duration = minDuration + t * (maxDuration - minDuration);
+
+    return duration;
+}
+*/
+
 function displayRecords(records, userLocation, radius, minTime, maxTime) {
     const sonar = document.getElementById('recordsSonar');
     sonar.innerHTML = '';  // Clear the sonar for new display
 
+    const recordsNb = records.length;
+
+    const baseZIndex = 100;
+    let currentRecordZIndex = baseZIndex + recordsNb;
+
     records.forEach(record => {
+
         // Create a dot for each record
         const dot = document.createElement('div');
         dot.classList.add('dot');
         dot.id = record._id;
 
+
+        const blinkDuration = getBlinkDuration(record._source.time,
+                                               threeMonthsAgoTimestamp,
+                                               Math.floor(Date.now()/1000));
+
+        dot.style.animation = `blink ${blinkDuration}s infinite`;
+
         // Add event listener for when the dot is clicked
-        dot.addEventListener('click', () => {
+        dot.addEventListener('click', (event) => {
+
+            // Remove 'selected' class from any dot that might have it
+            const selectedDot = document.querySelector('.dot.selected');
+            if (selectedDot) {
+                selectedDot.classList.remove('selected');
+            }
+
+            dot.classList.add('selected');
+            dot.classList.add('visited');
+
             displayRecordDetails(record._id);
+
+            event.stopPropagation();
         });
 
         // Position the dot according to the record's relative position to the user
@@ -194,6 +261,10 @@ function displayRecords(records, userLocation, radius, minTime, maxTime) {
         let opacity = calculateDotOpacity(0.10, 1, minTime, maxTime, record._source.time)
         dot.style.opacity = opacity.toString();
 
+        dot.style.zIndex = currentRecordZIndex.toString();
+        console.log('currentRecordZIndex :', currentRecordZIndex);
+        --currentRecordZIndex;
+
         // Add the dot to the sonar
         sonar.appendChild(dot);
     });
@@ -209,18 +280,6 @@ function displayRecordDetails(recordId) {
 
     // Clear any existing content in the panel
     panel.innerHTML = '';
-
-    // Remove 'selected' class from any dot that might have it
-    const selectedDot = document.querySelector('.dot.selected');
-    if (selectedDot) {
-        selectedDot.classList.remove('selected');
-    }
-
-    // Add 'selected' class to the clicked dot
-    const clickedDot = document.getElementById(recordId);
-    if (clickedDot) {
-        clickedDot.classList.add('selected');
-    }
 
     // Send a GET request to the Elastic Search endpoint /market/record/{id}
     fetch(`https://data.gchange.fr/market/record/${recordId}`)
@@ -251,11 +310,22 @@ function displayRecordDetails(recordId) {
             const gchangeLink_outer = document.createElement('p');
             gchangeLink_outer.appendChild(gchangeLink);
 
+
+            let now = moment();
+            let recordDate = moment(data._source.time*1000);
+
+            // Set the locale to French
+            recordDate.locale(navigator.language);  // Replace 'fr' with the desired locale
+
+            const lastEditDate = document.createElement('p');
+            lastEditDate.textContent = recordDate.from(now);
+
             const address = document.createElement('p');
             address.textContent = data._source.address;
 
             // Append the elements to the panel
             panel.appendChild(title);
+            panel.appendChild(lastEditDate);
             panel.appendChild(gchangeLink_outer);
 
             if (image !== null) {
@@ -322,7 +392,7 @@ function getPages(userLocation) {
 
         _source: ['geoPoint', '_id', 'time'],
 
-        size: 50
+        size: 30
     };
 
     // Send the HTTP request
@@ -492,6 +562,7 @@ function calculateRelativePosition(userLocation, pageLocation, radius) {
 }
 
 */
+
 
 function calculateRelativePosition(userLocation, pageLocation, radius) {
     // The number of km per degree of latitude is approximately constant

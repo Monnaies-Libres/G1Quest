@@ -14,6 +14,7 @@ body {
     border-radius: 50%;
     position: relative;
     background-color: #000;
+    cursor: crosshair;
 }
 
 #loading {
@@ -76,9 +77,26 @@ body {
 }
 
 .dot.selected {
-    background-color: white; /* Red color */
+    background-color: red;
     /* You can add other properties as per your design */
     opacity: 1 !important;
+    animation: none !important;
+}
+
+.dot.visited {
+
+    display: none;
+}
+
+.dot.visited.selected {
+
+    display:block;
+}
+
+@keyframes blink {
+    0% { background-color: hsl(120, 12%, 12%); }      /* Black color in HSL */
+    50% { background-color: hsl(120, 100%, 50%); }    /* Lime color in HSL */
+    100% { background-color: hsl(120, 12%, 12%); }      /* Black color in HSL */
 }
 
 
