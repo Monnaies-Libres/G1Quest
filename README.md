@@ -6,13 +6,17 @@ J'ai demandé à ChatGPT-4 de m'aider à coder un radar à annonces et pages Gch
 
 ![](./doc/Screenshot_2023-06-09.jpeg)
 
-Voici ma conversation avec lui, telle qu'elle est jusqu'au 8 juin :
+Voici ma conversation avec lui, telle qu'elle est jusqu'au 10 juin :
 
-https://chat.openai.com/share/2f77c119-66e0-49c3-8cf8-3d19fde45b33
+https://chat.openai.com/share/41ca5ba2-66c6-4442-bc56-389ebfb7d89b
 
-Le nom, la description, et même la suite de ce README été générés avec l'aide de ChatGPT :
+Le nom, la description, et même la suite de ce README été générés avec l'aide de ChatGPT, qui m'a aussi aidé à réfléchir à un favicon :
 
-https://chat.openai.com/share/4ca56723-ba73-464a-a225-68c8e0eb73cf
+https://chat.openai.com/share/ddcab1bf-3322-4bd1-b940-28a75d0bc028
+
+Et ChatGPT m'a aussi aidé à penser la conception de l'UX et de l'UI :
+
+https://chat.openai.com/share/3aa7aa47-f7fb-4243-ac45-9058250a0ca7
 
 ## ChatGPT vous présente le projet
 
