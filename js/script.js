@@ -9,7 +9,7 @@ const timestampBackThen_3_months = Math.floor((Date.now() - (90 * 24 * 60 * 60 *
 
 let userLocation = null;
 let radius = 150;
-let currentScreen = 'dormant';  // Indicates the current screen ('actu' or 'dormant')
+let currentScreen = 'actu';  // Indicates the current screen ('actu' or 'dormant')
 
 let radiusSelect = document.getElementById('radius');
 
