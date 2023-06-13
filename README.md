@@ -4,7 +4,7 @@
 
 J'ai demandé à ChatGPT-4 de m'aider à coder un radar à annonces et pages Gchange, et voilà le résultat.
 
-![](./doc/Screenshot_2023-06-10.jpeg)
+![](./doc/Screenshot_2023-06-13.jpeg)
 
 Voici ma conversation avec lui, telle qu'elle est jusqu'au 10 juin :
 
@@ -26,11 +26,26 @@ Cette application a le potentiel de devenir un levier essentiel pour stimuler l'
 
 De plus, Ğ1Quest offre une immersion dans divers univers thématiques, augmentant ainsi son attractivité et créant un espace d'exploration et de découverte pour ses utilisateurs. Nous croyons que cette application peut redéfinir la façon dont les gens interagissent avec la monnaie libre Ğ1, et nous avons hâte de collaborer avec vous pour continuer à développer et améliorer Ğ1Quest.
 
+## Auteurs
+
+Ce projet est développé par __La Bureautique__, collectif extra-terrestre qui œuvre à la promotion et au développement d'une bureautique ludique et sans bleu clair.
+
 ## Licences
 
 Icône loading.gif : Creative Commons 0 (Public Domain) :
 https://commons.wikimedia.org/wiki/File:YouTube_loading_symbol_3_(transparent).gif
 
 FontAwesome : Creative Commons BY 4.0
+
+### games/space
+
+- `comparison.png` par [Freepik.com](https://www.freepik.com/)
+- `advertising.png` par [Eucalyp](https://www.flaticon.com/authors/eucalyp)
+- `contact.png` par [Muhamad Ulum](https://www.flaticon.com/authors/muhamad-ulum)
+- `communication.png` par [PureSolution](https://www.flaticon.com/authors/puresolution)
+- `sharing.png` par [Eucalyp](https://www.flaticon.com/authors/eucalyp)
+- `share.png` par [Freepik.com](https://www.freepik.com/)
+- `deliver.png` par [Freepik](https://www.flaticon.com/authors/freepik)
+- `drone.png` par [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect)
 
 
