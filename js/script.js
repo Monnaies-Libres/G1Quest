@@ -46,43 +46,35 @@ for (let list of document.querySelectorAll('#actu > .list, #dormant > .list')) {
 
 function proceedWithLocation(radius) {
 
+    const buttonContainerElt = document.querySelector('.screen#'+currentScreen+' > .buttonContainer');
+
+    // Show "Loading..."
+    buttonContainerElt.style.display = 'block';
+    buttonContainerElt.querySelector('.loading').style.display = 'block';
+
     switch (currentScreen) {
         case 'actu':
+            data[currentScreen]['km'+ radius.toString()] = getActu(userLocation, radius, timestampBackThen_3_months)
+                .then(records => {
 
-            if (data[currentScreen]['km'+ radius.toString()] != null) {
+                    document.querySelector('#actu .loading').style.display = 'none';
 
-                switchPage(currentScreen, radius);
+                    displayActu(records, userLocation, radius, timestampBackThen_3_months);
 
-            } else {
-
-                data[currentScreen]['km'+ radius.toString()] = getActu(userLocation, radius, timestampBackThen_3_months)
-                    .then(records => {
-
-                        document.querySelector('#actu .loading').style.display = 'none';
-
-                        displayActu(records, userLocation, radius, timestampBackThen_3_months);
-                    });
-
-            }
+                    buttonContainerElt.style.display = 'none';
+                });
 
             break;
         case 'dormant':
+            data[currentScreen]['km'+ radius.toString()] = getDormant(userLocation, radius)
+                .then(records => {
 
-            if (data[currentScreen]['km'+ radius.toString()] != null) {
+                    document.querySelector('#dormant .loading').style.display = 'none';
 
-                switchPage(currentScreen, radius);
+                    displayDormant(records, userLocation, radius);
 
-            } else {
-
-                data[currentScreen]['km'+ radius.toString()] = getDormant(userLocation, radius)
-                    .then(records => {
-
-                        document.querySelector('#dormant .loading').style.display = 'none';
-
-                        displayDormant(records, userLocation, radius);
-                    });
-
-            }
+                    buttonContainerElt.style.display = 'none';
+                });
             break;
     }
 }
@@ -102,9 +94,6 @@ async function detect (radius) {
         proceedWithLocation(radius);
 
     } else {
-
-        // Show "Loading..." after user allows to share their location
-        buttonContainerElt.querySelector('.loading').style.display = 'block';
 
         navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -126,8 +115,6 @@ async function detect (radius) {
             buttonContainerElt.querySelector('.loading').style.display = 'none';
         });
     }
-
-    buttonContainerElt.style.display = 'none';
 }
 
 // When "detect" button is clicked
@@ -144,7 +131,12 @@ document.getElementById('radius').addEventListener('change', function () {
 
     radius = radiusSelect.options[radiusSelect.selectedIndex].value;
 
-    detect(radius);
+    switchPage(currentScreen, radius);
+
+    if (data[currentScreen]['km'+ radius.toString()] == null) {
+
+        detect(radius);
+    }
 });
 
 function switchScreen (screenId) {
