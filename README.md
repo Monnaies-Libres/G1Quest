@@ -2,13 +2,17 @@
 ===
 
 
-J'ai demandé à ChatGPT-4 de m'aider à coder un radar à annonces et pages Gchange, et voilà le résultat.
+J'ai demandé à ChatGPT-4 de m'aider à coder un radar à annonces et pages Gchange, et voilà le résultat :
 
-![](./doc/Screenshot_2023-06-13.jpeg)
+![](./doc/Screenshot_2023-06-18_12h40m58s)
 
 Voici ma conversation avec lui, telle qu'elle est jusqu'au 10 juin :
 
 https://chat.openai.com/share/41ca5ba2-66c6-4442-bc56-389ebfb7d89b
+
+Autre conversation, où j'utilise les plugins AI Agents, Repo Inspector et Web Requests :
+
+https://chat.openai.com/share/d922cc91-23fa-4f81-8c17-bd5f900eea66
 
 Le nom, la description, et même la suite de ce README été générés avec l'aide de ChatGPT, qui m'a aussi aidé à réfléchir à un favicon :
 

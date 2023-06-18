@@ -2,14 +2,17 @@ import { getActu }     from './actu.model.js'
 import { displayActu } from './actu.view.js'
 import { getDormant }     from './dormant.model.js'
 import { displayDormant } from './dormant.view.js'
+import { getNeedsCategories, getNeedsInCategory, getNeeds }     from './marketResearch.model.js'
+import { displayCategories, displayNeeds } from './marketResearch.view.js'
 import { displayRecordDetails, displayPageDetails } from './details.view.js'
 import { switchPage } from './helpers.js'
 
 const timestampBackThen_3_months = Math.floor((Date.now() - (90 * 24 * 60 * 60 * 1000)) / 1000);
+const timestampBackThen_2_years = Math.floor((Date.now() - (2 * 365 * 24 * 60 * 60 * 1000)) / 1000);
 
 let userLocation = null;
 let radius = 150;
-let currentScreen = 'actu';  // Indicates the current screen ('actu' or 'dormant')
+let currentScreen = 'marketResearch';
 
 let radiusSelect = document.getElementById('radius');
 
@@ -21,6 +24,12 @@ let data = {
         ,km500: null
     }
     ,dormant: {
+         km15:  null
+        ,km50:  null
+        ,km150: null
+        ,km500: null
+    }
+    ,marketResearch: {
          km15:  null
         ,km50:  null
         ,km150: null
@@ -44,7 +53,7 @@ for (let list of document.querySelectorAll('#actu > .list, #dormant > .list')) {
     });
 }
 
-function proceedWithLocation(radius) {
+function proceedWithLocation (radius) {
 
     const buttonContainerElt = document.querySelector('.screen#'+currentScreen+' > .buttonContainer');
 
@@ -76,6 +85,19 @@ function proceedWithLocation(radius) {
                     buttonContainerElt.style.display = 'none';
                 });
             break;
+        case 'marketResearch':
+            data[currentScreen]['km'+ radius.toString()].categories = getNeedsCategories(userLocation, radius)
+                .then(categories => {
+
+                    console.log(categories);
+
+                    document.querySelector('#marketResearch .loading').style.display = 'none';
+
+                    displayCategories(categories, radius);
+
+                    buttonContainerElt.style.display = 'none';
+                });
+            break;
     }
 }
 
@@ -101,6 +123,8 @@ async function detect (radius) {
                 lat: position.coords.latitude,
                 lon: position.coords.longitude
             };
+
+            // console.log('userLocation :', userLocation);
 
             proceedWithLocation(radius);
 
@@ -161,8 +185,9 @@ function switchScreen (screenId) {
     document.getElementById(screenId).style.display = 'block';
 }
 
-// Add screen-switching mechanism
 window.addEventListener('DOMContentLoaded', (event) => {
+    // Add screen-switching mechanism
+
     // Get all the anchor tags inside the navigation menu
     const menuLinks = document.querySelectorAll('#menu a');
 
@@ -175,6 +200,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
             const screen = link.getAttribute('href').substring(1);
             switchScreen(screen);
         });
+    });
+
+    // Lorsqu'une catégorie est cliquée
+    const categoriesLists = document.querySelectorAll('#marketResearch .list .categories');
+
+    categoriesLists.forEach(categoriesList => {
+        categoriesList.addEventListener('click', function (event) {
+            if (event.target.tagName === 'LI') {
+                const category = event.target.dataset.category;
+                getNeedsInCategory(userLocation, radius, category)
+                    .then(needs => displayNeeds(needs, radius));
+            }
+        })
     });
 });
 
