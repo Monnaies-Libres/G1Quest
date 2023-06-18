@@ -4,7 +4,7 @@
 
 J'ai demandé à ChatGPT-4 de m'aider à coder un radar à annonces et pages Gchange, et voilà le résultat :
 
-![](./doc/Screenshot_2023-06-18_12h40m58s.jpg)
+![](./doc/Screenshot_2023-06-18_12h40m58s.jpeg)
 
 Voici ma conversation avec lui, telle qu'elle est jusqu'au 10 juin :
 
