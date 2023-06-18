@@ -3,86 +3,86 @@ import { displayRecordDetails, displayPageDetails } from './details.view.js'
 
 export const displayActu = (records, userLocation, radius, minTimestamp) => {
 
-    switchPage('actu', radius);
+	switchPage('actu', radius);
 
-    const recordsNb = records.length;
+	const recordsNb = records.length;
 
-    // Find the maximum and minimum timestamp values
-    let maxTime = 0, minTime = Infinity;
+	// Find the maximum and minimum timestamp values
+	let maxTime = 0, minTime = Infinity;
 
-    if (recordsNb != 0) {
+	if (recordsNb != 0) {
 
-        maxTime = records.slice(0)[0]._source.time;
-        minTime = records.slice(-1)[0]._source.time;
-    }
+		maxTime = records.slice(0)[0]._source.time;
+		minTime = records.slice(-1)[0]._source.time;
+	}
 
-    const newsDisplay = document.querySelector('#actu > .list.radius-'+radius+'-km');
-    newsDisplay.innerHTML = '';
+	const newsDisplay = document.querySelector('#actu > .list.radius-'+radius+'-km');
+	newsDisplay.innerHTML = '';
 
-    const baseZIndex = 100;
-    let currentRecordZIndex = baseZIndex + recordsNb;
+	const baseZIndex = 100;
+	let currentRecordZIndex = baseZIndex + recordsNb;
 
-    records.forEach(record => {
+	records.forEach(record => {
 
-        const recordType = record._source.type;
+		const recordType = record._source.type;
 
-        const recordCategory = record._source.category.id;;
+		const recordCategory = record._source.category.id;;
 
-        // Create a dot for each record
-        const dot = document.createElement('li');
+		// Create a dot for each record
+		const dot = document.createElement('li');
 
-        dot.classList.add('dot');
-        dot.classList.add('fa');
-        dot.classList.add('record');
-        dot.classList.add(recordType);
-        dot.classList.add(recordCategory);
+		dot.classList.add('dot');
+		dot.classList.add('fa');
+		dot.classList.add('record');
+		dot.classList.add(recordType);
+		dot.classList.add(recordCategory);
 
-        dot.id = record._id;
+		dot.id = record._id;
 
-        const blinkDuration = getBlinkDuration(
-            record._source.time,
-            minTimestamp,
-            Math.floor(Date.now()/1000)
-        );
+		const blinkDuration = getBlinkDuration(
+			record._source.time,
+			minTimestamp,
+			Math.floor(Date.now()/1000)
+		);
 
-        dot.style.animation = `blink-${recordType} ${blinkDuration}s infinite`;
+		dot.style.animation = `blink-${recordType} ${blinkDuration}s infinite`;
 
-        // Add event listener for when the dot is clicked
-        dot.addEventListener('click', (event) => {
+		// Add event listener for when the dot is clicked
+		dot.addEventListener('click', (event) => {
 
-            event.currentTarget.parentElement.classList.add('paused');
+			event.currentTarget.parentElement.classList.add('paused');
 
-            // Remove 'selected' class from any dot that might have it
-            const selectedDot = document.querySelector('.dot.selected');
-            if (selectedDot) {
-                selectedDot.classList.remove('selected');
-            }
+			// Remove 'selected' class from any dot that might have it
+			const selectedDot = document.querySelector('.dot.selected');
+			if (selectedDot) {
+				selectedDot.classList.remove('selected');
+			}
 
-            dot.classList.add('selected');
-            dot.classList.add('visited');
+			dot.classList.add('selected');
+			dot.classList.add('visited');
 
-            displayRecordDetails(record._id);
+			displayRecordDetails(record._id);
 
-            event.stopPropagation();
-        });
+			event.stopPropagation();
+		});
 
-        // Position the dot according to the record's relative position to the user
-        const recordLocation = {
-            lat: record._source.geoPoint.lat,
-            lon: record._source.geoPoint.lon
-        };
+		// Position the dot according to the record's relative position to the user
+		const recordLocation = {
+			lat: record._source.geoPoint.lat,
+			lon: record._source.geoPoint.lon
+		};
 
-        const {x, y} = calculateRelativePosition(userLocation, recordLocation, radius);
+		const {x, y} = calculateRelativePosition(userLocation, recordLocation, radius);
 
-        dot.style.left = `calc(50% + ${x}%)`;
-        dot.style.top = `calc(50% - ${y}%)`;
+		dot.style.left = `calc(50% + ${x}%)`;
+		dot.style.top = `calc(50% - ${y}%)`;
 
-        let opacity = calculateDotOpacity(0.50, 1, minTime, maxTime, record._source.time)
-        // dot.style.opacity = opacity.toString();
+		let opacity = calculateDotOpacity(0.50, 1, minTime, maxTime, record._source.time)
+		// dot.style.opacity = opacity.toString();
 
-        dot.style.zIndex = currentRecordZIndex.toString();
-        --currentRecordZIndex;
+		dot.style.zIndex = currentRecordZIndex.toString();
+		--currentRecordZIndex;
 
-        newsDisplay.appendChild(dot);
-    });
+		newsDisplay.appendChild(dot);
+	});
 };

@@ -1,145 +1,145 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ğ1Quest</title>
+	<title>Ğ1Quest</title>
 
-    <meta charset="utf-8" />
+	<meta charset="utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="games/space/style.css" />
+	<link rel="stylesheet" type="text/css" href="games/space/style.css" />
 
-    <link rel="icon" type="image/png" href="./res/radar.png" />
+	<link rel="icon" type="image/png" href="./res/radar.png" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/fr.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/en-gb.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/fr.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/en-gb.js"></script>
 </head>
 <body>
-    <nav id="menu">
-        <ul>
-            <li>
-                <a href="#actu">
-                    <img src="games/space/img/advertising.png" alt="Actu" />
-                </a>
-            </li>
-            <!--
-            <li>
-                <a href="#shippable">
-                    <img src="games/space/img/drone.png" alt="Envoi possible" />
-                </a>
-            </li>
-            -->
-            <li>
-                <a href="#dormant">
-                    <img src="games/space/img/contact.png" alt="Dormant" />
-                </a>
-            </li>
-            <!--
-            <li>
-                <a href="#immaterial">
-                    <img src="games/space/img/sharing.png" alt="Offre imméatérielles" />
-                </a>
-            </li>
+	<nav id="menu">
+		<ul>
+			<li>
+				<a href="#actu">
+					<img src="games/space/img/advertising.png" alt="Actu" />
+				</a>
+			</li>
+			<!--
+			<li>
+				<a href="#shippable">
+					<img src="games/space/img/drone.png" alt="Envoi possible" />
+				</a>
+			</li>
+			-->
+			<li>
+				<a href="#dormant">
+					<img src="games/space/img/contact.png" alt="Dormant" />
+				</a>
+			</li>
+			<!--
+			<li>
+				<a href="#immaterial">
+					<img src="games/space/img/sharing.png" alt="Offre imméatérielles" />
+				</a>
+			</li>
 
-            -->
+			-->
 
-            <li>
-                <a href="#marketResearch">
-                    <img src="games/space/img/comparison.png" alt="Étude de marché" />
-                </a>
-            </li>
-        </ul>
-    </nav>
+			<li>
+				<a href="#marketResearch">
+					<img src="games/space/img/comparison.png" alt="Étude de marché" />
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-    <main>
-        <div id="panel">
-            <div id="panel-details"></div>
+	<main>
+		<div id="panel">
+			<div id="panel-details"></div>
 
-            <img id="loading-icon" src="loading.gif" style="display: none;" />
-        </div>
+			<img id="loading-icon" src="loading.gif" style="display: none;" />
+		</div>
 
-        <div id="mainArea">
-            <select id="radius">
-                <option value="15">15km</option>
-                <option value="50">50km</option>
-                <option value="150" selected>150km</option>
-                <option value="500">500km</option>
-            </select>
+		<div id="mainArea">
+			<select id="radius">
+				<option value="15">15km</option>
+				<option value="50">50km</option>
+				<option value="150" selected>150km</option>
+				<option value="500">500km</option>
+			</select>
 
-            <section id="actu" class="screen">
-                <ol class="list radius-15-km"></ol>
-                <ol class="list radius-50-km"></ol>
-                <ol class="list radius-150-km"></ol>
-                <ol class="list radius-500-km"></ol>
+			<section id="actu" class="screen">
+				<ol class="list radius-15-km"></ol>
+				<ol class="list radius-50-km"></ol>
+				<ol class="list radius-150-km"></ol>
+				<ol class="list radius-500-km"></ol>
 
-                <div class="buttonContainer">
-                    <button class="detect">Lancer la détection</button>
-                    <div class="loading">Loading...</div>
-                    <div class="errorMessage"></div>
-                </div>
-            </section>
+				<div class="buttonContainer">
+					<button class="detect">Lancer la détection</button>
+					<div class="loading">Loading...</div>
+					<div class="errorMessage"></div>
+				</div>
+			</section>
 
-            <section id="shippable" class="screen">
-                <ol class="list"></ol>
+			<section id="shippable" class="screen">
+				<ol class="list"></ol>
 
-                <div class="buttonContainer">
-                    <button class="detect">Lancer la détection</button>
-                    <div class="loading">Loading...</div>
-                    <div class="errorMessage"></div>
-                </div>
-            </section>
+				<div class="buttonContainer">
+					<button class="detect">Lancer la détection</button>
+					<div class="loading">Loading...</div>
+					<div class="errorMessage"></div>
+				</div>
+			</section>
 
-            <section id="dormant" class="screen">
-                <ol class="list radius-15-km"></ol>
-                <ol class="list radius-50-km"></ol>
-                <ol class="list radius-150-km"></ol>
-                <ol class="list radius-500-km"></ol>
+			<section id="dormant" class="screen">
+				<ol class="list radius-15-km"></ol>
+				<ol class="list radius-50-km"></ol>
+				<ol class="list radius-150-km"></ol>
+				<ol class="list radius-500-km"></ol>
 
-                <div class="buttonContainer">
-                    <button class="detect">Lancer la détection</button>
-                    <div class="loading">Loading...</div>
-                    <div class="errorMessage"></div>
-                </div>
-            </section>
+				<div class="buttonContainer">
+					<button class="detect">Lancer la détection</button>
+					<div class="loading">Loading...</div>
+					<div class="errorMessage"></div>
+				</div>
+			</section>
 
-            <section id="immaterial" class="screen">
-                <ol class="list"></ol>
+			<section id="immaterial" class="screen">
+				<ol class="list"></ol>
 
-                <div class="buttonContainer">
-                    <button class="detect">Lancer la détection</button>
-                    <div class="loading">Loading...</div>
-                    <div class="errorMessage"></div>
-                </div>
-            </section>
+				<div class="buttonContainer">
+					<button class="detect">Lancer la détection</button>
+					<div class="loading">Loading...</div>
+					<div class="errorMessage"></div>
+				</div>
+			</section>
 
-            <section id="marketResearch" class="screen">
-                <section class="list radius-15-km">
-                    <ul class="categories"></ul>
-                    <ul class="ads"></ul>
-                </section>
-                <section class="list radius-50-km">
-                    <ul class="categories"></ul>
-                    <ul class="ads"></ul>
-                </section>
-                <section class="list radius-150-km">
-                    <ul class="categories"></ul>
-                    <ul class="ads"></ul>
-                </section>
-                <section class="list radius-500-km">
-                    <ul class="categories"></ul>
-                    <ul class="ads"></ul>
-                </section>
+			<section id="marketResearch" class="screen">
+				<section class="list radius-15-km">
+					<ul class="categories"></ul>
+					<ul class="ads"></ul>
+				</section>
+				<section class="list radius-50-km">
+					<ul class="categories"></ul>
+					<ul class="ads"></ul>
+				</section>
+				<section class="list radius-150-km">
+					<ul class="categories"></ul>
+					<ul class="ads"></ul>
+				</section>
+				<section class="list radius-500-km">
+					<ul class="categories"></ul>
+					<ul class="ads"></ul>
+				</section>
 
-                <div class="buttonContainer">
-                    <button class="detect">Lancer la détection</button>
-                    <div class="loading">Loading...</div>
-                    <div class="errorMessage"></div>
-                </div>
-            </section>
-        </div>
-    </main>
+				<div class="buttonContainer">
+					<button class="detect">Lancer la détection</button>
+					<div class="loading">Loading...</div>
+					<div class="errorMessage"></div>
+				</div>
+			</section>
+		</div>
+	</main>
 
 
-    <script type="module" src="js/script.js"></script>
+	<script type="module" src="js/script.js"></script>
 </body>
 </html>
