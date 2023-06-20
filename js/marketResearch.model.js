@@ -28,6 +28,7 @@ export const getNeedsCategories = async function (userLocation, radius) {
 						{ match_all: {} }
 
 						,{ exists : { field : 'geoPoint' } }
+						/*
 
 						,{
 							nested: {
@@ -44,6 +45,7 @@ export const getNeedsCategories = async function (userLocation, radius) {
 								}
 							}
 						}
+						*/
 					]
 
 					,filter: [

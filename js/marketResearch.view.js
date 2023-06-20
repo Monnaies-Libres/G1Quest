@@ -1,5 +1,5 @@
 import { categoriesNames } from './categoriesNames.js'
-
+import { fetchRecordDetails, displayRecordDetails } from './details.view.js'
 
 export const displayCategories = function (categories, radius) {
 		console.log('categoriesNames :', categoriesNames);
@@ -45,15 +45,42 @@ export const displayNeeds = function (needs, radius) {
 	const list = document.querySelector(`#marketResearch .list.radius-${radius}-km .ads`);
 	list.innerHTML = '';  // Clear the list
 
-	for (const need of needs) {
+	for (const record of needs) {
 		const li = document.createElement('li');
-		li.textContent  = `${need._source.title}`;
+		li.textContent  = `${record._source.title}`;
 
-		if (need._source.price != null) {
+		// Add event listener for when the dot is clicked
+		li.addEventListener('click', (event) => {
 
-			li.textContent += `: ${need._source.price}`;
+			let loadingIcon_elt = document.getElementById('loading-icon');
+			loadingIcon_elt.style.display = 'block';
 
-			if (need._source.unit == 'UD') {
+			fetchRecordDetails(record._id)
+			.then(details => {
+
+				// Hide the loading icon
+				loadingIcon_elt.style.display = 'none';
+
+				displayRecordDetails(details);
+			})
+			.catch(error => {
+				console.error('Error:', error)
+				// If there's an error, also hide the loading icon
+				loadingIcon_elt.style.display = 'none';
+
+				console.error('Error:', error)
+			})
+
+			event.stopPropagation();
+
+			return false;
+		});
+
+		if (record._source.price != null) {
+
+			li.textContent += `: ${record._source.price}`;
+
+			if (record._source.unit == 'UD') {
 
 				li.textContent += 'DU';
 

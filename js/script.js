@@ -103,6 +103,9 @@ function proceedWithLocation (radius) {
 					buttonContainerElt.style.display = 'none';
 				});
 			break;
+		case 'events':
+			// ...
+			break;
 	}
 }
 
@@ -208,6 +211,8 @@ function switchScreen (newScreenId) {
 			switchPage(newScreenId, radius)
 				break;
 		case 'marketResearch':
+			switchPage(newScreenId, radius)
+		case 'events':
 			switchPage(newScreenId, radius)
 				break;
 		case 'shippable':
