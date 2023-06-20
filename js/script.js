@@ -6,13 +6,18 @@ import { getNeedsCategories, getNeedsInCategory, getNeeds }	 from './marketResea
 import { displayCategories, displayNeeds } from './marketResearch.view.js'
 import { displayRecordDetails, displayPageDetails } from './details.view.js'
 import { switchPage } from './helpers.js'
+import { fetchImmaterial } from './immaterial.model.js'
+import { fetchShippable } from './shippable.model.js'
+import { displayImmaterial } from './immaterial.view.js'
+import { displayShippable } from './shippable.view.js'
 
-const timestampBackThen_3_months = Math.floor((Date.now() - (90 * 24 * 60 * 60 * 1000)) / 1000);
-const timestampBackThen_2_years = Math.floor((Date.now() - (2 * 365 * 24 * 60 * 60 * 1000)) / 1000);
+const timestampBackThen_3_months = Math.floor((Date.now() - (     90 * 24 * 60 * 60 * 1000)) / 1000);
+const timestampBackThen_2_years  = Math.floor((Date.now() - (2 * 365 * 24 * 60 * 60 * 1000)) / 1000);
+const timestampBackThen_1_year   = Math.floor((Date.now() - (1 * 365 * 24 * 60 * 60 * 1000)) / 1000);
 
 let userLocation = null;
 let radius = 150;
-let currentScreen = 'marketResearch';
+let currentScreen = 'immaterial';
 
 let radiusSelect = document.getElementById('radius');
 
@@ -73,17 +78,53 @@ function proceedWithLocation (radius) {
 					buttonContainerElt.style.display = 'none';
 				});
 
-			break;
+				break;
 		case 'dormant':
 			data[currentScreen]['km'+ radius.toString()] = getDormant(userLocation, radius)
-				.then(records => {
+			.then(records => {
 
-					document.querySelector('#dormant .loading').style.display = 'none';
+				document.querySelector('#dormant .loading').style.display = 'none';
 
-					displayDormant(records, userLocation, radius);
+				displayDormant(records, userLocation, radius);
 
-					buttonContainerElt.style.display = 'none';
-				});
+				buttonContainerElt.style.display = 'none';
+			});
+			break;
+		case 'shippable':
+			fetchShippable(timestampBackThen_3_months, 90)
+			.then(records => {
+
+				document.querySelector('#shippable .loading').style.display = 'none';
+
+				displayShippable(records.hits.hits);
+
+				buttonContainerElt.style.display = 'none';
+			})
+			.catch(error => {
+				if (error == 'Error: 400')
+					console.error('Mauvaise requête')
+					else
+						console.error(error)
+			})
+			break;
+		case 'immaterial':
+			fetchImmaterial(timestampBackThen_2_years, 90)
+			.then(records => {
+
+				document.querySelector('#immaterial .loading').style.display = 'none';
+
+				console.log(records);
+
+				displayImmaterial(records.hits.hits);
+
+				buttonContainerElt.style.display = 'none';
+			})
+			.catch(error => {
+				if (error == 'Error: 400')
+					console.error('Mauvaise requête')
+					else
+						console.error(error)
+			})
 			break;
 		case 'marketResearch':
 			data[currentScreen]['km'+ radius.toString()].categories = getNeedsCategories(userLocation, radius)
@@ -116,8 +157,13 @@ async function detect (radius) {
 		proceedWithLocation(radius);
 
 	} else {
+		let errorElt = buttonContainerElt.querySelector('.errorMessage');
+		errorElt.style.display = 'block';
+		errorElt.innerHTML = '<p>Donnez votre position.</p>';
 
 		navigator.geolocation.getCurrentPosition(function (position) {
+
+			errorElt.style.display = 'none';
 
 			userLocation = {
 				lat: position.coords.latitude,

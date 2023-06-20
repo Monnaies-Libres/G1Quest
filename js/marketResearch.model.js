@@ -3,8 +3,16 @@ const timestampBackThen_2_years = Math.floor((Date.now() - (2 * 365 * 24 * 60 * 
 
 export const getNeedsCategories = async function (userLocation, radius) {
 
-	const validParentCategories = ['cat71', 'cat1', 'cat18', 'cat56', 'cat31', 'cat90'];
-	const specificCategory = 'cat11';
+	const validParentCategories = [
+		'cat71', // Emploi
+		'cat1',  // Véhicules
+		'cat18', // Maison
+		'cat56', // Matériel professionnel
+		'cat31', // Services
+		'cat90'  // Alimentation
+	];
+
+	const specificCategory = 'cat11'; // Colocations
 
 	const response = await fetch('https://data.gchange.fr/market/record/_search', {
 		method: 'POST',
