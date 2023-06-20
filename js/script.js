@@ -17,7 +17,7 @@ const timestampBackThen_1_year   = Math.floor((Date.now() - (1 * 365 * 24 * 60 *
 
 let userLocation = null;
 let radius = 150;
-let currentScreen = 'actu';
+let currentScreen = 'shippable';
 
 let radiusSelect = document.getElementById('radius');
 
@@ -201,9 +201,17 @@ function switchScreen (newScreenId) {
 	document.querySelector('body').dataset.activeScreen = newScreenId;
 
 	switch (newScreenId) {
-
+		case 'actu':
+			switchPage(newScreenId, radius);
+			break;
+		case 'dormant':
+			switchPage(newScreenId, radius)
+				break;
+		case 'marketResearch':
+			switchPage(newScreenId, radius)
+				break;
 		case 'shippable':
-			fetchShippable(timestampBackThen_3_months, 90)
+			fetchShippable(timestampBackThen_3_months, 20)
 			.then(records => {
 
 				document.querySelector('#shippable .loading').style.display = 'none';
@@ -218,7 +226,7 @@ function switchScreen (newScreenId) {
 			})
 			break;
 		case 'immaterial':
-			fetchImmaterial(timestampBackThen_1_year, 90)
+			fetchImmaterial(timestampBackThen_1_year, 10)
 			.then(records => {
 
 				document.querySelector('#immaterial .loading').style.display = 'none';

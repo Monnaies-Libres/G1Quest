@@ -1,5 +1,6 @@
 import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage } from './helpers.js'
-import { displayRecordDetails, displayPageDetails } from './details.view.js'
+import { fetchPageDetails, displayPageDetails } from './details.view.js'
+import { fetchRecordDetails, displayRecordDetails } from './details.view.js'
 
 export const displayDormant = (pages, userLocation, radius) => {
 
@@ -34,7 +35,25 @@ export const displayDormant = (pages, userLocation, radius) => {
 
 		// Add event listener for when the dot is clicked
 		dot.addEventListener('click', () => {
-			displayPageDetails(page._id);
+
+			let loadingIcon_elt = document.getElementById('loading-icon');
+			loadingIcon_elt.style.display = 'block';
+
+			fetchPageDetails(page._id)
+			.then(details => {
+
+				// Hide the loading icon
+				loadingIcon_elt.style.display = 'none';
+
+				displayPageDetails(details);
+			})
+			.catch(error => {
+				console.error('Error:', error)
+				// If there's an error, also hide the loading icon
+				loadingIcon_elt.style.display = 'none';
+
+				console.error('Error:', error)
+			})
 		});
 
 		// Position the dot according to the page's relative position to the user

@@ -12,6 +12,7 @@ export const fetchImmaterial = async function (minTimestamp, n) {
 			, 'id'
 			, 'price'
 			, 'unit'
+			, 'category.id'
 
 			//, 'picturesCount'
 			//, 'thumbnail'

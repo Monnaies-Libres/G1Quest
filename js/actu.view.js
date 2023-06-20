@@ -1,5 +1,5 @@
 import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage } from './helpers.js'
-import { displayRecordDetails, displayPageDetails } from './details.view.js'
+import { fetchRecordDetails, displayRecordDetails } from './details.view.js'
 
 export const displayActu = (records, userLocation, radius, minTimestamp) => {
 
@@ -61,7 +61,24 @@ export const displayActu = (records, userLocation, radius, minTimestamp) => {
 			dot.classList.add('selected');
 			dot.classList.add('visited');
 
-			displayRecordDetails(record._id);
+			let loadingIcon_elt = document.getElementById('loading-icon');
+			loadingIcon_elt.style.display = 'block';
+
+			fetchRecordDetails(record._id)
+			.then(details => {
+
+				// Hide the loading icon
+				loadingIcon_elt.style.display = 'none';
+
+				displayRecordDetails(details);
+			})
+			.catch(error => {
+				console.error('Error:', error)
+				// If there's an error, also hide the loading icon
+				loadingIcon_elt.style.display = 'none';
+
+				console.error('Error:', error)
+			})
 
 			event.stopPropagation();
 		});

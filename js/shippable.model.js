@@ -10,6 +10,7 @@ export const fetchShippable = async function (minTimestamp, n) {
 			  'title'
 			, 'description'
 			, 'id'
+			, 'category.id'
 			//, 'picturesCount'
 			//, 'thumbnail'
 		]

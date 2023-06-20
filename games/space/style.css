@@ -11,6 +11,13 @@ body {
     background-color: #000;
 }
 
+a,
+a:visited {
+
+	color: white;
+	text-decoration: none;
+}
+
 #menu {
     display: flex;
     flex-direction: column;
@@ -161,6 +168,7 @@ main {
 
 	display: block;
 }
+
 
 .detect {
     padding: 1em 2em;
@@ -350,7 +358,7 @@ body[data-active-screen="marketResearch"] #radius {
 }
 
 .dot.record.cat27 {
-    /* Libres */
+    /* Livres */
 
     background-image: url("img/FontAwesome/svg/book-solid.svg");
 }
@@ -481,3 +489,242 @@ body[data-active-screen="marketResearch"] #radius {
 }
 
 
+.screen#shippable .list > .record:nth-child(3n + 1) ,
+.screen#immaterial  .list > .record:nth-child(3n + 1) {
+
+	background-color: hsl(240, 50%, 53%);
+}
+
+.screen#shippable .list > .record:nth-child(3n + 2) ,
+.screen#immaterial  .list > .record:nth-child(3n + 2) {
+
+	background-color: hsl(240, 50%, 55%);
+}
+
+.screen#shippable .list > .record:nth-child(3n + 3) ,
+.screen#immaterial  .list > .record:nth-child(3n + 3) {
+
+	background-color: hsl(240, 50%, 58%);
+}
+
+#shippable .record a,
+#immaterial .record a {
+
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#shippable .record a:before,
+#immaterial .record a:before {
+
+	width: 2rem;
+	height: 3rem;
+	display: block;
+	margin-right: 1rem;
+	content: "";
+
+	display: flex;
+}
+
+#shippable .record.cat12 a:before,
+#immaterial .record.cat12 a:before {
+	/* Location & Gîtes */
+
+	content: url("img/FontAwesome/svg/bed-solid.svg");
+}
+
+#shippable .record.cat15 a:before,
+#immaterial .record.cat15 a:before {
+	/* Informatique */
+
+	content: url("img/FontAwesome/svg/computer-solid.svg");
+}
+
+#shippable .record.cat17 a:before,
+#immaterial .record.cat17 a:before {
+	/* Téléphonie */
+
+	content: url("img/FontAwesome/svg/mobile-solid.svg");
+}
+
+#shippable .record.cat19 a:before,
+#immaterial .record.cat19 a:before {
+	/* Ameublement */
+
+	content: url("img/FontAwesome/svg/couch-solid.svg");
+}
+
+#shippable .record.cat21 a:before,
+#immaterial .record.cat21 a:before {
+	/* Bricolage */
+
+	content: url("img/FontAwesome/svg/hammer-solid.svg");
+}
+
+#shippable .record.cat22 a:before,
+#immaterial .record.cat22 a:before {
+	/* Vêtements */
+
+	content: url("img/FontAwesome/svg/shirt-solid.svg");
+}
+
+#shippable .record.cat27 a:before,
+#immaterial .record.cat27 a:before {
+	/* Livres */
+
+	content: url("img/FontAwesome/svg/book-solid.svg");
+}
+
+#shippable .record.cat28 a:before,
+#immaterial .record.cat28 a:before {
+	/* Animaux */
+
+	content: url("img/FontAwesome/svg/dog-solid.svg");
+}
+
+#shippable .record.cat29 a:before,
+#immaterial .record.cat29 a:before {
+	/* Sports & Hobbies */
+
+	content: url("img/FontAwesome/svg/baseball-bat-ball-solid.svg");
+}
+
+#shippable .record.cat30 a:before,
+#immaterial .record.cat30 a:before {
+	/* Instruments de musique */
+
+	content: url("img/FontAwesome/svg/guitar-solid.svg");
+}
+
+#shippable .record.cat34 a:before,
+#immaterial .record.cat34 a:before {
+	/* Prestations de services */
+
+	content: url("img/FontAwesome/svg/handshake-angle-solid.svg");
+}
+
+#shippable .record.cat38 a:before,
+#immaterial .record.cat38 a:before {
+	/* Autres */
+
+	content: url("img/FontAwesome/svg/question-solid.svg");
+}
+
+#shippable .record.cat39 a:before,
+#immaterial .record.cat39 a:before {
+	/* Décoration */
+
+	content: url("img/FontAwesome/svg/holly-berry-solid.svg");
+}
+
+#shippable .record.cat41 a:before,
+#immaterial .record.cat41 a:before {
+	/* Jeux */
+
+	content: url("img/FontAwesome/svg/gamepad-solid.svg");
+}
+
+#shippable .record.cat45 a:before,
+#immaterial .record.cat45 a:before {
+	/* Arts de la table */
+
+	content: url("img/FontAwesome/svg/wine-glass-empty-solid.svg");
+}
+
+#shippable .record.cat46 a:before,
+#immaterial .record.cat46 a:before {
+	/* Linge de maison */
+
+	content: url("img/FontAwesome/svg/mattress-pillow-solid.svg");
+}
+
+#shippable .record.cat47 a:before,
+#immaterial .record.cat47 a:before {
+	/* Accessoires & Bagagerie */
+
+	content: url("img/FontAwesome/svg/suitcase-rolling-solid.svg");
+}
+
+#shippable .record.cat48 a:before,
+#immaterial .record.cat48 a:before {
+	/* Divers (sous-catégorie de "Alimentation", en théorie) */
+
+	content: url("img/FontAwesome/svg/question-solid.svg");
+}
+
+#shippable .record.cat52 a:before,
+#immaterial .record.cat52 a:before {
+	/* Jardinage */
+
+	content: url("img/FontAwesome/svg/seedling-solid.svg");
+}
+
+#shippable .record.cat53 a:before,
+#immaterial .record.cat53 a:before {
+	/* Chaussures */
+
+	content: url("img/FontAwesome/svg/shoe-prints-solid.svg");
+}
+
+#shippable .record.cat58 a:before,
+#immaterial .record.cat58 a:before {
+	/* Transport - Manutention */
+
+	content: url("img/FontAwesome/svg/truck-solid.svg");
+}
+
+#shippable .record.cat63 a:before,
+#immaterial .record.cat63 a:before {
+	/* Commerces et Marchés */
+
+	content: url("img/FontAwesome/svg/store-solid.svg");
+}
+
+#shippable .record.cat74 a:before,
+#immaterial .record.cat74 a:before {
+	/* Formations */
+
+	content: url("img/FontAwesome/svg/graduation-cap-solid.svg");
+}
+
+#shippable .record.cat81 a:before,
+#immaterial .record.cat81 a:before {
+	/* Soins */
+
+	content: url("img/FontAwesome/svg/life-ring-solid.svg");
+}
+
+#shippable .record.cat91 a:before,
+#immaterial .record.cat91 a:before {
+	/* Commerces & Marchés */
+
+	content: url("img/FontAwesome/svg/store-solid.svg");
+}
+
+#shippable .record.cat92 a:before,
+#immaterial .record.cat92 a:before {
+	/* Fruits et légumes */
+
+	content: url("img/FontAwesome/svg/carrot-solid.svg");
+}
+
+#shippable .record.cat93 a:before,
+#immaterial .record.cat93 a:before {
+	/* Pains & Pâtisserie */
+
+	content: url("img/FontAwesome/svg/egg-solid.svg");
+}
+
+#shippable .record.cat94 a:before,
+#immaterial .record.cat94 a:before {
+	/* Frais */
+
+	content: url("img/FontAwesome/svg/egg-solid.svg");
+}
