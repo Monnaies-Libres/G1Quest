@@ -10,8 +10,8 @@ export const fetchShippable = async function (minTimestamp, n) {
 			  'title'
 			, 'description'
 			, 'id'
-			, 'picturesCount'
-			, 'thumbnail'
+			//, 'picturesCount'
+			//, 'thumbnail'
 		]
 		,query: {
 			bool: {
@@ -35,8 +35,7 @@ export const fetchShippable = async function (minTimestamp, n) {
 						}
 					}
 				]
-				,
-				should: [
+				,should: [
 					{ match: { 'description': { query: 'envoi possible', operator: 'and' } } }
 					,{ match: { 'description': { query: 'Mondial Relay', operator: 'and' } } }
 					,{ match: { 'description': { query: 'mondiale relais', operator: 'and' } } }

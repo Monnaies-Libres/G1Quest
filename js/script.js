@@ -17,7 +17,7 @@ const timestampBackThen_1_year   = Math.floor((Date.now() - (1 * 365 * 24 * 60 *
 
 let userLocation = null;
 let radius = 150;
-let currentScreen = 'immaterial';
+let currentScreen = 'actu';
 
 let radiusSelect = document.getElementById('radius');
 
@@ -90,42 +90,6 @@ function proceedWithLocation (radius) {
 				buttonContainerElt.style.display = 'none';
 			});
 			break;
-		case 'shippable':
-			fetchShippable(timestampBackThen_3_months, 90)
-			.then(records => {
-
-				document.querySelector('#shippable .loading').style.display = 'none';
-
-				displayShippable(records.hits.hits);
-
-				buttonContainerElt.style.display = 'none';
-			})
-			.catch(error => {
-				if (error == 'Error: 400')
-					console.error('Mauvaise requête')
-					else
-						console.error(error)
-			})
-			break;
-		case 'immaterial':
-			fetchImmaterial(timestampBackThen_2_years, 90)
-			.then(records => {
-
-				document.querySelector('#immaterial .loading').style.display = 'none';
-
-				console.log(records);
-
-				displayImmaterial(records.hits.hits);
-
-				buttonContainerElt.style.display = 'none';
-			})
-			.catch(error => {
-				if (error == 'Error: 400')
-					console.error('Mauvaise requête')
-					else
-						console.error(error)
-			})
-			break;
 		case 'marketResearch':
 			data[currentScreen]['km'+ radius.toString()].categories = getNeedsCategories(userLocation, radius)
 				.then(categories => {
@@ -170,19 +134,23 @@ async function detect (radius) {
 				lon: position.coords.longitude
 			};
 
-			// console.log('userLocation :', userLocation);
+			console.log('userLocation :', userLocation);
 
 			proceedWithLocation(radius);
 
 		}, function (error) {
 
 			// Show error message if the user denies to share their location
-			let errorElt = buttonContainerElt.querySelector('.errorMessage');
+			// let errorElt = buttonContainerElt.querySelector('.errorMessage');
 			errorElt.style.display = 'block';
 			errorElt.innerHTML = '<p>Vous devez partager votre localisation pour que le sonar puisse scanner vos environs</p><p>Message d\'erreur : '+error.message+'</p>';
 			console.log('Error:', error);
 			// Hide the "Loading..." message
 			buttonContainerElt.querySelector('.loading').style.display = 'none';
+		}, {
+			enableHighAccuracy: false,
+			timeout: 15000,
+			maximumAge: 0
 		});
 	}
 }
@@ -209,7 +177,7 @@ document.getElementById('radius').addEventListener('change', function () {
 	}
 });
 
-function switchScreen (screenId) {
+function switchScreen (newScreenId) {
 
 	// Hide all screens
 	for (let elt of document.getElementsByClassName('screen')) {
@@ -218,17 +186,53 @@ function switchScreen (screenId) {
 	}
 
 	// Store the current screen id for use in other parts of the app
-	currentScreen = screenId;
+	currentScreen = newScreenId;
 
 	// Change which screen is active
 	const activeScreen = document.querySelector('#menu > ul > li > a.active');
 	if (activeScreen !== null) {
 		activeScreen.classList.remove('active');
 	}
-	document.querySelector('#menu > ul > li > a[href="#'+screenId+'"]').classList.add('active');
+	document.querySelector('#menu > ul > li > a[href="#'+newScreenId+'"]').classList.add('active');
 
 	// Show the selected screen
-	document.getElementById(screenId).style.display = 'block';
+	document.getElementById(newScreenId).style.display = 'block';
+
+	document.querySelector('body').dataset.activeScreen = newScreenId;
+
+	switch (newScreenId) {
+
+		case 'shippable':
+			fetchShippable(timestampBackThen_3_months, 90)
+			.then(records => {
+
+				document.querySelector('#shippable .loading').style.display = 'none';
+
+				displayShippable(records.hits.hits);
+			})
+			.catch(error => {
+				if (error == 'Error: 400')
+					console.error('Mauvaise requête')
+					else
+						console.error(error)
+			})
+			break;
+		case 'immaterial':
+			fetchImmaterial(timestampBackThen_1_year, 90)
+			.then(records => {
+
+				document.querySelector('#immaterial .loading').style.display = 'none';
+
+				displayImmaterial(records.hits.hits);
+			})
+			.catch(error => {
+				if (error == 'Error: 400')
+					console.error('Mauvaise requête')
+					else
+						console.error(error)
+			})
+			break;
+	}
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {

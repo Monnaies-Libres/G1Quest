@@ -148,8 +148,18 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
 
-    display: none;
+.screen .loading {
+
+	display: none;
+}
+
+.screen#immaterial .loading,
+.screen#shippable .loading
+{
+
+	display: block;
 }
 
 .detect {
@@ -172,6 +182,16 @@ main {
     right: 24px;
     color: #0f0;
     background-color: #000;
+
+	display: none;
+}
+
+
+body[data-active-screen="actu"]           #radius,
+body[data-active-screen="dormant"]        #radius,
+body[data-active-screen="marketResearch"] #radius {
+
+	display: block;
 }
 
 .dot {

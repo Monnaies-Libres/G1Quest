@@ -14,7 +14,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/en-gb.js"></script>
 </head>
-<body>
+<body data-active-screen="actu">
 	<nav id="menu">
 		<ul>
 			<li>
@@ -30,14 +30,14 @@
 			</li>
 
 			<li>
-				<a href="#dormant">
-					<img src="games/space/img/contact.png" alt="Dormant" />
+				<a href="#immaterial">
+					<img src="games/space/img/sharing.png" alt="Offre imméatérielles" />
 				</a>
 			</li>
 
 			<li>
-				<a href="#immaterial">
-					<img src="games/space/img/sharing.png" alt="Offre imméatérielles" />
+				<a href="#dormant">
+					<img src="games/space/img/contact.png" alt="Dormant" />
 				</a>
 			</li>
 
@@ -88,11 +88,13 @@
 			<section id="shippable" class="screen">
 				<ol class="list"></ol>
 
-				<div class="buttonContainer">
-					<button class="detect">Lancer la détection</button>
-					<div class="loading">Loading...</div>
-					<div class="errorMessage"></div>
-				</div>
+				<div class="loading">Loading...</div>
+			</section>
+
+			<section id="immaterial" class="screen">
+				<ol class="list"></ol>
+
+				<div class="loading">Loading...</div>
 			</section>
 
 			<section id="dormant" class="screen">
@@ -100,16 +102,6 @@
 				<ol class="list radius-50-km"></ol>
 				<ol class="list radius-150-km"></ol>
 				<ol class="list radius-500-km"></ol>
-
-				<div class="buttonContainer">
-					<button class="detect">Lancer la détection</button>
-					<div class="loading">Loading...</div>
-					<div class="errorMessage"></div>
-				</div>
-			</section>
-
-			<section id="immaterial" class="screen">
-				<ol class="list"></ol>
 
 				<div class="buttonContainer">
 					<button class="detect">Lancer la détection</button>
