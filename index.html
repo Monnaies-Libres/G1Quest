@@ -60,8 +60,6 @@
 	<main>
 		<div id="panel">
 			<div id="panel-details"></div>
-
-			<img id="loading-icon" src="loading.gif" style="display: none;" />
 		</div>
 
 		<div id="mainArea">
@@ -72,7 +70,7 @@
 				<option value="500">500km</option>
 			</select>
 
-			<section id="actu" class="screen">
+			<section id="actu" class="screen idle">
 				<ol class="list radius-15-km"></ol>
 				<ol class="list radius-50-km"></ol>
 				<ol class="list radius-150-km"></ol>
@@ -85,19 +83,19 @@
 				</div>
 			</section>
 
-			<section id="shippable" class="screen">
+			<section id="shippable" class="screen loading">
 				<ol class="list"></ol>
 
 				<div class="loading">Loading...</div>
 			</section>
 
-			<section id="immaterial" class="screen">
+			<section id="immaterial" class="screen loading">
 				<ol class="list"></ol>
 
 				<div class="loading">Loading...</div>
 			</section>
 
-			<section id="dormant" class="screen">
+			<section id="dormant" class="screen idle">
 				<ol class="list radius-15-km"></ol>
 				<ol class="list radius-50-km"></ol>
 				<ol class="list radius-150-km"></ol>
@@ -110,7 +108,7 @@
 				</div>
 			</section>
 
-			<section id="marketResearch" class="screen">
+			<section id="marketResearch" class="screen idle">
 				<section class="list radius-15-km">
 					<ul class="categories"></ul>
 					<ul class="ads"></ul>
@@ -133,6 +131,9 @@
 					<div class="loading">Loading...</div>
 					<div class="errorMessage"></div>
 				</div>
+			</section>
+
+			<section id="events" class="screen idle">
 			</section>
 
 			<section id="crowdfunding" class="screen">

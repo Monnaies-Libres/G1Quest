@@ -1,8 +1,8 @@
-function toRadians (degrees) {
+export const toRadians = function (degrees) {
 	return degrees * (Math.PI / 180);
 }
 
-export function switchPage (currentScreen, radius) {
+export const switchPage = function (currentScreen, radius) {
 
 	const pages = document.querySelectorAll('.screen#'+currentScreen+' > .list');
 	for (const p of pages) {
@@ -34,15 +34,15 @@ export const calculateDotOpacity = (minOpacity, maxOpacity, minTime, maxTime, do
 	return opacity;
 };
 
-export const calculateRelativePosition = (userLocation, pageLocation, radius) => {
+export const calculateRelativePosition = (userLocation, adLocation, radius) => {
 	// The number of km per degree of latitude is approximately constant
 	const kmPerDegreeLat = 111;
 
 	// The number of km per degree of longitude varies, but we'll take the value at the user's latitude
 	const kmPerDegreeLon = 111 * Math.cos(toRadians(userLocation.lat));
 
-	const deltaX = (pageLocation.lon - userLocation.lon) * kmPerDegreeLon;
-	const deltaY = (pageLocation.lat - userLocation.lat) * kmPerDegreeLat;
+	const deltaX = (adLocation.lon - userLocation.lon) * kmPerDegreeLon;
+	const deltaY = (adLocation.lat - userLocation.lat) * kmPerDegreeLat;
 
 	// We'll position the dot within a circle of radius 50% in the sonar div
 	// So, we need to calculate the relative position of the dot in that circle

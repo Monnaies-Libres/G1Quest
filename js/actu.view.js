@@ -1,4 +1,4 @@
-import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage } from './helpers.js'
+import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage, toRadians } from './helpers.js'
 import { fetchRecordDetails, displayRecordDetails } from './details.view.js'
 
 export const displayActu = (records, userLocation, radius, minTimestamp) => {
@@ -28,16 +28,21 @@ export const displayActu = (records, userLocation, radius, minTimestamp) => {
 
 		const recordCategory = record._source.category.id;;
 
-		// Create a dot for each record
-		const dot = document.createElement('li');
+		const ad = document.createElement('li');
 
-		dot.classList.add('dot');
-		dot.classList.add('fa');
-		dot.classList.add('record');
-		dot.classList.add(recordType);
-		dot.classList.add(recordCategory);
+		ad.classList.add('ad');
+		ad.classList.add('record');
+		ad.classList.add(recordType);
+		ad.classList.add(recordCategory);
 
-		dot.id = record._id;
+		const adLink = document.createElement('a');
+		adLink.href = '#/record/' + record._id;
+
+		const adTitleElt = document.createElement('span');
+		adTitleElt.textContent = record._source.title;
+		adTitleElt.classList.add('title');
+
+		ad.id = record._id;
 
 		const blinkDuration = getBlinkDuration(
 			record._source.time,
@@ -45,61 +50,62 @@ export const displayActu = (records, userLocation, radius, minTimestamp) => {
 			Math.floor(Date.now()/1000)
 		);
 
-		dot.style.animation = `blink-${recordType} ${blinkDuration}s infinite`;
+		ad.style.animation = `blink-${recordType} ${blinkDuration}s infinite`;
 
-		// Add event listener for when the dot is clicked
-		dot.addEventListener('click', (event) => {
+		// Add event listener for when the ad is clicked
+		ad.addEventListener('click', (event) => {
 
+			console.log('event.currentTarget.parentElement : ', event.currentTarget.parentElement);
 			event.currentTarget.parentElement.classList.add('paused');
 
-			// Remove 'selected' class from any dot that might have it
-			const selectedDot = document.querySelector('.dot.selected');
+			// Remove 'selected' class from any ad that ad have it
+			const selectedDot = document.querySelector('.ad.selected');
 			if (selectedDot) {
 				selectedDot.classList.remove('selected');
 			}
 
-			dot.classList.add('selected');
-			dot.classList.add('visited');
+			ad.classList.add('selected');
+			ad.classList.add('visited');
 
-			let loadingIcon_elt = document.getElementById('loading-icon');
-			loadingIcon_elt.style.display = 'block';
+			let panel = document.getElementById('panel');
+			let panelDetails = panel.querySelector('#panel-details');
+			panelDetails.innerHTML = '';
+			panel.classList.add('loading');
 
 			fetchRecordDetails(record._id)
 			.then(details => {
 
-				// Hide the loading icon
-				loadingIcon_elt.style.display = 'none';
+				panel.classList.remove('loading');
 
 				displayRecordDetails(details);
 			})
 			.catch(error => {
 				console.error('Error:', error)
-				// If there's an error, also hide the loading icon
-				loadingIcon_elt.style.display = 'none';
-
-				console.error('Error:', error)
+				panel.classList.remove('loading');
 			})
 
 			event.stopPropagation();
 		});
 
 		// Position the dot according to the record's relative position to the user
-		const recordLocation = {
+		const adLocation = {
 			lat: record._source.geoPoint.lat,
 			lon: record._source.geoPoint.lon
 		};
 
-		const {x, y} = calculateRelativePosition(userLocation, recordLocation, radius);
+		const {x, y} = calculateRelativePosition(userLocation, adLocation, radius);
 
-		dot.style.left = `calc(50% + ${x}%)`;
-		dot.style.top = `calc(50% - ${y}%)`;
+		ad.style.top  = (50 - y).toString() + '%';
+		ad.style.left = (50 + x).toString() + '%';
 
 		let opacity = calculateDotOpacity(0.50, 1, minTime, maxTime, record._source.time)
-		// dot.style.opacity = opacity.toString();
+		// ad.style.opacity = opacity.toString();
 
-		dot.style.zIndex = currentRecordZIndex.toString();
+		ad.style.zIndex = currentRecordZIndex.toString();
 		--currentRecordZIndex;
 
-		newsDisplay.appendChild(dot);
+		adLink.appendChild(adTitleElt);
+		ad.appendChild(adLink);
+		newsDisplay.appendChild(ad);
 	});
 };

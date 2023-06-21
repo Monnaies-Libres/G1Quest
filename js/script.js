@@ -16,8 +16,10 @@ const timestampBackThen_2_years  = Math.floor((Date.now() - (2 * 365 * 24 * 60 *
 const timestampBackThen_1_year   = Math.floor((Date.now() - (1 * 365 * 24 * 60 * 60 * 1000)) / 1000);
 
 let userLocation = null;
+userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
+// userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
 let radius = 150;
-let currentScreen = 'shippable';
+let currentScreen = 'actu';
 
 let radiusSelect = document.getElementById('radius');
 
@@ -51,7 +53,7 @@ for (let list of document.querySelectorAll('#actu > .list, #dormant > .list')) {
 
 		event.target.classList.remove('paused');
 
-		const selectedDot = document.querySelector('.dot.selected');
+		const selectedDot = document.querySelector('.ad.selected');
 		if (selectedDot) {
 			selectedDot.classList.remove('selected');
 		}
@@ -182,26 +184,26 @@ document.getElementById('radius').addEventListener('change', function () {
 
 function switchScreen (newScreenId) {
 
-	// Hide all screens
-	for (let elt of document.getElementsByClassName('screen')) {
-
-		elt.style.display = 'none';
-	}
-
 	// Store the current screen id for use in other parts of the app
 	currentScreen = newScreenId;
 
 	// Change which screen is active
-	const activeScreen = document.querySelector('#menu > ul > li > a.active');
+	const activeScreen = document.querySelector('.screen.active');
 	if (activeScreen !== null) {
 		activeScreen.classList.remove('active');
 	}
-	document.querySelector('#menu > ul > li > a[href="#'+newScreenId+'"]').classList.add('active');
+	document.querySelector('.screen#'+newScreenId).classList.add('active');
 
-	// Show the selected screen
-	document.getElementById(newScreenId).style.display = 'block';
-
+	// Store active screen in <body />
+	// Used in CSS, typically to choose when to display the radius selector
 	document.querySelector('body').dataset.activeScreen = newScreenId;
+
+	// Handling menu item
+	const activeScreenMenuItem = document.querySelector('#menu > ul > li > a.active');
+	if (activeScreenMenuItem !== null) {
+		activeScreenMenuItem.classList.remove('active');
+	}
+	document.querySelector('#menu > ul > li > a[href="#'+newScreenId+'"]').classList.add('active');
 
 	switch (newScreenId) {
 		case 'actu':

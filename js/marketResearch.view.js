@@ -52,23 +52,21 @@ export const displayNeeds = function (needs, radius) {
 		// Add event listener for when the dot is clicked
 		li.addEventListener('click', (event) => {
 
-			let loadingIcon_elt = document.getElementById('loading-icon');
-			loadingIcon_elt.style.display = 'block';
+			let panel = document.getElementById('panel');
+			let panelDetails = panel.querySelector('#panel-details');
+			panelDetails.innerHTML = '';
+			panel.classList.add('loading');
 
 			fetchRecordDetails(record._id)
 			.then(details => {
 
-				// Hide the loading icon
-				loadingIcon_elt.style.display = 'none';
+				panel.classList.remove('loading');
 
 				displayRecordDetails(details);
 			})
 			.catch(error => {
 				console.error('Error:', error)
-				// If there's an error, also hide the loading icon
-				loadingIcon_elt.style.display = 'none';
-
-				console.error('Error:', error)
+				panel.classList.remove('loading');
 			})
 
 			event.stopPropagation();

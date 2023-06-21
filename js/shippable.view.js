@@ -16,8 +16,9 @@ export const displayShippable = function (records) {
 
 		let offerImg = document.createElement('img')
 
-		offerLi.classList.add('record')
-		offerLi.classList.add(record._source.category.id)
+		offerLi.classList.add('ad');
+		offerLi.classList.add('record');
+		offerLi.classList.add(record._source.category.id);
 
 		/*
 		if (record._source.picturesCount > 0) {
@@ -44,23 +45,21 @@ export const displayShippable = function (records) {
 		// Add event listener for when the dot is clicked
 		offerLink.addEventListener('click', (event) => {
 
-			let loadingIcon_elt = document.getElementById('loading-icon');
-			loadingIcon_elt.style.display = 'block';
+			let panel = document.getElementById('panel');
+			let panelDetails = panel.querySelector('#panel-details');
+			panelDetails.innerHTML = '';
+			panel.classList.add('loading');
 
 			fetchRecordDetails(record._id)
-				.then(details => {
+			.then(details => {
 
-					// Hide the loading icon
-					loadingIcon_elt.style.display = 'none';
+					panel.classList.remove('loading');
 
 					displayRecordDetails(details);
 				})
 				.catch(error => {
 					console.error('Error:', error)
-					// If there's an error, also hide the loading icon
-					loadingIcon_elt.style.display = 'none';
-
-					console.error('Error:', error)
+					panel.classList.remove('loading');
 				})
 
 			event.stopPropagation();

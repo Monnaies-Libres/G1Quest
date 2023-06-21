@@ -24,7 +24,8 @@ export const displayDormant = (pages, userLocation, radius) => {
 
 		// Create a dot for each page
 		const dot = document.createElement('div');
-		dot.classList.add('dot');
+		dot.classList.add('ad');
+		dot.classList.add('page');
 		dot.id = page._id;
 
 		// Map the page's timestamp to an opacity value between 0.25 and 1
@@ -36,23 +37,21 @@ export const displayDormant = (pages, userLocation, radius) => {
 		// Add event listener for when the dot is clicked
 		dot.addEventListener('click', () => {
 
-			let loadingIcon_elt = document.getElementById('loading-icon');
-			loadingIcon_elt.style.display = 'block';
+			let panel = document.getElementById('panel');
+			let panelDetails = panel.querySelector('#panel-details');
+			panelDetails.innerHTML = '';
+			panel.classList.add('loading');
 
 			fetchPageDetails(page._id)
 			.then(details => {
 
-				// Hide the loading icon
-				loadingIcon_elt.style.display = 'none';
+				panel.classList.remove('loading');
 
 				displayPageDetails(details);
 			})
 			.catch(error => {
 				console.error('Error:', error)
-				// If there's an error, also hide the loading icon
-				loadingIcon_elt.style.display = 'none';
-
-				console.error('Error:', error)
+				panel.classList.remove('loading');
 			})
 		});
 
@@ -64,8 +63,8 @@ export const displayDormant = (pages, userLocation, radius) => {
 
 		const {x, y} = calculateRelativePosition(userLocation, pageLocation, radius);
 
-		dot.style.left = `calc(50% + ${x}%)`;
-		dot.style.top = `calc(50% - ${y}%)`;
+		dot.style.top  = (50 - y).toString() + '%';
+		dot.style.left = (50 + x).toString() + '%';
 
 		// Add the dot to the sonar
 		dormantDisplay.appendChild(dot);

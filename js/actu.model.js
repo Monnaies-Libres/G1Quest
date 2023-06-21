@@ -4,7 +4,25 @@ export const getActu = async (userLocation, radius, minTimestamp) => {
 
 	// Form the query
 	const body = {
-		query: {
+
+		size: 90
+
+		,_source: [
+			'geoPoint',
+			'_id',
+			'time',
+			'category.id',
+			'category.parent',
+			'type',
+			'title'
+		]
+
+		,sort : [
+			{ "time" : {"order" : "desc"}},
+			"_score"
+		]
+
+		,query: {
 			bool: {
 				must: {
 					exists : { field : 'geoPoint' }
@@ -77,16 +95,7 @@ export const getActu = async (userLocation, radius, minTimestamp) => {
 				],
 				minimum_should_match: 1
 			}
-		},
-
-		sort : [
-			{ "time" : {"order" : "desc"}},
-			"_score"
-		],
-
-		_source: ['geoPoint', '_id', 'time', 'category.id', 'category.parent', 'type'],
-
-		size: 90
+		}
 	};
 
 	// Send the HTTP request

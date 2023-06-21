@@ -72,6 +72,95 @@ main {
     background-color: #333;
     color: #fff;
     overflow: auto;
+
+	animation-name: vertical-sweep;
+	animation-duration: 2.71828182846s;
+	animation-direction: normal;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	background-image: linear-gradient(to bottom, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%);
+	background-size: 100% 1rem;
+	background-repeat: no-repeat;
+	background-position: 0% 33.333%;
+
+	position: relative;
+}
+
+#panel:after {
+
+	content: "";
+
+	animation-name: horizontal-sweep;
+	animation-duration: 3.14159265359s;
+	animation-direction: alternate-reverse;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+
+	background-image: linear-gradient(to right, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%);
+	background-size: 1rem 100%;
+	background-repeat: no-repeat;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#panel:not(.loading) #panel-details {
+
+	background-color: #333;
+	height: 100%;
+	width: 100%;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+}
+
+
+/*
+@keyframes vertical-sweep {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 0% 100%;
+	}
+}
+*/
+
+@keyframes vertical-sweep {
+	0% {
+		background-position: 0% 33.333%;
+	}
+	33.333% {
+
+		background-position: 0% 100%;
+	}
+	66.666% {
+
+		background-position: 0% 33.333%;
+	}
+	83.333% {
+
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 0% 33.333%;
+	}
+}
+
+@keyframes horizontal-sweep {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 0%;
+	}
 }
 
 #mainArea {
@@ -84,7 +173,7 @@ main {
     position: relative;
 }
 
-.screen {
+.screen:not(.active) {
 
     display: none;
 }
@@ -148,7 +237,7 @@ main {
     align-items: center;
 }
 
-.loading {
+.buttonContainer .loading {
     position: absolute;
     color: #0f0;
     font-size: 2em;
@@ -157,20 +246,20 @@ main {
     transform: translate(-50%, -50%);
 }
 
-.screen .loading {
+.screen .buttonContainer .loading {
 
 	display: none;
 }
 
-.screen#immaterial .loading,
-.screen#shippable .loading
+.screen#immaterial .buttonContainer .loading,
+.screen#shippable .buttonContainer .loading
 {
 
 	display: block;
 }
 
 
-.detect {
+.buttonContainer .detect {
     padding: 1em 2em;
     border: 1px solid #0f0;
     background-color: #000;
@@ -178,11 +267,55 @@ main {
     cursor: pointer;
 }
 
-.errorMessage {
+.buttonContainer .errorMessage {
     color: red;
     padding: 1em;
     text-align: center;
 }
+
+.screen#shippable .list > .record:nth-child(3n + 1) ,
+.screen#immaterial  .list > .record:nth-child(3n + 1) {
+
+	background-color: hsl(240, 50%, 53%);
+}
+
+.screen#shippable .list > .record:nth-child(3n + 2) ,
+.screen#immaterial  .list > .record:nth-child(3n + 2) {
+
+	background-color: hsl(240, 50%, 55%);
+}
+
+.screen#shippable .list > .record:nth-child(3n + 3) ,
+.screen#immaterial  .list > .record:nth-child(3n + 3) {
+
+	background-color: hsl(240, 50%, 58%);
+}
+
+.screen#shippable .list > .ad a,
+.screen#immaterial .list > .ad a {
+
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.screen#shippable .list > .ad a:before,
+.screen#immaterial .list > .ad a:before {
+
+	width: 2rem;
+	height: 3rem;
+	margin-right: 1rem;
+	content: "";
+
+	display: flex;
+}
+
 
 #radius {
     position: absolute;
@@ -202,81 +335,50 @@ body[data-active-screen="marketResearch"] #radius {
 	display: block;
 }
 
-.dot {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background-color: white;
-    border-radius: 50%;
-    transform: translate(-50%, -50%); /* center the dot relative to the calculated position */
 
-    cursor: pointer;
+@media screen and (max-width: 49.999rem) {
 
-    background-size: 12px;
-    background-position: center;
-    background-repeat: no-repeat;
+	#actu .list .ad {
 
-    box-shadow: 0 0 2px 0px black;
-    border-width: 2px;
-    border-color: black;
+		animation: none !important;
+	}
 }
 
-#dormant .list.paused .dot,
-#actu .list.paused .dot {
+@media screen and (min-width: 50rem) {
 
-    animation-play-state: paused !important;
-}
+	#actu .list .ad,
+	#dormant .list .ad {
+	    position: absolute;
+	    width: 24px;
+	    height: 24px;
+	    background-color: white;
+	    border-radius: 50%;
+	    transform: translate(-50%, -50%); /* center the dot relative to the calculated position */
 
-#dormant .list > :not(.paused) .dot,
-#actu .list > :not(.paused) .dot {
+	    cursor: pointer;
 
-    animation-play-state: running !important;
-}
+	    box-shadow: 0 0 2px 0px black;
+	    border-width: 2px;
+	    border-color: black;
+	}
 
-.dot.record.offer {
+	#actu .list .ad a .title,
+	#dormant .list .ad a .title {
 
-    background-color: hsl(120, 100%, 50%);
-}
+		display: none;
+	}
 
-.dot.record.need {
+	#dormant .list.paused .ad,
+	#actu .list.paused .ad {
 
-    background-color: hsl(0, 100%, 50%);
-}
+		animation-play-state: paused !important;
+	}
 
-.dot.selected {
+	#dormant .list > :not(.paused) .ad,
+	#actu .list > :not(.paused) .ad {
 
-    background-color: white;
-    /* You can add other properties as per your design */
-    opacity: 1 !important;
-    animation: none !important;
-
-    border-color: hsl(120, 100%, 50%);
-}
-
-.dot.record.selected.offer {
-
-    background-color: hsl(120, 100%, 50%);
-    box-shadow:
-        0 0 3px 3px hsl(120, 100%, 50%),
-        0 0 3px 6px hsl(120, 100%,  0%);
-}
-
-.dot.record.selected.need {
-
-    background-color: hsl(0, 100%, 50%);
-    box-shadow:
-        0 0 3px 3px hsl(0, 100%, 50%),
-        0 0 3px 6px hsl(0, 100%,  0%);
-}
-
-.dot.visited {
-
-    display: none;
-}
-
-.dot.visited.selected {
-
-    display:block;
+		animation-play-state: running !important;
+	}
 }
 
 @keyframes blink-offer {
@@ -319,412 +421,335 @@ body[data-active-screen="marketResearch"] #radius {
     }
 }
 
+#actu .list .ad.record.offer ,
+#dormant .list .ad.record.offer  {
 
-
-.dot.record.cat12 {
-    /* Location & Gîtes */
-
-    background-image: url("img/FontAwesome/svg/bed-solid.svg");
+    background-color: hsl(120, 100%, 50%);
 }
 
-.dot.record.cat15 {
-    /* Informatique */
+#actu .list .ad.record.need ,
+#dormant .list .ad.record.need  {
 
-    background-image: url("img/FontAwesome/svg/computer-solid.svg");
+    background-color: hsl(0, 100%, 50%);
 }
 
-.dot.record.cat17 {
-    /* Téléphonie */
+#actu .list .ad.selected ,
+#dormant .list .ad.selected  {
 
-    background-image: url("img/FontAwesome/svg/mobile-solid.svg");
+    background-color: white;
+    /* You can add other properties as per your design */
+    opacity: 1 !important;
+    animation: none !important;
+
+    border-color: hsl(120, 100%, 50%);
 }
 
-.dot.record.cat19 {
-    /* Ameublement */
+#actu .list .ad.record.selected.offer ,
+#dormant .list .ad.record.selected.offer  {
 
-    background-image: url("img/FontAwesome/svg/couch-solid.svg");
+    background-color: hsl(120, 100%, 50%);
+    box-shadow:
+        0 0 3px 3px hsl(120, 100%, 50%),
+        0 0 3px 6px hsl(120, 100%,  0%);
 }
 
-.dot.record.cat21 {
-    /* Bricolage */
+#actu .list .ad.record.selected.need ,
+#dormant .list .ad.record.selected.need  {
 
-    background-image: url("img/FontAwesome/svg/hammer-solid.svg");
+    background-color: hsl(0, 100%, 50%);
+    box-shadow:
+        0 0 3px 3px hsl(0, 100%, 50%),
+        0 0 3px 6px hsl(0, 100%,  0%);
 }
 
-.dot.record.cat22 {
-    /* Vêtements */
+#actu .list .ad.visited ,
+#dormant .list .ad.visited  {
 
-    background-image: url("img/FontAwesome/svg/shirt-solid.svg");
+    display: none;
 }
 
-.dot.record.cat27 {
-    /* Livres */
+#actu .list .ad.visited.selected ,
+#dormant .list .ad.visited.selected  {
 
-    background-image: url("img/FontAwesome/svg/book-solid.svg");
-}
-
-.dot.record.cat28 {
-    /* Animaux */
-
-    background-image: url("img/FontAwesome/svg/dog-solid.svg");
-}
-
-.dot.record.cat29 {
-    /* Sports & Hobbies */
-
-    background-image: url("img/FontAwesome/svg/baseball-bat-ball-solid.svg");
-}
-
-.dot.record.cat30 {
-    /* Instruments de musique */
-
-    background-image: url("img/FontAwesome/svg/guitar-solid.svg");
-}
-
-.dot.record.cat34 {
-    /* Prestations de services */
-
-    background-image: url("img/FontAwesome/svg/handshake-angle-solid.svg");
-}
-
-.dot.record.cat38 {
-    /* Autres */
-
-    background-image: url("img/FontAwesome/svg/question-solid.svg");
-}
-
-.dot.record.cat39 {
-    /* Décoration */
-
-    background-image: url("img/FontAwesome/svg/holly-berry-solid.svg");
-}
-
-.dot.record.cat41 {
-    /* Jeux */
-
-    background-image: url("img/FontAwesome/svg/gamepad-solid.svg");
-}
-
-.dot.record.cat45 {
-    /* Arts de la table */
-
-    background-image: url("img/FontAwesome/svg/wine-glass-empty-solid.svg");
-}
-
-.dot.record.cat46 {
-    /* Linge de maison */
-
-    background-image: url("img/FontAwesome/svg/mattress-pillow-solid.svg");
-}
-
-.dot.record.cat47 {
-    /* Accessoires & Bagagerie */
-
-    background-image: url("img/FontAwesome/svg/suitcase-rolling-solid.svg");
-}
-.dot.record.cat48 {
-    /* Divers (sous-catégorie de "Alimentation", en théorie) */
-
-    background-image: url("img/FontAwesome/svg/question-solid.svg");
-}
-
-.dot.record.cat52 {
-    /* Jardinage */
-
-    background-image: url("img/FontAwesome/svg/seedling-solid.svg");
-}
-
-.dot.record.cat53 {
-    /* Chaussures */
-
-    background-image: url("img/FontAwesome/svg/shoe-prints-solid.svg");
-}
-
-.dot.record.cat58 {
-    /* Transport - Manutention */
-
-    background-image: url("img/FontAwesome/svg/truck-solid.svg");
-}
-
-.dot.record.cat63 {
-    /* Commerces et Marchés */
-
-    background-image: url("img/FontAwesome/svg/store-solid.svg");
-}
-
-.dot.record.cat74 {
-    /* Formations */
-
-    background-image: url("img/FontAwesome/svg/graduation-cap-solid.svg");
-}
-
-.dot.record.cat81 {
-    /* Soins */
-
-    background-image: url("img/FontAwesome/svg/life-ring-solid.svg");
-}
-
-.dot.record.cat91 {
-    /* Commerces & Marchés */
-
-    background-image: url("img/FontAwesome/svg/store-solid.svg");
-}
-
-.dot.record.cat92 {
-    /* Fruits et légumes */
-
-    background-image: url("img/FontAwesome/svg/carrot-solid.svg");
-}
-
-.dot.record.cat93 {
-    /* Pains & Pâtisserie */
-
-    background-image: url("img/FontAwesome/svg/egg-solid.svg");
-}
-
-.dot.record.cat94 {
-    /* Frais */
-
-    background-image: url("img/FontAwesome/svg/egg-solid.svg");
+    display:block;
 }
 
 
-.screen#shippable .list > .record:nth-child(3n + 1) ,
-.screen#immaterial  .list > .record:nth-child(3n + 1) {
 
-	background-color: hsl(240, 50%, 53%);
-}
 
-.screen#shippable .list > .record:nth-child(3n + 2) ,
-.screen#immaterial  .list > .record:nth-child(3n + 2) {
+.screen#actu .list .ad a,
+.screen#dormant .list .ad a {
 
-	background-color: hsl(240, 50%, 55%);
-}
-
-.screen#shippable .list > .record:nth-child(3n + 3) ,
-.screen#immaterial  .list > .record:nth-child(3n + 3) {
-
-	background-color: hsl(240, 50%, 58%);
-}
-
-#shippable .record a,
-#immaterial .record a {
-
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
-
-	height: 100%;
 	width: 100%;
+	height: 100%;
+
 	display: flex;
+	justify-content: center;
 	align-items: center;
 }
 
-#shippable .record a:before,
-#immaterial .record a:before {
+.screen#actu .list .ad a:before,
+.screen#dormant .list .ad a:before {
 
-	width: 2rem;
-	height: 3rem;
-	display: block;
-	margin-right: 1rem;
-	content: "";
-
-	display: flex;
+	width: 50%;
+	height: auto;
 }
 
-#shippable .record.cat12 a:before,
-#immaterial .record.cat12 a:before {
+
+
+/* =========================== Icons =========================== */
+
+
+.screen#actu .list .ad.cat12 a:before,
+.screen#dormant .list .ad.cat12 a:before,
+.screen#shippable .list .ad.cat12 a:before,
+.screen#immaterial .list .ad.cat12 a:before {
 	/* Location & Gîtes */
 
 	content: url("img/FontAwesome/svg/bed-solid.svg");
 }
 
-#shippable .record.cat15 a:before,
-#immaterial .record.cat15 a:before {
+.screen#actu .list .ad.cat15 a:before,
+.screen#dormant .list .ad.cat15 a:before,
+.screen#shippable .list .ad.cat15 a:before,
+.screen#immaterial .list .ad.cat15 a:before {
 	/* Informatique */
 
 	content: url("img/FontAwesome/svg/computer-solid.svg");
 }
 
-#shippable .record.cat17 a:before,
-#immaterial .record.cat17 a:before {
+.screen#actu .list .ad.cat17 a:before,
+.screen#dormant .list .ad.cat17 a:before,
+.screen#shippable .list .ad.cat17 a:before,
+.screen#immaterial .list .ad.cat17 a:before {
 	/* Téléphonie */
 
 	content: url("img/FontAwesome/svg/mobile-solid.svg");
 }
 
-#shippable .record.cat19 a:before,
-#immaterial .record.cat19 a:before {
+.screen#actu .list .ad.cat19 a:before,
+.screen#dormant .list .ad.cat19 a:before,
+.screen#shippable .list .ad.cat19 a:before,
+.screen#immaterial .list .ad.cat19 a:before {
 	/* Ameublement */
 
 	content: url("img/FontAwesome/svg/couch-solid.svg");
 }
 
-#shippable .record.cat21 a:before,
-#immaterial .record.cat21 a:before {
+.screen#actu .list .ad.cat21 a:before,
+.screen#dormant .list .ad.cat21 a:before,
+.screen#shippable .list .ad.cat21 a:before,
+.screen#immaterial .list .ad.cat21 a:before {
 	/* Bricolage */
 
 	content: url("img/FontAwesome/svg/hammer-solid.svg");
 }
 
-#shippable .record.cat22 a:before,
-#immaterial .record.cat22 a:before {
+.screen#actu .list .ad.cat22 a:before,
+.screen#dormant .list .ad.cat22 a:before,
+.screen#shippable .list .ad.cat22 a:before,
+.screen#immaterial .list .ad.cat22 a:before {
 	/* Vêtements */
 
 	content: url("img/FontAwesome/svg/shirt-solid.svg");
 }
 
-#shippable .record.cat27 a:before,
-#immaterial .record.cat27 a:before {
+.screen#actu .list .ad.cat27 a:before,
+.screen#dormant .list .ad.cat27 a:before,
+.screen#shippable .list .ad.cat27 a:before,
+.screen#immaterial .list .ad.cat27 a:before {
 	/* Livres */
 
 	content: url("img/FontAwesome/svg/book-solid.svg");
 }
 
-#shippable .record.cat28 a:before,
-#immaterial .record.cat28 a:before {
+.screen#actu .list .ad.cat28 a:before,
+.screen#dormant .list .ad.cat28 a:before,
+.screen#shippable .list .ad.cat28 a:before,
+.screen#immaterial .list .ad.cat28 a:before {
 	/* Animaux */
 
 	content: url("img/FontAwesome/svg/dog-solid.svg");
 }
 
-#shippable .record.cat29 a:before,
-#immaterial .record.cat29 a:before {
+.screen#actu .list .ad.cat29 a:before,
+.screen#dormant .list .ad.cat29 a:before,
+.screen#shippable .list .ad.cat29 a:before,
+.screen#immaterial .list .ad.cat29 a:before {
 	/* Sports & Hobbies */
 
 	content: url("img/FontAwesome/svg/baseball-bat-ball-solid.svg");
 }
 
-#shippable .record.cat30 a:before,
-#immaterial .record.cat30 a:before {
+.screen#actu .list .ad.cat30 a:before,
+.screen#dormant .list .ad.cat30 a:before,
+.screen#shippable .list .ad.cat30 a:before,
+.screen#immaterial .list .ad.cat30 a:before {
 	/* Instruments de musique */
 
 	content: url("img/FontAwesome/svg/guitar-solid.svg");
 }
 
-#shippable .record.cat34 a:before,
-#immaterial .record.cat34 a:before {
+.screen#actu .list .ad.cat34 a:before,
+.screen#dormant .list .ad.cat34 a:before,
+.screen#shippable .list .ad.cat34 a:before,
+.screen#immaterial .list .ad.cat34 a:before {
 	/* Prestations de services */
 
 	content: url("img/FontAwesome/svg/handshake-angle-solid.svg");
 }
 
-#shippable .record.cat38 a:before,
-#immaterial .record.cat38 a:before {
+.screen#actu .list .ad.cat38 a:before,
+.screen#dormant .list .ad.cat38 a:before,
+.screen#shippable .list .ad.cat38 a:before,
+.screen#immaterial .list .ad.cat38 a:before {
 	/* Autres */
 
 	content: url("img/FontAwesome/svg/question-solid.svg");
 }
 
-#shippable .record.cat39 a:before,
-#immaterial .record.cat39 a:before {
+.screen#actu .list .ad.cat39 a:before,
+.screen#dormant .list .ad.cat39 a:before,
+.screen#shippable .list .ad.cat39 a:before,
+.screen#immaterial .list .ad.cat39 a:before {
 	/* Décoration */
 
 	content: url("img/FontAwesome/svg/holly-berry-solid.svg");
 }
 
-#shippable .record.cat41 a:before,
-#immaterial .record.cat41 a:before {
+.screen#actu .list .ad.cat41 a:before,
+.screen#dormant .list .ad.cat41 a:before,
+.screen#shippable .list .ad.cat41 a:before,
+.screen#immaterial .list .ad.cat41 a:before {
 	/* Jeux */
 
 	content: url("img/FontAwesome/svg/gamepad-solid.svg");
 }
 
-#shippable .record.cat45 a:before,
-#immaterial .record.cat45 a:before {
+.screen#actu .list .ad.cat45 a:before,
+.screen#dormant .list .ad.cat45 a:before,
+.screen#shippable .list .ad.cat45 a:before,
+.screen#immaterial .list .ad.cat45 a:before {
 	/* Arts de la table */
 
 	content: url("img/FontAwesome/svg/wine-glass-empty-solid.svg");
 }
 
-#shippable .record.cat46 a:before,
-#immaterial .record.cat46 a:before {
+.screen#actu .list .ad.cat46 a:before,
+.screen#dormant .list .ad.cat46 a:before,
+.screen#shippable .list .ad.cat46 a:before,
+.screen#immaterial .list .ad.cat46 a:before {
 	/* Linge de maison */
 
 	content: url("img/FontAwesome/svg/mattress-pillow-solid.svg");
 }
 
-#shippable .record.cat47 a:before,
-#immaterial .record.cat47 a:before {
+.screen#actu .list .ad.cat47 a:before,
+.screen#dormant .list .ad.cat47 a:before,
+.screen#shippable .list .ad.cat47 a:before,
+.screen#immaterial .list .ad.cat47 a:before {
 	/* Accessoires & Bagagerie */
 
 	content: url("img/FontAwesome/svg/suitcase-rolling-solid.svg");
 }
-
-#shippable .record.cat48 a:before,
-#immaterial .record.cat48 a:before {
+.screen#actu .list .ad.cat48 a:before,
+.screen#dormant .list .ad.cat48 a:before,
+.screen#shippable .list .ad.cat48 a:before,
+.screen#immaterial .list .ad.cat48 a:before {
 	/* Divers (sous-catégorie de "Alimentation", en théorie) */
 
 	content: url("img/FontAwesome/svg/question-solid.svg");
 }
 
-#shippable .record.cat52 a:before,
-#immaterial .record.cat52 a:before {
+.screen#actu .list .ad.cat52 a:before,
+.screen#dormant .list .ad.cat52 a:before,
+.screen#shippable .list .ad.cat52 a:before,
+.screen#immaterial .list .ad.cat52 a:before {
 	/* Jardinage */
 
 	content: url("img/FontAwesome/svg/seedling-solid.svg");
 }
 
-#shippable .record.cat53 a:before,
-#immaterial .record.cat53 a:before {
+.screen#actu .list .ad.cat53 a:before,
+.screen#dormant .list .ad.cat53 a:before,
+.screen#shippable .list .ad.cat53 a:before,
+.screen#immaterial .list .ad.cat53 a:before {
 	/* Chaussures */
 
 	content: url("img/FontAwesome/svg/shoe-prints-solid.svg");
 }
 
-#shippable .record.cat58 a:before,
-#immaterial .record.cat58 a:before {
+.screen#actu .list .ad.cat58 a:before,
+.screen#dormant .list .ad.cat58 a:before,
+.screen#shippable .list .ad.cat58 a:before,
+.screen#immaterial .list .ad.cat58 a:before {
 	/* Transport - Manutention */
 
 	content: url("img/FontAwesome/svg/truck-solid.svg");
 }
 
-#shippable .record.cat63 a:before,
-#immaterial .record.cat63 a:before {
+.screen#actu .list .ad.cat63 a:before,
+.screen#dormant .list .ad.cat63 a:before,
+.screen#shippable .list .ad.cat63 a:before,
+.screen#immaterial .list .ad.cat63 a:before {
 	/* Commerces et Marchés */
 
 	content: url("img/FontAwesome/svg/store-solid.svg");
 }
 
-#shippable .record.cat74 a:before,
-#immaterial .record.cat74 a:before {
+.screen#actu .list .ad.cat74 a:before,
+.screen#dormant .list .ad.cat74 a:before,
+.screen#shippable .list .ad.cat74 a:before,
+.screen#immaterial .list .ad.cat74 a:before {
 	/* Formations */
 
 	content: url("img/FontAwesome/svg/graduation-cap-solid.svg");
 }
 
-#shippable .record.cat81 a:before,
-#immaterial .record.cat81 a:before {
+.screen#actu .list .ad.cat81 a:before,
+.screen#dormant .list .ad.cat81 a:before,
+.screen#shippable .list .ad.cat81 a:before,
+.screen#immaterial .list .ad.cat81 a:before {
 	/* Soins */
 
 	content: url("img/FontAwesome/svg/life-ring-solid.svg");
 }
 
-#shippable .record.cat91 a:before,
-#immaterial .record.cat91 a:before {
+.screen#actu .list .ad.cat91 a:before,
+.screen#dormant .list .ad.cat91 a:before,
+.screen#shippable .list .ad.cat91 a:before,
+.screen#immaterial .list .ad.cat91 a:before {
 	/* Commerces & Marchés */
 
 	content: url("img/FontAwesome/svg/store-solid.svg");
 }
 
-#shippable .record.cat92 a:before,
-#immaterial .record.cat92 a:before {
+.screen#actu .list .ad.cat92 a:before,
+.screen#dormant .list .ad.cat92 a:before,
+.screen#shippable .list .ad.cat92 a:before,
+.screen#immaterial .list .ad.cat92 a:before {
 	/* Fruits et légumes */
 
 	content: url("img/FontAwesome/svg/carrot-solid.svg");
 }
 
-#shippable .record.cat93 a:before,
-#immaterial .record.cat93 a:before {
+.screen#actu .list .ad.cat93 a:before,
+.screen#dormant .list .ad.cat93 a:before,
+.screen#shippable .list .ad.cat93 a:before,
+.screen#immaterial .list .ad.cat93 a:before {
 	/* Pains & Pâtisserie */
 
 	content: url("img/FontAwesome/svg/egg-solid.svg");
 }
 
-#shippable .record.cat94 a:before,
-#immaterial .record.cat94 a:before {
+.screen#actu .list .ad.cat94 a:before,
+.screen#dormant .list .ad.cat94 a:before,
+.screen#shippable .list .ad.cat94 a:before,
+.screen#immaterial .list .ad.cat94 a:before {
 	/* Frais */
 
 	content: url("img/FontAwesome/svg/egg-solid.svg");
 }
+
+
+
