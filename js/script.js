@@ -66,14 +66,14 @@ function proceedWithLocation (radius) {
 
 	// Show "Loading..."
 	buttonContainerElt.style.display = 'block';
-	buttonContainerElt.querySelector('.loading').style.display = 'block';
+	document.querySelector('.screen#'+currentScreen).classList.add('loading');
 
 	switch (currentScreen) {
 		case 'actu':
 			data[currentScreen]['km'+ radius.toString()] = getActu(userLocation, radius, timestampBackThen_3_months)
 				.then(records => {
 
-					document.querySelector('#actu .loading').style.display = 'none';
+					document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
 					displayActu(records, userLocation, radius, timestampBackThen_3_months);
 
@@ -85,7 +85,7 @@ function proceedWithLocation (radius) {
 			data[currentScreen]['km'+ radius.toString()] = getDormant(userLocation, radius)
 			.then(records => {
 
-				document.querySelector('#dormant .loading').style.display = 'none';
+				document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
 				displayDormant(records, userLocation, radius);
 
@@ -98,7 +98,7 @@ function proceedWithLocation (radius) {
 
 					console.log(categories);
 
-					document.querySelector('#marketResearch .loading').style.display = 'none';
+					document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
 					displayCategories(categories, radius);
 
@@ -151,7 +151,7 @@ async function detect (radius) {
 			errorElt.innerHTML = '<p>Vous devez partager votre localisation pour que le sonar puisse scanner vos environs</p><p>Message d\'erreur : '+error.message+'</p>';
 			console.log('Error:', error);
 			// Hide the "Loading..." message
-			buttonContainerElt.querySelector('.loading').style.display = 'none';
+			document.querySelector('.screen#'+currentScreen).classList.add('loading');
 		}, {
 			enableHighAccuracy: false,
 			timeout: 15000,
@@ -221,7 +221,7 @@ function switchScreen (newScreenId) {
 			fetchShippable(timestampBackThen_3_months, 20)
 			.then(records => {
 
-				document.querySelector('#shippable .loading').style.display = 'none';
+				document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
 				displayShippable(records.hits.hits);
 			})
@@ -236,7 +236,7 @@ function switchScreen (newScreenId) {
 			fetchImmaterial(timestampBackThen_1_year, 10)
 			.then(records => {
 
-				document.querySelector('#immaterial .loading').style.display = 'none';
+				document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
 				displayImmaterial(records.hits.hits);
 			})
