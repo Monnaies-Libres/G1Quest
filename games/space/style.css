@@ -197,6 +197,17 @@ main {
     margin: 0;
 }
 
+.screen > .list {
+
+	display: none;
+}
+
+.screen > .list.active {
+
+	display: block;
+}
+
+
 #dormant > .list,
 #actu > .list,
 .buttonContainer {
@@ -236,26 +247,15 @@ main {
     justify-content: center;
     align-items: center;
 }
+.screen.loading:after {
 
-.buttonContainer .loading {
-    position: absolute;
-    color: #0f0;
-    font-size: 2em;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.screen .buttonContainer .loading {
-
-	display: none;
-}
-
-.screen#immaterial .buttonContainer .loading,
-.screen#shippable .buttonContainer .loading
-{
-
-	display: block;
+	content: "Loading…";
+	position: absolute;
+	color: #0f0;
+	font-size: 2em;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 
@@ -336,18 +336,49 @@ body[data-active-screen="marketResearch"] #radius {
 }
 
 
+.screen#actu    .list .ad a,
+.screen#dormant .list .ad a {
+
+	display: flex;
+	align-items: center;
+}
+
 @media screen and (max-width: 49.999rem) {
 
-	#actu .list .ad {
+	.screen#actu    .list .ad,
+	.screen#dormant .list .ad {
 
 		animation: none !important;
+		height: 3rem;
+		border-top: 0.0625rem solid black;
+		border-bottom: 0.0625rem solid black;
 	}
+
+	.screen#actu    .list .ad a,
+	.screen#dormant .list .ad a {
+
+		height: 100%;
+		align-items: center;
+	}
+
+	.screen#actu    .list .ad a:before,
+	.screen#dormant .list .ad a:before {
+
+		width: 1rem;
+		height: auto;
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+	.screen#actu    .list .ad {
+	}
+
 }
 
 @media screen and (min-width: 50rem) {
 
-	#actu .list .ad,
-	#dormant .list .ad {
+	.screen#actu    .list .ad,
+	.screen#dormant .list .ad {
+
 	    position: absolute;
 	    width: 24px;
 	    height: 24px;
@@ -362,22 +393,39 @@ body[data-active-screen="marketResearch"] #radius {
 	    border-color: black;
 	}
 
-	#actu .list .ad a .title,
-	#dormant .list .ad a .title {
+	.screen#actu    .list .ad a .title,
+	.screen#dormant .list .ad a .title {
 
 		display: none;
 	}
 
-	#dormant .list.paused .ad,
-	#actu .list.paused .ad {
+	.screen#actu    .list.paused .ad,
+	.screen#dormant .list.paused .ad {
 
 		animation-play-state: paused !important;
 	}
 
-	#dormant .list > :not(.paused) .ad,
-	#actu .list > :not(.paused) .ad {
+	.screen#dormant .list > :not(.paused) .ad,
+	.screen#actu    .list > :not(.paused) .ad {
 
 		animation-play-state: running !important;
+	}
+
+	.screen#actu    .list .ad a,
+	.screen#dormant .list .ad a {
+
+		width: 100%;
+		height: 100%;
+
+		display: flex;
+		justify-content: center;
+	}
+
+	.screen#actu    .list .ad a:before,
+	.screen#dormant .list .ad a:before {
+
+		width: 50%;
+		height: auto;
 	}
 }
 
@@ -471,29 +519,11 @@ body[data-active-screen="marketResearch"] #radius {
 #actu .list .ad.visited.selected ,
 #dormant .list .ad.visited.selected  {
 
-    display:block;
+    display: block;
 }
 
 
 
-
-.screen#actu .list .ad a,
-.screen#dormant .list .ad a {
-
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.screen#actu .list .ad a:before,
-.screen#dormant .list .ad a:before {
-
-	width: 50%;
-	height: auto;
-}
 
 
 
@@ -752,4 +782,22 @@ body[data-active-screen="marketResearch"] #radius {
 }
 
 
+
+
+/* ======================== Localization ======================== */
+
+.screen.loading:after {
+
+	content: url("./img/loading.gif");
+}
+
+html[lang="fr"] .screen.loading:after {
+
+	content: "Chargement des données depuis la nébuleuse…";
+}
+
+html[lang="en"] .screen.loading:after {
+
+	content: "ALL YOUR BASE ARE BELONG TO US.";
+}
 

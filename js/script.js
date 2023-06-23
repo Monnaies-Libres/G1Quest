@@ -16,32 +16,35 @@ const timestampBackThen_2_years  = Math.floor((Date.now() - (2 * 365 * 24 * 60 *
 const timestampBackThen_1_year   = Math.floor((Date.now() - (1 * 365 * 24 * 60 * 60 * 1000)) / 1000);
 
 let userLocation = null;
-userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
+// userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
 // userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
 let radius = 150;
 let currentScreen = 'actu';
+const screensWithRadiusPagination = ['actu', 'dormant', 'marketResearch', 'events'];
 
 let radiusSelect = document.getElementById('radius');
 
-let data = {
+let isLoadedContents = {
 	 actu: {
-		 km15:  null
-		,km50:  null
-		,km150: null
-		,km500: null
+		 km15:  false
+		,km50:  false
+		,km150: false
+		,km500: false
 	}
 	,dormant: {
-		 km15:  null
-		,km50:  null
-		,km150: null
-		,km500: null
+		 km15:  false
+		,km50:  false
+		,km150: false
+		,km500: false
 	}
 	,marketResearch: {
-		 km15:  null
-		,km50:  null
-		,km150: null
-		,km500: null
+		 km15:  false
+		,km50:  false
+		,km150: false
+		,km500: false
 	}
+	,shippable: false
+	,immaterial: false
 }
 
 // When the radar is clicked :
@@ -68,46 +71,54 @@ function proceedWithLocation (radius) {
 	buttonContainerElt.style.display = 'block';
 	document.querySelector('.screen#'+currentScreen).classList.add('loading');
 
-	switch (currentScreen) {
-		case 'actu':
-			data[currentScreen]['km'+ radius.toString()] = getActu(userLocation, radius, timestampBackThen_3_months)
-				.then(records => {
+	if (!isLoadedContents[currentScreen]['km'+ radius.toString()]) {
 
-					document.querySelector('.screen#'+currentScreen).classList.remove('loading');
+		switch (currentScreen) {
+			case 'actu':
+				getActu(userLocation, radius, timestampBackThen_3_months)
+					.then(records => {
 
-					displayActu(records, userLocation, radius, timestampBackThen_3_months);
+						document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
-					buttonContainerElt.style.display = 'none';
-				});
+						displayActu(records, userLocation, radius, timestampBackThen_3_months);
 
+						buttonContainerElt.style.display = 'none';
+
+						isLoadedContents[currentScreen]['km'+ radius.toString()] = true;
+					});
+					break;
+			case 'dormant':
+				getDormant(userLocation, radius)
+					.then(records => {
+
+						document.querySelector('.screen#'+currentScreen).classList.remove('loading');
+
+						displayDormant(records, userLocation, radius);
+
+						buttonContainerElt.style.display = 'none';
+
+						isLoadedContents[currentScreen]['km'+ radius.toString()] = true;
+					});
 				break;
-		case 'dormant':
-			data[currentScreen]['km'+ radius.toString()] = getDormant(userLocation, radius)
-			.then(records => {
+			case 'marketResearch':
+				getNeedsCategories(userLocation, radius)
+					.then(categories => {
 
-				document.querySelector('.screen#'+currentScreen).classList.remove('loading');
+						console.log(categories);
 
-				displayDormant(records, userLocation, radius);
+						document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
-				buttonContainerElt.style.display = 'none';
-			});
-			break;
-		case 'marketResearch':
-			data[currentScreen]['km'+ radius.toString()].categories = getNeedsCategories(userLocation, radius)
-				.then(categories => {
+						displayCategories(categories, radius);
 
-					console.log(categories);
+						buttonContainerElt.style.display = 'none';
 
-					document.querySelector('.screen#'+currentScreen).classList.remove('loading');
-
-					displayCategories(categories, radius);
-
-					buttonContainerElt.style.display = 'none';
-				});
-			break;
-		case 'events':
-			// ...
-			break;
+						isLoadedContents[currentScreen]['km'+ radius.toString()] = true;
+					});
+				break;
+			case 'events':
+				// ...
+				break;
+		}
 	}
 }
 
@@ -176,7 +187,7 @@ document.getElementById('radius').addEventListener('change', function () {
 
 	switchPage(currentScreen, radius);
 
-	if (data[currentScreen]['km'+ radius.toString()] == null) {
+	if (!isLoadedContents[currentScreen]['km'+ radius.toString()]) {
 
 		detect(radius);
 	}
@@ -186,13 +197,6 @@ function switchScreen (newScreenId) {
 
 	// Store the current screen id for use in other parts of the app
 	currentScreen = newScreenId;
-
-	// Change which screen is active
-	const activeScreen = document.querySelector('.screen.active');
-	if (activeScreen !== null) {
-		activeScreen.classList.remove('active');
-	}
-	document.querySelector('.screen#'+newScreenId).classList.add('active');
 
 	// Store active screen in <body />
 	// Used in CSS, typically to choose when to display the radius selector
@@ -205,48 +209,57 @@ function switchScreen (newScreenId) {
 	}
 	document.querySelector('#menu > ul > li > a[href="#'+newScreenId+'"]').classList.add('active');
 
-	switch (newScreenId) {
-		case 'actu':
-			switchPage(newScreenId, radius);
-			break;
-		case 'dormant':
-			switchPage(newScreenId, radius)
+	// Change which screen is active
+	const activeScreen = document.querySelector('.screen.active');
+	if (activeScreen !== null) {
+		activeScreen.classList.remove('active');
+	}
+	document.querySelector('.screen#'+newScreenId).classList.add('active');
+
+	if (screensWithRadiusPagination.includes(newScreenId)) {
+
+		switchPage(newScreenId, radius);
+
+	} else if (!isLoadedContents[newScreenId]) {
+
+		switch (newScreenId) {
+			case 'shippable':
+
+				fetchShippable(timestampBackThen_3_months, 10)
+				.then(records => {
+
+					document.querySelector('.screen#'+newScreenId).classList.remove('loading');
+
+					displayShippable(records.hits.hits);
+
+					isLoadedContents[newScreenId] = true;
+				})
+				.catch(error => {
+					if (error == 'Error: 400')
+						console.error('Mauvaise requête')
+						else
+							console.error(error)
+				})
 				break;
-		case 'marketResearch':
-			switchPage(newScreenId, radius)
-		case 'events':
-			switchPage(newScreenId, radius)
+			case 'immaterial':
+
+				fetchImmaterial(timestampBackThen_1_year, 10)
+				.then(records => {
+
+					document.querySelector('.screen#'+newScreenId).classList.remove('loading');
+
+					displayImmaterial(records.hits.hits);
+
+					isLoadedContents[newScreenId] = true;
+				})
+				.catch(error => {
+					if (error == 'Error: 400')
+						console.error('Mauvaise requête')
+						else
+							console.error(error)
+				})
 				break;
-		case 'shippable':
-			fetchShippable(timestampBackThen_3_months, 20)
-			.then(records => {
-
-				document.querySelector('.screen#'+currentScreen).classList.remove('loading');
-
-				displayShippable(records.hits.hits);
-			})
-			.catch(error => {
-				if (error == 'Error: 400')
-					console.error('Mauvaise requête')
-					else
-						console.error(error)
-			})
-			break;
-		case 'immaterial':
-			fetchImmaterial(timestampBackThen_1_year, 10)
-			.then(records => {
-
-				document.querySelector('.screen#'+currentScreen).classList.remove('loading');
-
-				displayImmaterial(records.hits.hits);
-			})
-			.catch(error => {
-				if (error == 'Error: 400')
-					console.error('Mauvaise requête')
-					else
-						console.error(error)
-			})
-			break;
+		}
 	}
 }
 

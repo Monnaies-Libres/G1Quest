@@ -5,12 +5,17 @@ export const toRadians = function (degrees) {
 export const switchPage = function (currentScreen, radius) {
 
 	const pages = document.querySelectorAll('.screen#'+currentScreen+' > .list');
-	for (const p of pages) {
-		p.style.display = 'none';
+
+	for (const page of pages) {
+
+		if (page.classList.contains('active')) {
+
+			page.classList.remove('active');
+		}
 	}
 
-	const page = document.querySelector('.screen#'+currentScreen+' > .list.radius-'+radius+'-km');
-	page.style.display = 'block';
+	const newPage = document.querySelector('.screen#'+currentScreen+' > .list.radius-'+radius+'-km');
+	newPage.classList.add('active');
 }
 
 export const getBlinkDuration = (timestamp, minTime, maxTime) => {

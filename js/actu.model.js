@@ -65,9 +65,8 @@ export const getActu = async (userLocation, radius, minTimestamp) => {
 									path: "category",
 									query: {
 										bool: { must_not: [
-											{ term: { "category.id": "cat81" } },  // Filtre anti-Annunakis ; celle-là elle est pour pour toi, FredB ;-)
-											{ term: { "category.id": "cat31" } }, // Prestation de services
-											{ term: { "category.parent": "cat31" } }
+											{ term: { "category.id": "cat81" } }  // Filtre anti-Annunakis ; celle-là elle est pour pour toi, FredB ;-)
+											,{ term: { "category.parent": "cat31" } } // Services
 										] }
 									}
 								} }
@@ -82,10 +81,9 @@ export const getActu = async (userLocation, radius, minTimestamp) => {
 									path: "category",
 									query: {
 										bool: { should: [
-											{ term: { "category.parent": "cat31" } },
-											{ term: { "category.id": "cat31" } },
-											{ term: { "category.parent": "cat56" } }, // Matériel professionnel
-											{ term: { "category.id": "cat56" } }
+											{ term: { "category.parent": "cat31" } } // Services
+											,{ term: { "category.parent": "cat56" } } // Matériel professionnel
+											,{ term: { "category.parent": "cat8" } } // Immobilier
 										] }
 									}
 								} }
