@@ -10,6 +10,8 @@ import { fetchImmaterial } from './immaterial.model.js'
 import { fetchShippable } from './shippable.model.js'
 import { displayImmaterial } from './immaterial.view.js'
 import { displayShippable } from './shippable.view.js'
+import { fetchEvents } from './events.model.js'
+import { displayEvents } from './events.view.js'
 
 const timestampBackThen_3_months = Math.floor((Date.now() - (     90 * 24 * 60 * 60 * 1000)) / 1000);
 const timestampBackThen_2_years  = Math.floor((Date.now() - (2 * 365 * 24 * 60 * 60 * 1000)) / 1000);
@@ -38,7 +40,13 @@ let isLoadedContents = {
 		,km500: false
 	}
 	,marketResearch: {
-		 km15:  false
+		km15:  false
+		,km50:  false
+		,km150: false
+		,km500: false
+	}
+	,events: {
+		km15:  false
 		,km50:  false
 		,km150: false
 		,km500: false
@@ -104,8 +112,6 @@ function proceedWithLocation (radius) {
 				getNeedsCategories(userLocation, radius)
 					.then(categories => {
 
-						console.log(categories);
-
 						document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
 						displayCategories(categories, radius);
@@ -116,7 +122,17 @@ function proceedWithLocation (radius) {
 					});
 				break;
 			case 'events':
-				// ...
+				fetchEvents(userLocation, radius, timestampBackThen_3_months)
+				.then(events => {
+
+					document.querySelector('.screen#'+currentScreen).classList.remove('loading');
+
+					displayEvents(events, userLocation, radius, timestampBackThen_3_months);
+
+					buttonContainerElt.style.display = 'none';
+
+					isLoadedContents[currentScreen]['km'+ radius.toString()] = true;
+				});
 				break;
 		}
 	}

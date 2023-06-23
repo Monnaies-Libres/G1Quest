@@ -183,14 +183,15 @@ main {
     display: none;
 }
 
-#marketResearch {
+.screen#marketResearch {
 
     background-color: hsl(120, 100%, 50%);
     color: black;
 }
 
-#actu ol,
-#dormant ol {
+.screen#actu    ol,
+.screen#events  ol,
+.screen#dormant ol {
 
     list-style: none;
     padding: 0;
@@ -208,8 +209,9 @@ main {
 }
 
 
-#dormant > .list,
-#actu > .list,
+.screen#dormant > .list,
+.screen#actu > .list,
+.screen#events > .list,
 .buttonContainer {
 
     height: 90vh;
@@ -218,20 +220,26 @@ main {
 
 }
 
-#dormant > .list,
-#actu > .list {
+.screen#dormant > .list,
+.screen#events  > .list,
+.screen#actu    > .list {
 
     border-radius: 50%;
     cursor: crosshair;
     position: relative;
 }
 
-#actu > .list {
+.screen#actu > .list {
 
-    border: 2px solid #0f0;
+	border: 2px solid #0f0;
 }
 
-#dormant > .list {
+.screen#events > .list {
+
+	border: 2px solid red;
+}
+
+.screen#dormant > .list {
 
     background: hsl(53.7, 100%, 81.4%);
     border: 5px solid hsl(42.2, 100%, 54.3%);
@@ -330,6 +338,7 @@ main {
 
 body[data-active-screen="actu"]           #radius,
 body[data-active-screen="dormant"]        #radius,
+body[data-active-screen="events"]         #radius,
 body[data-active-screen="marketResearch"] #radius {
 
 	display: block;
@@ -337,6 +346,7 @@ body[data-active-screen="marketResearch"] #radius {
 
 
 .screen#actu    .list .ad a,
+.screen#events  .list .ad a,
 .screen#dormant .list .ad a {
 
 	display: flex;
@@ -346,6 +356,7 @@ body[data-active-screen="marketResearch"] #radius {
 @media screen and (max-width: 49.999rem) {
 
 	.screen#actu    .list .ad,
+	.screen#events  .list .ad,
 	.screen#dormant .list .ad {
 
 		animation: none !important;
@@ -355,6 +366,7 @@ body[data-active-screen="marketResearch"] #radius {
 	}
 
 	.screen#actu    .list .ad a,
+	.screen#events  .list .ad a,
 	.screen#dormant .list .ad a {
 
 		height: 100%;
@@ -362,6 +374,7 @@ body[data-active-screen="marketResearch"] #radius {
 	}
 
 	.screen#actu    .list .ad a:before,
+	.screen#events  .list .ad a:before,
 	.screen#dormant .list .ad a:before {
 
 		width: 1rem;
@@ -369,7 +382,8 @@ body[data-active-screen="marketResearch"] #radius {
 		margin-left: 1rem;
 		margin-right: 1rem;
 	}
-	.screen#actu    .list .ad {
+	.screen#actu    .list .ad ,
+	.screen#events  .list .ad {
 	}
 
 }
@@ -377,6 +391,7 @@ body[data-active-screen="marketResearch"] #radius {
 @media screen and (min-width: 50rem) {
 
 	.screen#actu    .list .ad,
+	.screen#events  .list .ad,
 	.screen#dormant .list .ad {
 
 	    position: absolute;
@@ -394,24 +409,28 @@ body[data-active-screen="marketResearch"] #radius {
 	}
 
 	.screen#actu    .list .ad a .title,
+	.screen#events  .list .ad a .title,
 	.screen#dormant .list .ad a .title {
 
 		display: none;
 	}
 
 	.screen#actu    .list.paused .ad,
+	.screen#events  .list.paused .ad,
 	.screen#dormant .list.paused .ad {
 
 		animation-play-state: paused !important;
 	}
 
 	.screen#dormant .list > :not(.paused) .ad,
-	.screen#actu    .list > :not(.paused) .ad {
+	.screen#actu    .list > :not(.paused) .ad ,
+	.screen#events  .list > :not(.paused) .ad {
 
 		animation-play-state: running !important;
 	}
 
 	.screen#actu    .list .ad a,
+	.screen#events  .list .ad a,
 	.screen#dormant .list .ad a {
 
 		width: 100%;
@@ -422,6 +441,7 @@ body[data-active-screen="marketResearch"] #radius {
 	}
 
 	.screen#actu    .list .ad a:before,
+	.screen#events  .list .ad a:before,
 	.screen#dormant .list .ad a:before {
 
 		width: 50%;
