@@ -48,12 +48,26 @@ export const fetchShippable = async function (minTimestamp, n) {
 					,{ match: { 'description': 'bordereau' } }
 				]
 				,minimum_should_match: 1
+				,must_not:  {
+					nested: {
+						path: 'category',
+						query: {
+							bool: {
+								should: [
+									{ match: { 'category.id': 'cat81' } } // Filtre anti-Annunakis
+								]
+							}
+						}
+					}
+				}
 			}
 		}
 		,sort: [
 			{ 'time': 'desc'}
 		]
 	}
+
+	console.log('shippable query : ', JSON.stringify(query))
 
 	var fetchOpts = {
 		method: 'POST',
