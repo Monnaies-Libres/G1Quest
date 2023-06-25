@@ -725,6 +725,26 @@ body[data-active-screen="luxuries"]       #radius {
 /* =========================== Icons =========================== */
 
 
+.screen#actu .list .ad.cat3 a:before,
+.screen#dormant .list .ad.cat3 a:before,
+.screen#shippable .list .ad.cat3 a:before,
+.screen#immaterial .list .ad.cat3 a:before,
+.screen#luxuries .list .ad.cat3 a:before {
+	/* Moto */
+
+	content: url("img/FontAwesome/svg/motorcycle-solid.svg");
+}
+
+.screen#actu .list .ad.cat6 a:before,
+.screen#dormant .list .ad.cat6 a:before,
+.screen#shippable .list .ad.cat6 a:before,
+.screen#immaterial .list .ad.cat6 a:before,
+.screen#luxuries .list .ad.cat6 a:before {
+	/* Équipement auto */
+
+	content: url("img/FontAwesome/svg/car-side-solid.svg");
+}
+
 .screen#actu .list .ad.cat12 a:before,
 .screen#dormant .list .ad.cat12 a:before,
 .screen#shippable .list .ad.cat12 a:before,
@@ -743,6 +763,16 @@ body[data-active-screen="luxuries"]       #radius {
 	/* Informatique */
 
 	content: url("img/FontAwesome/svg/computer-solid.svg");
+}
+
+.screen#actu .list .ad.cat16 a:before,
+.screen#dormant .list .ad.cat16 a:before,
+.screen#shippable .list .ad.cat16 a:before,
+.screen#immaterial .list .ad.cat16 a:before,
+.screen#luxuries .list .ad.cat16 a:before {
+	/* Image & Son */
+
+	content: url("img/FontAwesome/svg/compact-disc-solid.svg");
 }
 
 .screen#actu .list .ad.cat17 a:before,
@@ -765,6 +795,16 @@ body[data-active-screen="luxuries"]       #radius {
 	content: url("img/FontAwesome/svg/couch-solid.svg");
 }
 
+.screen#actu .list .ad.cat20 a:before,
+.screen#dormant .list .ad.cat20 a:before,
+.screen#shippable .list .ad.cat20 a:before,
+.screen#immaterial .list .ad.cat20 a:before,
+.screen#luxuries .list .ad.cat20 a:before {
+	/* Électroménager */
+
+	content: url("img/FontAwesome/svg/blender-solid.svg");
+}
+
 .screen#actu .list .ad.cat21 a:before,
 .screen#dormant .list .ad.cat21 a:before,
 .screen#shippable .list .ad.cat21 a:before,
@@ -783,6 +823,16 @@ body[data-active-screen="luxuries"]       #radius {
 	/* Vêtements */
 
 	content: url("img/FontAwesome/svg/shirt-solid.svg");
+}
+
+.screen#actu .list .ad.cat23 a:before,
+.screen#dormant .list .ad.cat23 a:before,
+.screen#shippable .list .ad.cat23 a:before,
+.screen#immaterial .list .ad.cat23 a:before,
+.screen#luxuries .list .ad.cat23 a:before {
+	/* Vêtements */
+
+	content: url("img/FontAwesome/svg/baby-carriage-solid.svg");
 }
 
 .screen#actu .list .ad.cat27 a:before,
@@ -835,6 +885,16 @@ body[data-active-screen="luxuries"]       #radius {
 	content: url("img/FontAwesome/svg/handshake-angle-solid.svg");
 }
 
+.screen#actu .list .ad.cat36 a:before,
+.screen#dormant .list .ad.cat36 a:before,
+.screen#shippable .list .ad.cat36 a:before,
+.screen#immaterial .list .ad.cat36 a:before,
+.screen#luxuries .list .ad.cat36 a:before {
+	/* Cours particuliers */
+
+	content: url("img/FontAwesome/svg/person-chalkboard-solid.svg");
+}
+
 .screen#actu .list .ad.cat38 a:before,
 .screen#dormant .list .ad.cat38 a:before,
 .screen#shippable .list .ad.cat38 a:before,
@@ -855,6 +915,16 @@ body[data-active-screen="luxuries"]       #radius {
 	content: url("img/FontAwesome/svg/holly-berry-solid.svg");
 }
 
+.screen#actu .list .ad.cat40 a:before,
+.screen#dormant .list .ad.cat40 a:before,
+.screen#shippable .list .ad.cat40 a:before,
+.screen#immaterial .list .ad.cat40 a:before,
+.screen#luxuries .list .ad.cat40 a:before {
+	/* Collection */
+
+	content: url("img/FontAwesome/svg/gem-regular.svg");
+}
+
 .screen#actu .list .ad.cat41 a:before,
 .screen#dormant .list .ad.cat41 a:before,
 .screen#shippable .list .ad.cat41 a:before,
@@ -862,7 +932,17 @@ body[data-active-screen="luxuries"]       #radius {
 .screen#luxuries .list .ad.cat41 a:before {
 	/* Jeux */
 
-	content: url("img/FontAwesome/svg/gamepad-solid.svg");
+	content: url("img/FontAwesome/svg/chess-knight-solid.svg");
+}
+
+.screen#actu .list .ad.cat42 a:before,
+.screen#dormant .list .ad.cat42 a:before,
+.screen#shippable .list .ad.cat42 a:before,
+.screen#immaterial .list .ad.cat42 a:before,
+.screen#luxuries .list .ad.cat42 a:before {
+	/* Montres et Bijoux */
+
+	content: url("img/FontAwesome/svg/ring-solid.svg");
 }
 
 .screen#actu .list .ad.cat45 a:before,
@@ -904,6 +984,26 @@ body[data-active-screen="luxuries"]       #radius {
 	content: url("img/FontAwesome/svg/question-solid.svg");
 }
 
+.screen#actu .list .ad.cat49 a:before,
+.screen#dormant .list .ad.cat49 a:before,
+.screen#shippable .list .ad.cat49 a:before,
+.screen#immaterial .list .ad.cat49 a:before,
+.screen#luxuries .list .ad.cat49 a:before {
+	/* Évènements */
+
+	content: url("img/FontAwesome/svg/calendar-check-regular.svg");
+}
+
+.screen#actu .list .ad.cat50 a:before,
+.screen#dormant .list .ad.cat50 a:before,
+.screen#shippable .list .ad.cat50 a:before,
+.screen#immaterial .list .ad.cat50 a:before,
+.screen#luxuries .list .ad.cat50 a:before {
+	/* Equipement Caravaning */
+
+	content: url("img/FontAwesome/svg/caravan-solid.svg");
+}
+
 .screen#actu .list .ad.cat52 a:before,
 .screen#dormant .list .ad.cat52 a:before,
 .screen#shippable .list .ad.cat52 a:before,
@@ -924,6 +1024,16 @@ body[data-active-screen="luxuries"]       #radius {
 	content: url("img/FontAwesome/svg/shoe-prints-solid.svg");
 }
 
+.screen#actu .list .ad.cat54 a:before,
+.screen#dormant .list .ad.cat54 a:before,
+.screen#shippable .list .ad.cat54 a:before,
+.screen#immaterial .list .ad.cat54 a:before,
+.screen#luxuries .list .ad.cat54 a:before {
+	/* Vêtements bébé */
+
+	content: url("img/FontAwesome/svg/baby-solid.svg");
+}
+
 .screen#actu .list .ad.cat58 a:before,
 .screen#dormant .list .ad.cat58 a:before,
 .screen#shippable .list .ad.cat58 a:before,
@@ -942,6 +1052,16 @@ body[data-active-screen="luxuries"]       #radius {
 	/* Commerces et Marchés */
 
 	content: url("img/FontAwesome/svg/store-solid.svg");
+}
+
+.screen#actu .list .ad.cat70 a:before,
+.screen#dormant .list .ad.cat70 a:before,
+.screen#shippable .list .ad.cat70 a:before,
+.screen#immaterial .list .ad.cat70 a:before,
+.screen#luxuries .list .ad.cat70 a:before {
+	/* Formations */
+
+	content: url("img/FontAwesome/svg/igloo-solid.svg");
 }
 
 .screen#actu .list .ad.cat74 a:before,
@@ -1002,6 +1122,26 @@ body[data-active-screen="luxuries"]       #radius {
 	/* Frais */
 
 	content: url("img/FontAwesome/svg/egg-solid.svg");
+}
+
+.screen#actu .list .ad.cat95 a:before,
+.screen#dormant .list .ad.cat95 a:before,
+.screen#shippable .list .ad.cat95 a:before,
+.screen#immaterial .list .ad.cat95 a:before,
+.screen#luxuries .list .ad.cat95 a:before {
+	/* Épicerie salée */
+
+	content: url("img/FontAwesome/svg/pepper-hot-solid.svg");
+}
+
+.screen#actu .list .ad.cat98 a:before,
+.screen#dormant .list .ad.cat98 a:before,
+.screen#shippable .list .ad.cat98 a:before,
+.screen#immaterial .list .ad.cat98 a:before,
+.screen#luxuries .list .ad.cat98 a:before {
+	/* Vêtements bébé */
+
+	content: url("img/FontAwesome/svg/person-breastfeeding-solid.svg");
 }
 
 
