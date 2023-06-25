@@ -15,8 +15,8 @@ export const fetchEvents = async (userLocation, radius, minTimestamp) => {
 		]
 
 		,sort : [
-			{ "time" : {"order" : "desc"}},
-			"_score"
+			// { "time" : {"order" : "desc"}}
+			{ 'creationTime': 'desc'}
 		]
 
 		,query: {

@@ -40,18 +40,18 @@ let isLoadedContents = {
 		,km500: false
 	}
 	,marketResearch: {
-		km15:  false
+		 km15:  false
 		,km50:  false
 		,km150: false
 		,km500: false
 	}
 	,events: {
-		km15:  false
+		 km15:  false
 		,km50:  false
 		,km150: false
 		,km500: false
 	}
-	,shippable: false
+	,shippable:  false
 	,immaterial: false
 }
 

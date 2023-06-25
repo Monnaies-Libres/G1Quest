@@ -21,8 +21,8 @@ export const getDormant = (userLocation, radius) => {
 		},
 
 		sort : [
-			{ "time" : {"order" : "desc"}},
-			"_score"
+			//{ "time" : {"order" : "desc"}}
+			{ 'creationTime': 'desc'}
 		],
 
 		_source: ['geoPoint', '_id', 'time'],
