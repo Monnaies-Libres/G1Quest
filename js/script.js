@@ -259,7 +259,7 @@ function switchScreen (newScreenId) {
 				break;
 			case 'immaterial':
 
-				fetchImmaterial(timestampBackThen_1_year, 10)
+				fetchImmaterial(timestampBackThen_1_year, 30)
 				.then(records => {
 
 					document.querySelector('.screen#'+newScreenId).classList.remove('loading');

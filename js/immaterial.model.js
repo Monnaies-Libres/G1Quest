@@ -124,6 +124,7 @@ export const fetchImmaterial = async function (minTimestamp, n) {
 								,{ match: { 'title': 'chakras' } }
 								,{ match: { 'title': 'tarot' } }
 								,{ match: { 'title': 'numérologie' } }
+								,{ match: { 'title': 'pendule' } }
 								,{ match: { 'description': 'chakras' } }
 								,{ match: { 'title': { query: 'thème astral', operator: 'and' } } }
 
