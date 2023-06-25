@@ -36,43 +36,114 @@ export const fetchImmaterial = async function (minTimestamp, n) {
 						}
 					}
 				]
-				,must_not: {
-					bool: {
-						should: [
-							// Filtres anti-Annunakis :
-							 { match: { 'title': 'soin' } }
-							,{ match: { 'title': 'massage' } }
-							,{ match: { 'title': 'sophro' } }
-							,{ match: { 'title': 'relaxation' } }
-							,{ match: { 'title': 'réflexologie' } }
-							,{ match: { 'title': 'hypnose' } }
-							,{ match: { 'title': 'ésotérique' } }
-							,{ match: { 'title': 'yoga' } }
-							,{ match: { 'title': 'voyance' } }
-							,{ match: { 'title': 'astrologie' } }
-							,{ match: { 'title': 'radiesthesie' } }
-							,{ match: { 'title': 'chakras' } }
-							,{ match: { 'title': 'tarot' } }
-							,{ match: { 'title': 'numérologie' } }
-							,{ match: { 'description': 'chakras' } }
-							,{ match: { 'title': { query: 'thème astral', operator: 'and' } } }
-
-							// Filtres anti-événementiel :
-							,{ match: { 'title': 'janvier' } }
-							,{ match: { 'title': 'février' } }
-							,{ match: { 'title': 'mars' } }
-							,{ match: { 'title': 'avril' } }
-							,{ match: { 'title': 'mai' } }
-							,{ match: { 'title': 'juin' } }
-							,{ match: { 'title': 'juillet' } }
-							,{ match: { 'title': 'août' } }
-							,{ match: { 'title': 'septembre' } }
-							,{ match: { 'title': 'octobre' } }
-							,{ match: { 'title': 'novembre' } }
-							,{ match: { 'title': 'décembre' } }
-						]
+				,should: [
+					{
+						match: {
+							'title': {query: "formation", boost: 2 }
+						}
 					}
-				}
+					,{
+						match: {
+							'title': {query: "jours", boost: -40 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "à distance", operator: "and", boost: 1.50 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "visio", boost: 1.25 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "par téléphone", operator: "and", boost: 1.20 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "téléphonique", operator: "and", boost: 1.20 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "formation", boost: 1.15 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "jours", boost: -20 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "à domicile", boost: -15 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "en cabinet", boost: -25 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "lieu", boost: -50 }
+						}
+					}
+					,{
+						match: {
+							'description': {query: "adresse", boost: -50 }
+						}
+					}
+					,{
+						bool: {
+							must_not: [
+								{ exists : { field : 'geoPoint' } }
+							]
+						}
+					}
+				]
+				,must_not: [
+					{
+						bool: {
+							should: [
+								// Filtres anti-Annunakis :
+								 { match: { 'title': 'soin' } }
+								,{ match: { 'title': 'massage' } }
+								,{ match: { 'title': 'sophro' } }
+								,{ match: { 'title': 'relaxation' } }
+								,{ match: { 'title': 'réflexologie' } }
+								,{ match: { 'title': 'hypnose' } }
+								,{ match: { 'title': 'ésotérique' } }
+								,{ match: { 'title': 'yoga' } }
+								,{ match: { 'title': 'voyance' } }
+								,{ match: { 'title': 'astrologie' } }
+								,{ match: { 'title': 'radiesthesie' } }
+								,{ match: { 'title': 'chakras' } }
+								,{ match: { 'title': 'tarot' } }
+								,{ match: { 'title': 'numérologie' } }
+								,{ match: { 'description': 'chakras' } }
+								,{ match: { 'title': { query: 'thème astral', operator: 'and' } } }
+
+								// Filtres anti-événementiel :
+								,{ match: { 'title': 'janvier' } }
+								,{ match: { 'title': 'février' } }
+								,{ match: { 'title': 'mars' } }
+								,{ match: { 'title': 'avril' } }
+								,{ match: { 'title': 'mai' } }
+								,{ match: { 'title': 'juin' } }
+								,{ match: { 'title': 'juillet' } }
+								,{ match: { 'title': 'août' } }
+								,{ match: { 'title': 'septembre' } }
+								,{ match: { 'title': 'octobre' } }
+								,{ match: { 'title': 'novembre' } }
+								,{ match: { 'title': 'décembre' } }
+							]
+						}
+					}
+				]
 				,must: {
 					nested: {
 						path: 'category'
@@ -98,11 +169,12 @@ export const fetchImmaterial = async function (minTimestamp, n) {
 		}
 		, sort: [
 			// { 'time': 'desc'}
-			{ 'creationTime': 'desc'}
+			'_score'
+			,{ 'creationTime': 'desc'}
 		]
 	}
 
-	console.log(JSON.stringify(query))
+	console.log("immaterial query :\n", JSON.stringify(query))
 
 	var fetchOpts = {
 		method: 'POST',
