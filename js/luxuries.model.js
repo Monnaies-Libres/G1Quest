@@ -80,7 +80,7 @@ export const fetchLuxuries = async function (userLocation, radius, minTimestamp,
 								{
 									range: {
 										"price": {
-											gte: 10000
+											gte: 100
 										}
 									}
 								}

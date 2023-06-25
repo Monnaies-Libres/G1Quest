@@ -1,3 +1,5 @@
+import { categoriesNames } from './categoriesNames.js'
+
 export const displayPageDetails = (data) => {
 	// Get the panel element
 	const panel = document.getElementById('panel-details');
@@ -88,8 +90,16 @@ export const displayRecordDetails = (data) => {
 
 	if (data._source.price != null) {
 
-		priceElt.textContent  = Math.floor(data._source.price / 100).toString() + ' ';
-		priceElt.textContent += (data._source.unit == 'UD') ? 'DUĞ1' : 'Ğ1';
+		if (data._source.unit == 'UD') {
+
+			priceElt.textContent  = (data._source.price).toString() + ' ';
+			priceElt.textContent += 'DUĞ1';
+
+		} else {
+
+			priceElt.textContent  = Math.floor(data._source.price / 100).toString() + ' ';
+			priceElt.textContent += 'Ğ1';
+		}
 	}
 
 	let now = moment();
@@ -102,7 +112,7 @@ export const displayRecordDetails = (data) => {
 	lastEditDate.textContent = recordDate.from(now);
 
 	const category = document.createElement('p');
-	category.textContent = data._source.category.id + ' : ' + data._source.category.name;
+	category.textContent = data._source.category.id + ' : ' + categoriesNames[data._source.category.id].localizedNames['fr-FR'];
 
 	const address = document.createElement('p');
 	address.textContent = data._source.address;
