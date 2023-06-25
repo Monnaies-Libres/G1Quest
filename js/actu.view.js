@@ -1,5 +1,6 @@
 import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage, toRadians } from './helpers.js'
-import { fetchRecordDetails, displayRecordDetails } from './details.view.js'
+import { fetchRecordDetails } from './details.model.js'
+import { displayRecordDetails } from './details.view.js'
 
 export const displayActu = (records, userLocation, radius, minTimestamp) => {
 

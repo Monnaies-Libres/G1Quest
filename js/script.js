@@ -12,6 +12,8 @@ import { displayImmaterial } from './immaterial.view.js'
 import { displayShippable } from './shippable.view.js'
 import { fetchEvents } from './events.model.js'
 import { displayEvents } from './events.view.js'
+import { fetchLuxuries } from './luxuries.model.js'
+import { displayLuxuries } from './luxuries.view.js'
 
 const timestampBackThen_3_months = Math.floor((Date.now() - (     90 * 24 * 60 * 60 * 1000)) / 1000);
 const timestampBackThen_2_years  = Math.floor((Date.now() - (2 * 365 * 24 * 60 * 60 * 1000)) / 1000);
@@ -19,10 +21,10 @@ const timestampBackThen_1_year   = Math.floor((Date.now() - (1 * 365 * 24 * 60 *
 
 let userLocation = null;
 // userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
-// userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
+userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
 let radius = 150;
-let currentScreen = 'actu';
-const screensWithRadiusPagination = ['actu', 'dormant', 'marketResearch', 'events'];
+let currentScreen = 'luxuries';
+const screensWithRadiusPagination = ['actu', 'dormant', 'marketResearch', 'events', 'luxuries'];
 
 let radiusSelect = document.getElementById('radius');
 
@@ -46,6 +48,12 @@ let isLoadedContents = {
 		,km500: false
 	}
 	,events: {
+		 km15:  false
+		,km50:  false
+		,km150: false
+		,km500: false
+	}
+	,luxuries: {
 		 km15:  false
 		,km50:  false
 		,km150: false
@@ -120,14 +128,29 @@ function proceedWithLocation (radius) {
 
 						isLoadedContents[currentScreen]['km'+ radius.toString()] = true;
 					});
-				break;
+					break;
 			case 'events':
 				fetchEvents(userLocation, radius, timestampBackThen_3_months)
-				.then(events => {
+				.then(records => {
 
 					document.querySelector('.screen#'+currentScreen).classList.remove('loading');
 
-					displayEvents(events, userLocation, radius, timestampBackThen_3_months);
+					displayEvents(records, userLocation, radius, timestampBackThen_3_months);
+
+					buttonContainerElt.style.display = 'none';
+
+					isLoadedContents[currentScreen]['km'+ radius.toString()] = true;
+				});
+				break;
+			case 'luxuries':
+				fetchLuxuries(userLocation, radius, timestampBackThen_2_years, 30)
+				.then(records => {
+
+					console.log("luxuries records :\n", records);
+
+					document.querySelector('.screen#'+currentScreen).classList.remove('loading');
+
+					displayLuxuries(records, userLocation, radius, timestampBackThen_2_years);
 
 					buttonContainerElt.style.display = 'none';
 

@@ -1,5 +1,6 @@
 import { categoriesNames } from './categoriesNames.js'
-import { fetchRecordDetails, displayRecordDetails } from './details.view.js'
+import { fetchRecordDetails } from './details.model.js'
+import { displayRecordDetails } from './details.view.js'
 
 export const displayCategories = function (categories, radius) {
 		console.log('categoriesNames :', categoriesNames);

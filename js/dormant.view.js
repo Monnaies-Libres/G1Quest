@@ -1,6 +1,6 @@
 import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage } from './helpers.js'
-import { fetchPageDetails, displayPageDetails } from './details.view.js'
-import { fetchRecordDetails, displayRecordDetails } from './details.view.js'
+import { fetchRecordDetails, fetchPageDetails } from './details.model.js'
+import { displayRecordDetails, displayPageDetails } from './details.view.js'
 
 export const displayDormant = (pages, userLocation, radius) => {
 

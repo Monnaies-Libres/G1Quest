@@ -51,5 +51,6 @@ FontAwesome : Creative Commons BY 4.0
 - `share.png` par [Freepik.com](https://www.freepik.com/)
 - `deliver.png` par [Freepik](https://www.flaticon.com/authors/freepik)
 - `drone.png` par [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect)
-
+- `diamond-out-of-a-bag.512.png` par [ultimatearm](https://www.flaticon.com/authors/ultimatearm)
+- `calendar.512.png`par [freepik](https://www.flaticon.com/authors/freepik)
 

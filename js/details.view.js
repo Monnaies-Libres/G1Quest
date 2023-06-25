@@ -1,20 +1,3 @@
-
-export const fetchPageDetails = async (pageId) => {
-
-	return fetch(`https://data.gchange.fr/page/record/${pageId}`)
-	.then(response => response.json())
-	.then(data => {
-		console.log('page data : ', data);
-		return data;
-	})
-	.catch(error => {
-
-		console.error('Error:', error)
-
-		throw error;
-	});
-};
-
 export const displayPageDetails = (data) => {
 	// Get the panel element
 	const panel = document.getElementById('panel-details');
@@ -70,23 +53,6 @@ export const displayPageDetails = (data) => {
 	panel.appendChild(address);
 };
 
-
-export const fetchRecordDetails = async (recordId) => {
-
-	return fetch(`https://data.gchange.fr/market/record/${recordId}`)
-		.then(response => response.json())
-		.then(data => {
-			console.log('record data : ', data);
-			return data;
-		})
-		.catch(error => {
-
-			console.error('Error:', error)
-
-			throw error;
-		});
-};
-
 export const displayRecordDetails = (data) => {
 
 	// Get the panel element
@@ -118,6 +84,13 @@ export const displayRecordDetails = (data) => {
 	const gchangeLink_outer = document.createElement('p');
 	gchangeLink_outer.appendChild(gchangeLink);
 
+	let priceElt = document.createElement('p');
+
+	if (data._source.price != null) {
+
+		priceElt.textContent  = Math.floor(data._source.price / 100).toString() + ' ';
+		priceElt.textContent += (data._source.unit == 'UD') ? 'DUĞ1' : 'Ğ1';
+	}
 
 	let now = moment();
 	let recordDate = moment(data._source.time*1000);
@@ -137,6 +110,7 @@ export const displayRecordDetails = (data) => {
 	// Append the elements to the panel
 	panel.appendChild(title);
 	panel.appendChild(lastEditDate);
+	panel.appendChild(priceElt);
 	panel.appendChild(category);
 	panel.appendChild(gchangeLink_outer);
 

@@ -1,9 +1,9 @@
 import { fetchRecordDetails } from './details.model.js'
 import { displayRecordDetails } from './details.view.js'
 
-export const displayImmaterial = function (records) {
+export const displayLuxuries = function (records) {
 
-	let offersElt = document.querySelector('#immaterial .list');
+	let offersElt = document.querySelector('#luxuries .list.active');
 
 	for (const record of records) {
 

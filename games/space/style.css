@@ -1,6 +1,6 @@
 :root {
 
-	--menu-nb-items: 6;
+	--menu-nb-items: 7;
 	--menu-img-padding: 1rem;
 	--menu-img-height: calc(100vh/var(--menu-nb-items) - (2 * var(--menu-img-padding)));
 	--menu-img-width: var(--menu-img-height);
@@ -120,7 +120,8 @@ main {
 }
 
 .screen#shippable .list > .ad a,
-.screen#immaterial .list > .ad a {
+.screen#immaterial .list > .ad a,
+.screen#luxuries .list > .ad a {
 
 	padding-top: 1rem;
 	padding-bottom: 1rem;
@@ -134,7 +135,8 @@ main {
 }
 
 .screen#shippable .list > .ad a:before,
-.screen#immaterial .list > .ad a:before {
+.screen#immaterial .list > .ad a:before,
+.screen#luxuries .list > .ad a:before {
 
 	width: 2rem;
 	height: 3rem;
@@ -371,7 +373,8 @@ main {
 .screen#events     ol,
 .screen#dormant    ol,
 .screen#immaterial ol,
-.screen#shippable  ol {
+.screen#shippable  ol ,
+.screen#luxuries   ol {
 
     list-style: none;
     padding: 0;
@@ -479,6 +482,28 @@ main {
 	background-color: hsl(240, 50%, 58%);
 }
 
+
+
+.screen#luxuries  .list > .record > a {
+
+	color: black;
+}
+
+.screen#luxuries  .list > .record:nth-child(3n + 1) {
+
+	background-color: hsl(40, 60%, 50%);
+}
+
+.screen#luxuries  .list > .record:nth-child(3n + 2) {
+
+	background-color: hsl(40, 60%, 55%);
+}
+
+.screen#luxuries  .list > .record:nth-child(3n + 3) {
+
+	background-color: hsl(40, 60%, 58%);
+}
+
 #radius {
     color: #0f0;
     background-color: #000;
@@ -488,7 +513,8 @@ main {
 body[data-active-screen="actu"]           #radius,
 body[data-active-screen="dormant"]        #radius,
 body[data-active-screen="events"]         #radius,
-body[data-active-screen="marketResearch"] #radius {
+body[data-active-screen="marketResearch"] #radius,
+body[data-active-screen="luxuries"]       #radius {
 
 	display: block;
 }
@@ -702,7 +728,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat12 a:before,
 .screen#dormant .list .ad.cat12 a:before,
 .screen#shippable .list .ad.cat12 a:before,
-.screen#immaterial .list .ad.cat12 a:before {
+.screen#immaterial .list .ad.cat12 a:before,
+.screen#luxuries .list .ad.cat12 a:before {
 	/* Location & Gîtes */
 
 	content: url("img/FontAwesome/svg/bed-solid.svg");
@@ -711,7 +738,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat15 a:before,
 .screen#dormant .list .ad.cat15 a:before,
 .screen#shippable .list .ad.cat15 a:before,
-.screen#immaterial .list .ad.cat15 a:before {
+.screen#immaterial .list .ad.cat15 a:before,
+.screen#luxuries .list .ad.cat15 a:before {
 	/* Informatique */
 
 	content: url("img/FontAwesome/svg/computer-solid.svg");
@@ -720,7 +748,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat17 a:before,
 .screen#dormant .list .ad.cat17 a:before,
 .screen#shippable .list .ad.cat17 a:before,
-.screen#immaterial .list .ad.cat17 a:before {
+.screen#immaterial .list .ad.cat17 a:before,
+.screen#luxuries .list .ad.cat17 a:before {
 	/* Téléphonie */
 
 	content: url("img/FontAwesome/svg/mobile-solid.svg");
@@ -729,7 +758,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat19 a:before,
 .screen#dormant .list .ad.cat19 a:before,
 .screen#shippable .list .ad.cat19 a:before,
-.screen#immaterial .list .ad.cat19 a:before {
+.screen#immaterial .list .ad.cat19 a:before,
+.screen#luxuries .list .ad.cat19 a:before {
 	/* Ameublement */
 
 	content: url("img/FontAwesome/svg/couch-solid.svg");
@@ -738,7 +768,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat21 a:before,
 .screen#dormant .list .ad.cat21 a:before,
 .screen#shippable .list .ad.cat21 a:before,
-.screen#immaterial .list .ad.cat21 a:before {
+.screen#immaterial .list .ad.cat21 a:before,
+.screen#luxuries .list .ad.cat21 a:before {
 	/* Bricolage */
 
 	content: url("img/FontAwesome/svg/hammer-solid.svg");
@@ -747,7 +778,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat22 a:before,
 .screen#dormant .list .ad.cat22 a:before,
 .screen#shippable .list .ad.cat22 a:before,
-.screen#immaterial .list .ad.cat22 a:before {
+.screen#immaterial .list .ad.cat22 a:before,
+.screen#luxuries .list .ad.cat22 a:before {
 	/* Vêtements */
 
 	content: url("img/FontAwesome/svg/shirt-solid.svg");
@@ -756,7 +788,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat27 a:before,
 .screen#dormant .list .ad.cat27 a:before,
 .screen#shippable .list .ad.cat27 a:before,
-.screen#immaterial .list .ad.cat27 a:before {
+.screen#immaterial .list .ad.cat27 a:before,
+.screen#luxuries .list .ad.cat27 a:before {
 	/* Livres */
 
 	content: url("img/FontAwesome/svg/book-solid.svg");
@@ -765,7 +798,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat28 a:before,
 .screen#dormant .list .ad.cat28 a:before,
 .screen#shippable .list .ad.cat28 a:before,
-.screen#immaterial .list .ad.cat28 a:before {
+.screen#immaterial .list .ad.cat28 a:before,
+.screen#luxuries .list .ad.cat28 a:before {
 	/* Animaux */
 
 	content: url("img/FontAwesome/svg/dog-solid.svg");
@@ -774,7 +808,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat29 a:before,
 .screen#dormant .list .ad.cat29 a:before,
 .screen#shippable .list .ad.cat29 a:before,
-.screen#immaterial .list .ad.cat29 a:before {
+.screen#immaterial .list .ad.cat29 a:before,
+.screen#luxuries .list .ad.cat29 a:before {
 	/* Sports & Hobbies */
 
 	content: url("img/FontAwesome/svg/baseball-bat-ball-solid.svg");
@@ -783,7 +818,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat30 a:before,
 .screen#dormant .list .ad.cat30 a:before,
 .screen#shippable .list .ad.cat30 a:before,
-.screen#immaterial .list .ad.cat30 a:before {
+.screen#immaterial .list .ad.cat30 a:before,
+.screen#luxuries .list .ad.cat30 a:before {
 	/* Instruments de musique */
 
 	content: url("img/FontAwesome/svg/guitar-solid.svg");
@@ -792,7 +828,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat34 a:before,
 .screen#dormant .list .ad.cat34 a:before,
 .screen#shippable .list .ad.cat34 a:before,
-.screen#immaterial .list .ad.cat34 a:before {
+.screen#immaterial .list .ad.cat34 a:before,
+.screen#luxuries .list .ad.cat34 a:before {
 	/* Prestations de services */
 
 	content: url("img/FontAwesome/svg/handshake-angle-solid.svg");
@@ -801,7 +838,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat38 a:before,
 .screen#dormant .list .ad.cat38 a:before,
 .screen#shippable .list .ad.cat38 a:before,
-.screen#immaterial .list .ad.cat38 a:before {
+.screen#immaterial .list .ad.cat38 a:before,
+.screen#luxuries .list .ad.cat38 a:before {
 	/* Autres */
 
 	content: url("img/FontAwesome/svg/question-solid.svg");
@@ -810,7 +848,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat39 a:before,
 .screen#dormant .list .ad.cat39 a:before,
 .screen#shippable .list .ad.cat39 a:before,
-.screen#immaterial .list .ad.cat39 a:before {
+.screen#immaterial .list .ad.cat39 a:before,
+.screen#luxuries .list .ad.cat39 a:before {
 	/* Décoration */
 
 	content: url("img/FontAwesome/svg/holly-berry-solid.svg");
@@ -819,7 +858,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat41 a:before,
 .screen#dormant .list .ad.cat41 a:before,
 .screen#shippable .list .ad.cat41 a:before,
-.screen#immaterial .list .ad.cat41 a:before {
+.screen#immaterial .list .ad.cat41 a:before,
+.screen#luxuries .list .ad.cat41 a:before {
 	/* Jeux */
 
 	content: url("img/FontAwesome/svg/gamepad-solid.svg");
@@ -828,7 +868,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat45 a:before,
 .screen#dormant .list .ad.cat45 a:before,
 .screen#shippable .list .ad.cat45 a:before,
-.screen#immaterial .list .ad.cat45 a:before {
+.screen#immaterial .list .ad.cat45 a:before,
+.screen#luxuries .list .ad.cat45 a:before {
 	/* Arts de la table */
 
 	content: url("img/FontAwesome/svg/wine-glass-empty-solid.svg");
@@ -837,7 +878,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat46 a:before,
 .screen#dormant .list .ad.cat46 a:before,
 .screen#shippable .list .ad.cat46 a:before,
-.screen#immaterial .list .ad.cat46 a:before {
+.screen#immaterial .list .ad.cat46 a:before,
+.screen#luxuries .list .ad.cat46 a:before {
 	/* Linge de maison */
 
 	content: url("img/FontAwesome/svg/mattress-pillow-solid.svg");
@@ -846,7 +888,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat47 a:before,
 .screen#dormant .list .ad.cat47 a:before,
 .screen#shippable .list .ad.cat47 a:before,
-.screen#immaterial .list .ad.cat47 a:before {
+.screen#immaterial .list .ad.cat47 a:before,
+.screen#luxuries .list .ad.cat47 a:before {
 	/* Accessoires & Bagagerie */
 
 	content: url("img/FontAwesome/svg/suitcase-rolling-solid.svg");
@@ -854,7 +897,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat48 a:before,
 .screen#dormant .list .ad.cat48 a:before,
 .screen#shippable .list .ad.cat48 a:before,
-.screen#immaterial .list .ad.cat48 a:before {
+.screen#immaterial .list .ad.cat48 a:before,
+.screen#luxuries .list .ad.cat48 a:before {
 	/* Divers (sous-catégorie de "Alimentation", en théorie) */
 
 	content: url("img/FontAwesome/svg/question-solid.svg");
@@ -863,7 +907,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat52 a:before,
 .screen#dormant .list .ad.cat52 a:before,
 .screen#shippable .list .ad.cat52 a:before,
-.screen#immaterial .list .ad.cat52 a:before {
+.screen#immaterial .list .ad.cat52 a:before,
+.screen#luxuries .list .ad.cat52 a:before {
 	/* Jardinage */
 
 	content: url("img/FontAwesome/svg/seedling-solid.svg");
@@ -872,7 +917,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat53 a:before,
 .screen#dormant .list .ad.cat53 a:before,
 .screen#shippable .list .ad.cat53 a:before,
-.screen#immaterial .list .ad.cat53 a:before {
+.screen#immaterial .list .ad.cat53 a:before,
+.screen#luxuries .list .ad.cat53 a:before {
 	/* Chaussures */
 
 	content: url("img/FontAwesome/svg/shoe-prints-solid.svg");
@@ -881,7 +927,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat58 a:before,
 .screen#dormant .list .ad.cat58 a:before,
 .screen#shippable .list .ad.cat58 a:before,
-.screen#immaterial .list .ad.cat58 a:before {
+.screen#immaterial .list .ad.cat58 a:before,
+.screen#luxuries .list .ad.cat58 a:before {
 	/* Transport - Manutention */
 
 	content: url("img/FontAwesome/svg/truck-solid.svg");
@@ -890,7 +937,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat63 a:before,
 .screen#dormant .list .ad.cat63 a:before,
 .screen#shippable .list .ad.cat63 a:before,
-.screen#immaterial .list .ad.cat63 a:before {
+.screen#immaterial .list .ad.cat63 a:before,
+.screen#luxuries .list .ad.cat63 a:before {
 	/* Commerces et Marchés */
 
 	content: url("img/FontAwesome/svg/store-solid.svg");
@@ -899,7 +947,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat74 a:before,
 .screen#dormant .list .ad.cat74 a:before,
 .screen#shippable .list .ad.cat74 a:before,
-.screen#immaterial .list .ad.cat74 a:before {
+.screen#immaterial .list .ad.cat74 a:before,
+.screen#luxuries .list .ad.cat74 a:before {
 	/* Formations */
 
 	content: url("img/FontAwesome/svg/graduation-cap-solid.svg");
@@ -908,7 +957,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat81 a:before,
 .screen#dormant .list .ad.cat81 a:before,
 .screen#shippable .list .ad.cat81 a:before,
-.screen#immaterial .list .ad.cat81 a:before {
+.screen#immaterial .list .ad.cat81 a:before,
+.screen#luxuries .list .ad.cat81 a:before {
 	/* Soins */
 
 	content: url("img/FontAwesome/svg/life-ring-solid.svg");
@@ -917,7 +967,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat91 a:before,
 .screen#dormant .list .ad.cat91 a:before,
 .screen#shippable .list .ad.cat91 a:before,
-.screen#immaterial .list .ad.cat91 a:before {
+.screen#immaterial .list .ad.cat91 a:before,
+.screen#luxuries .list .ad.cat91 a:before {
 	/* Commerces & Marchés */
 
 	content: url("img/FontAwesome/svg/store-solid.svg");
@@ -926,7 +977,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat92 a:before,
 .screen#dormant .list .ad.cat92 a:before,
 .screen#shippable .list .ad.cat92 a:before,
-.screen#immaterial .list .ad.cat92 a:before {
+.screen#immaterial .list .ad.cat92 a:before,
+.screen#luxuries .list .ad.cat92 a:before {
 	/* Fruits et légumes */
 
 	content: url("img/FontAwesome/svg/carrot-solid.svg");
@@ -935,7 +987,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat93 a:before,
 .screen#dormant .list .ad.cat93 a:before,
 .screen#shippable .list .ad.cat93 a:before,
-.screen#immaterial .list .ad.cat93 a:before {
+.screen#immaterial .list .ad.cat93 a:before,
+.screen#luxuries .list .ad.cat93 a:before {
 	/* Pains & Pâtisserie */
 
 	content: url("img/FontAwesome/svg/egg-solid.svg");
@@ -944,7 +997,8 @@ body[data-active-screen="marketResearch"] #radius {
 .screen#actu .list .ad.cat94 a:before,
 .screen#dormant .list .ad.cat94 a:before,
 .screen#shippable .list .ad.cat94 a:before,
-.screen#immaterial .list .ad.cat94 a:before {
+.screen#immaterial .list .ad.cat94 a:before,
+.screen#luxuries .list .ad.cat94 a:before {
 	/* Frais */
 
 	content: url("img/FontAwesome/svg/egg-solid.svg");
