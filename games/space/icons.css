@@ -2,440 +2,470 @@
 /* =========================== Icons =========================== */
 
 
-.screen#actu .list .ad.cat3 a:before,
-.screen#dormant .list .ad.cat3 a:before,
-.screen#shippable .list .ad.cat3 a:before,
+.screen#actu       .list .ad.cat3 a:before ,
+.screen#dormant    .list .ad.cat3 a:before,
+.screen#shippable  .list .ad.cat3 a:before,
 .screen#immaterial .list .ad.cat3 a:before,
-.screen#luxuries .list .ad.cat3 a:before {
+.screen#luxuries   .list .ad.cat3 a:before {
 	/* Moto */
 
 	content: url("img/FontAwesome/svg/motorcycle-solid.svg");
 }
 
-.screen#actu .list .ad.cat6 a:before,
-.screen#dormant .list .ad.cat6 a:before,
-.screen#shippable .list .ad.cat6 a:before,
+.screen#actu       .list .ad.cat6 a:before ,
+.screen#dormant    .list .ad.cat6 a:before ,
+.screen#shippable  .list .ad.cat6 a:before ,
 .screen#immaterial .list .ad.cat6 a:before,
-.screen#luxuries .list .ad.cat6 a:before {
+.screen#luxuries   .list .ad.cat6 a:before {
 	/* Équipement auto */
 
 	content: url("img/FontAwesome/svg/car-side-solid.svg");
 }
 
-.screen#actu .list .ad.cat12 a:before,
-.screen#dormant .list .ad.cat12 a:before,
-.screen#shippable .list .ad.cat12 a:before,
+.screen#actu       .list .ad.cat10 a:before ,
+.screen#dormant    .list .ad.cat10 a:before ,
+.screen#shippable  .list .ad.cat10 a:before ,
+.screen#immaterial .list .ad.cat10 a:before,
+.screen#luxuries   .list .ad.cat10 a:before {
+	/* Locations */
+
+	content: url("img/FontAwesome/svg/retweet-solid.svg");
+}
+
+.screen#actu       .list .ad.cat11 a:before ,
+.screen#dormant    .list .ad.cat11 a:before ,
+.screen#shippable  .list .ad.cat11 a:before ,
+.screen#immaterial .list .ad.cat11 a:before,
+.screen#luxuries   .list .ad.cat11 a:before {
+	/* Colocations */
+
+	content: url("img/FontAwesome/svg/house-flag-solid.svg");
+}
+
+.screen#actu       .list .ad.cat12 a:before ,
+.screen#dormant    .list .ad.cat12 a:before ,
+.screen#shippable  .list .ad.cat12 a:before ,
 .screen#immaterial .list .ad.cat12 a:before,
-.screen#luxuries .list .ad.cat12 a:before {
+.screen#luxuries   .list .ad.cat12 a:before {
 	/* Location & Gîtes */
 
 	content: url("img/FontAwesome/svg/bed-solid.svg");
 }
 
-.screen#actu .list .ad.cat15 a:before,
-.screen#dormant .list .ad.cat15 a:before,
-.screen#shippable .list .ad.cat15 a:before,
+.screen#actu       .list .ad.cat13 a:before ,
+.screen#dormant    .list .ad.cat13 a:before ,
+.screen#shippable  .list .ad.cat13 a:before ,
+.screen#immaterial .list .ad.cat13 a:before,
+.screen#luxuries   .list .ad.cat13 a:before {
+	/* Bureaux & Commerces */
+
+	content: url("img/FontAwesome/svg/building-solid.svg");
+}
+
+.screen#actu       .list .ad.cat15 a:before ,
+.screen#dormant    .list .ad.cat15 a:before ,
+.screen#shippable  .list .ad.cat15 a:before ,
 .screen#immaterial .list .ad.cat15 a:before,
-.screen#luxuries .list .ad.cat15 a:before {
+.screen#luxuries   .list .ad.cat15 a:before {
 	/* Informatique */
 
 	content: url("img/FontAwesome/svg/computer-solid.svg");
 }
 
-.screen#actu .list .ad.cat16 a:before,
-.screen#dormant .list .ad.cat16 a:before,
-.screen#shippable .list .ad.cat16 a:before,
+.screen#actu       .list .ad.cat16 a:before ,
+.screen#dormant    .list .ad.cat16 a:before ,
+.screen#shippable  .list .ad.cat16 a:before ,
 .screen#immaterial .list .ad.cat16 a:before,
-.screen#luxuries .list .ad.cat16 a:before {
+.screen#luxuries   .list .ad.cat16 a:before {
 	/* Image & Son */
 
 	content: url("img/FontAwesome/svg/compact-disc-solid.svg");
 }
 
-.screen#actu .list .ad.cat17 a:before,
-.screen#dormant .list .ad.cat17 a:before,
-.screen#shippable .list .ad.cat17 a:before,
+.screen#actu       .list .ad.cat17 a:before ,
+.screen#dormant    .list .ad.cat17 a:before ,
+.screen#shippable  .list .ad.cat17 a:before ,
 .screen#immaterial .list .ad.cat17 a:before,
-.screen#luxuries .list .ad.cat17 a:before {
+.screen#luxuries   .list .ad.cat17 a:before {
 	/* Téléphonie */
 
 	content: url("img/FontAwesome/svg/mobile-solid.svg");
 }
 
-.screen#actu .list .ad.cat19 a:before,
-.screen#dormant .list .ad.cat19 a:before,
-.screen#shippable .list .ad.cat19 a:before,
+.screen#actu       .list .ad.cat19 a:before ,
+.screen#dormant    .list .ad.cat19 a:before ,
+.screen#shippable  .list .ad.cat19 a:before ,
 .screen#immaterial .list .ad.cat19 a:before,
-.screen#luxuries .list .ad.cat19 a:before {
+.screen#luxuries   .list .ad.cat19 a:before {
 	/* Ameublement */
 
 	content: url("img/FontAwesome/svg/couch-solid.svg");
 }
 
-.screen#actu .list .ad.cat20 a:before,
-.screen#dormant .list .ad.cat20 a:before,
-.screen#shippable .list .ad.cat20 a:before,
+.screen#actu       .list .ad.cat20 a:before ,
+.screen#dormant    .list .ad.cat20 a:before ,
+.screen#shippable  .list .ad.cat20 a:before ,
 .screen#immaterial .list .ad.cat20 a:before,
-.screen#luxuries .list .ad.cat20 a:before {
+.screen#luxuries   .list .ad.cat20 a:before {
 	/* Électroménager */
 
 	content: url("img/FontAwesome/svg/blender-solid.svg");
 }
 
-.screen#actu .list .ad.cat21 a:before,
-.screen#dormant .list .ad.cat21 a:before,
-.screen#shippable .list .ad.cat21 a:before,
+.screen#actu       .list .ad.cat21 a:before ,
+.screen#dormant    .list .ad.cat21 a:before ,
+.screen#shippable  .list .ad.cat21 a:before ,
 .screen#immaterial .list .ad.cat21 a:before,
-.screen#luxuries .list .ad.cat21 a:before {
+.screen#luxuries   .list .ad.cat21 a:before {
 	/* Bricolage */
 
 	content: url("img/FontAwesome/svg/hammer-solid.svg");
 }
 
-.screen#actu .list .ad.cat22 a:before,
-.screen#dormant .list .ad.cat22 a:before,
-.screen#shippable .list .ad.cat22 a:before,
+.screen#actu       .list .ad.cat22 a:before ,
+.screen#dormant    .list .ad.cat22 a:before ,
+.screen#shippable  .list .ad.cat22 a:before ,
 .screen#immaterial .list .ad.cat22 a:before,
-.screen#luxuries .list .ad.cat22 a:before {
+.screen#luxuries   .list .ad.cat22 a:before {
 	/* Vêtements */
 
 	content: url("img/FontAwesome/svg/shirt-solid.svg");
 }
 
-.screen#actu .list .ad.cat23 a:before,
-.screen#dormant .list .ad.cat23 a:before,
-.screen#shippable .list .ad.cat23 a:before,
+.screen#actu       .list .ad.cat23 a:before ,
+.screen#dormant    .list .ad.cat23 a:before ,
+.screen#shippable  .list .ad.cat23 a:before ,
 .screen#immaterial .list .ad.cat23 a:before,
-.screen#luxuries .list .ad.cat23 a:before {
+.screen#luxuries   .list .ad.cat23 a:before {
 	/* Vêtements */
 
 	content: url("img/FontAwesome/svg/baby-carriage-solid.svg");
 }
 
-.screen#actu .list .ad.cat27 a:before,
-.screen#dormant .list .ad.cat27 a:before,
-.screen#shippable .list .ad.cat27 a:before,
+.screen#actu       .list .ad.cat27 a:before ,
+.screen#dormant    .list .ad.cat27 a:before ,
+.screen#shippable  .list .ad.cat27 a:before ,
 .screen#immaterial .list .ad.cat27 a:before,
-.screen#luxuries .list .ad.cat27 a:before {
+.screen#luxuries   .list .ad.cat27 a:before {
 	/* Livres */
 
 	content: url("img/FontAwesome/svg/book-solid.svg");
 }
 
-.screen#actu .list .ad.cat28 a:before,
-.screen#dormant .list .ad.cat28 a:before,
-.screen#shippable .list .ad.cat28 a:before,
+.screen#actu       .list .ad.cat28 a:before ,
+.screen#dormant    .list .ad.cat28 a:before ,
+.screen#shippable  .list .ad.cat28 a:before ,
 .screen#immaterial .list .ad.cat28 a:before,
-.screen#luxuries .list .ad.cat28 a:before {
+.screen#luxuries   .list .ad.cat28 a:before {
 	/* Animaux */
 
 	content: url("img/FontAwesome/svg/dog-solid.svg");
 }
 
-.screen#actu .list .ad.cat29 a:before,
-.screen#dormant .list .ad.cat29 a:before,
-.screen#shippable .list .ad.cat29 a:before,
+.screen#actu       .list .ad.cat29 a:before ,
+.screen#dormant    .list .ad.cat29 a:before ,
+.screen#shippable  .list .ad.cat29 a:before ,
 .screen#immaterial .list .ad.cat29 a:before,
-.screen#luxuries .list .ad.cat29 a:before {
+.screen#luxuries   .list .ad.cat29 a:before {
 	/* Sports & Hobbies */
 
 	content: url("img/FontAwesome/svg/baseball-bat-ball-solid.svg");
 }
 
-.screen#actu .list .ad.cat30 a:before,
-.screen#dormant .list .ad.cat30 a:before,
-.screen#shippable .list .ad.cat30 a:before,
+.screen#actu       .list .ad.cat30 a:before ,
+.screen#dormant    .list .ad.cat30 a:before ,
+.screen#shippable  .list .ad.cat30 a:before ,
 .screen#immaterial .list .ad.cat30 a:before,
-.screen#luxuries .list .ad.cat30 a:before {
+.screen#luxuries   .list .ad.cat30 a:before {
 	/* Instruments de musique */
 
 	content: url("img/FontAwesome/svg/guitar-solid.svg");
 }
 
-.screen#actu .list .ad.cat34 a:before,
-.screen#dormant .list .ad.cat34 a:before,
-.screen#shippable .list .ad.cat34 a:before,
+.screen#actu       .list .ad.cat34 a:before ,
+.screen#dormant    .list .ad.cat34 a:before ,
+.screen#shippable  .list .ad.cat34 a:before ,
 .screen#immaterial .list .ad.cat34 a:before,
-.screen#luxuries .list .ad.cat34 a:before {
+.screen#luxuries   .list .ad.cat34 a:before {
 	/* Prestations de services */
 
 	content: url("img/FontAwesome/svg/handshake-angle-solid.svg");
 }
 
-.screen#actu .list .ad.cat36 a:before,
-.screen#dormant .list .ad.cat36 a:before,
-.screen#shippable .list .ad.cat36 a:before,
+.screen#actu       .list .ad.cat36 a:before ,
+.screen#dormant    .list .ad.cat36 a:before ,
+.screen#shippable  .list .ad.cat36 a:before ,
 .screen#immaterial .list .ad.cat36 a:before,
-.screen#luxuries .list .ad.cat36 a:before {
+.screen#luxuries   .list .ad.cat36 a:before {
 	/* Cours particuliers */
 
 	content: url("img/FontAwesome/svg/person-chalkboard-solid.svg");
 }
 
-.screen#actu .list .ad.cat38 a:before,
-.screen#dormant .list .ad.cat38 a:before,
-.screen#shippable .list .ad.cat38 a:before,
+.screen#actu       .list .ad.cat38 a:before ,
+.screen#dormant    .list .ad.cat38 a:before ,
+.screen#shippable  .list .ad.cat38 a:before ,
 .screen#immaterial .list .ad.cat38 a:before,
-.screen#luxuries .list .ad.cat38 a:before {
+.screen#luxuries   .list .ad.cat38 a:before {
 	/* Autres */
 
 	content: url("img/FontAwesome/svg/question-solid.svg");
 }
 
-.screen#actu .list .ad.cat39 a:before,
-.screen#dormant .list .ad.cat39 a:before,
-.screen#shippable .list .ad.cat39 a:before,
+.screen#actu       .list .ad.cat39 a:before ,
+.screen#dormant    .list .ad.cat39 a:before ,
+.screen#shippable  .list .ad.cat39 a:before ,
 .screen#immaterial .list .ad.cat39 a:before,
-.screen#luxuries .list .ad.cat39 a:before {
+.screen#luxuries   .list .ad.cat39 a:before {
 	/* Décoration */
 
 	content: url("img/FontAwesome/svg/holly-berry-solid.svg");
 }
 
-.screen#actu .list .ad.cat40 a:before,
-.screen#dormant .list .ad.cat40 a:before,
-.screen#shippable .list .ad.cat40 a:before,
+.screen#actu       .list .ad.cat40 a:before ,
+.screen#dormant    .list .ad.cat40 a:before ,
+.screen#shippable  .list .ad.cat40 a:before ,
 .screen#immaterial .list .ad.cat40 a:before,
-.screen#luxuries .list .ad.cat40 a:before {
+.screen#luxuries   .list .ad.cat40 a:before {
 	/* Collection */
 
 	content: url("img/FontAwesome/svg/gem-regular.svg");
 }
 
-.screen#actu .list .ad.cat41 a:before,
-.screen#dormant .list .ad.cat41 a:before,
-.screen#shippable .list .ad.cat41 a:before,
+.screen#actu       .list .ad.cat41 a:before ,
+.screen#dormant    .list .ad.cat41 a:before ,
+.screen#shippable  .list .ad.cat41 a:before ,
 .screen#immaterial .list .ad.cat41 a:before,
-.screen#luxuries .list .ad.cat41 a:before {
+.screen#luxuries   .list .ad.cat41 a:before {
 	/* Jeux */
 
 	content: url("img/FontAwesome/svg/chess-knight-solid.svg");
 }
 
-.screen#actu .list .ad.cat42 a:before,
-.screen#dormant .list .ad.cat42 a:before,
-.screen#shippable .list .ad.cat42 a:before,
+.screen#actu       .list .ad.cat42 a:before ,
+.screen#dormant    .list .ad.cat42 a:before ,
+.screen#shippable  .list .ad.cat42 a:before ,
 .screen#immaterial .list .ad.cat42 a:before,
-.screen#luxuries .list .ad.cat42 a:before {
+.screen#luxuries   .list .ad.cat42 a:before {
 	/* Montres et Bijoux */
 
 	content: url("img/FontAwesome/svg/ring-solid.svg");
 }
 
-.screen#actu .list .ad.cat45 a:before,
-.screen#dormant .list .ad.cat45 a:before,
-.screen#shippable .list .ad.cat45 a:before,
+.screen#actu       .list .ad.cat45 a:before ,
+.screen#dormant    .list .ad.cat45 a:before ,
+.screen#shippable  .list .ad.cat45 a:before ,
 .screen#immaterial .list .ad.cat45 a:before,
-.screen#luxuries .list .ad.cat45 a:before {
+.screen#luxuries   .list .ad.cat45 a:before {
 	/* Arts de la table */
 
 	content: url("img/FontAwesome/svg/wine-glass-empty-solid.svg");
 }
 
-.screen#actu .list .ad.cat46 a:before,
-.screen#dormant .list .ad.cat46 a:before,
-.screen#shippable .list .ad.cat46 a:before,
+.screen#actu       .list .ad.cat46 a:before ,
+.screen#dormant    .list .ad.cat46 a:before ,
+.screen#shippable  .list .ad.cat46 a:before ,
 .screen#immaterial .list .ad.cat46 a:before,
-.screen#luxuries .list .ad.cat46 a:before {
+.screen#luxuries   .list .ad.cat46 a:before {
 	/* Linge de maison */
 
 	content: url("img/FontAwesome/svg/mattress-pillow-solid.svg");
 }
 
-.screen#actu .list .ad.cat47 a:before,
-.screen#dormant .list .ad.cat47 a:before,
-.screen#shippable .list .ad.cat47 a:before,
+.screen#actu       .list .ad.cat47 a:before ,
+.screen#dormant    .list .ad.cat47 a:before ,
+.screen#shippable  .list .ad.cat47 a:before ,
 .screen#immaterial .list .ad.cat47 a:before,
-.screen#luxuries .list .ad.cat47 a:before {
+.screen#luxuries   .list .ad.cat47 a:before {
 	/* Accessoires & Bagagerie */
 
 	content: url("img/FontAwesome/svg/suitcase-rolling-solid.svg");
 }
-.screen#actu .list .ad.cat48 a:before,
-.screen#dormant .list .ad.cat48 a:before,
-.screen#shippable .list .ad.cat48 a:before,
+.screen#actu       .list .ad.cat48 a:before ,
+.screen#dormant    .list .ad.cat48 a:before ,
+.screen#shippable  .list .ad.cat48 a:before ,
 .screen#immaterial .list .ad.cat48 a:before,
-.screen#luxuries .list .ad.cat48 a:before {
+.screen#luxuries   .list .ad.cat48 a:before {
 	/* Divers (sous-catégorie de "Alimentation", en théorie) */
 
 	content: url("img/FontAwesome/svg/question-solid.svg");
 }
 
-.screen#actu .list .ad.cat49 a:before,
-.screen#dormant .list .ad.cat49 a:before,
-.screen#shippable .list .ad.cat49 a:before,
+.screen#actu       .list .ad.cat49 a:before ,
+.screen#dormant    .list .ad.cat49 a:before ,
+.screen#shippable  .list .ad.cat49 a:before ,
 .screen#immaterial .list .ad.cat49 a:before,
-.screen#luxuries .list .ad.cat49 a:before {
+.screen#luxuries   .list .ad.cat49 a:before {
 	/* Évènements */
 
 	content: url("img/FontAwesome/svg/calendar-check-regular.svg");
 }
 
-.screen#actu .list .ad.cat50 a:before,
-.screen#dormant .list .ad.cat50 a:before,
-.screen#shippable .list .ad.cat50 a:before,
+.screen#actu       .list .ad.cat50 a:before ,
+.screen#dormant    .list .ad.cat50 a:before ,
+.screen#shippable  .list .ad.cat50 a:before ,
 .screen#immaterial .list .ad.cat50 a:before,
-.screen#luxuries .list .ad.cat50 a:before {
+.screen#luxuries   .list .ad.cat50 a:before {
 	/* Equipement Caravaning */
 
 	content: url("img/FontAwesome/svg/caravan-solid.svg");
 }
 
-.screen#actu .list .ad.cat52 a:before,
-.screen#dormant .list .ad.cat52 a:before,
-.screen#shippable .list .ad.cat52 a:before,
+.screen#actu       .list .ad.cat52 a:before ,
+.screen#dormant    .list .ad.cat52 a:before ,
+.screen#shippable  .list .ad.cat52 a:before ,
 .screen#immaterial .list .ad.cat52 a:before,
-.screen#luxuries .list .ad.cat52 a:before {
+.screen#luxuries   .list .ad.cat52 a:before {
 	/* Jardinage */
 
 	content: url("img/FontAwesome/svg/seedling-solid.svg");
 }
 
-.screen#actu .list .ad.cat53 a:before,
-.screen#dormant .list .ad.cat53 a:before,
-.screen#shippable .list .ad.cat53 a:before,
+.screen#actu       .list .ad.cat53 a:before ,
+.screen#dormant    .list .ad.cat53 a:before ,
+.screen#shippable  .list .ad.cat53 a:before ,
 .screen#immaterial .list .ad.cat53 a:before,
-.screen#luxuries .list .ad.cat53 a:before {
+.screen#luxuries   .list .ad.cat53 a:before {
 	/* Chaussures */
 
 	content: url("img/FontAwesome/svg/shoe-prints-solid.svg");
 }
 
-.screen#actu .list .ad.cat54 a:before,
-.screen#dormant .list .ad.cat54 a:before,
-.screen#shippable .list .ad.cat54 a:before,
+.screen#actu       .list .ad.cat54 a:before ,
+.screen#dormant    .list .ad.cat54 a:before ,
+.screen#shippable  .list .ad.cat54 a:before ,
 .screen#immaterial .list .ad.cat54 a:before,
-.screen#luxuries .list .ad.cat54 a:before {
+.screen#luxuries   .list .ad.cat54 a:before {
 	/* Vêtements bébé */
 
 	content: url("img/FontAwesome/svg/baby-solid.svg");
 }
 
-.screen#actu .list .ad.cat55 a:before,
-.screen#dormant .list .ad.cat55 a:before,
-.screen#shippable .list .ad.cat55 a:before,
+.screen#actu       .list .ad.cat55 a:before ,
+.screen#dormant    .list .ad.cat55 a:before ,
+.screen#shippable  .list .ad.cat55 a:before ,
 .screen#immaterial .list .ad.cat55 a:before,
-.screen#luxuries .list .ad.cat55 a:before {
+.screen#luxuries   .list .ad.cat55 a:before {
 	/* Vélos */
 
 	content: url("img/FontAwesome/svg/bicycle-solid.svg");
 }
 
-.screen#actu .list .ad.cat58 a:before,
-.screen#dormant .list .ad.cat58 a:before,
-.screen#shippable .list .ad.cat58 a:before,
+.screen#actu       .list .ad.cat58 a:before ,
+.screen#dormant    .list .ad.cat58 a:before ,
+.screen#shippable  .list .ad.cat58 a:before ,
 .screen#immaterial .list .ad.cat58 a:before,
-.screen#luxuries .list .ad.cat58 a:before {
+.screen#luxuries   .list .ad.cat58 a:before {
 	/* Transport - Manutention */
 
 	content: url("img/FontAwesome/svg/truck-solid.svg");
 }
 
 .screen#actu .list .ad.cat6à a:before,
-.screen#dormant .list .ad.cat60 a:before,
-.screen#shippable .list .ad.cat60 a:before,
+.screen#dormant    .list .ad.cat60 a:before ,
+.screen#shippable  .list .ad.cat60 a:before ,
 .screen#immaterial .list .ad.cat60 a:before,
-.screen#luxuries .list .ad.cat60 a:before {
+.screen#luxuries   .list .ad.cat60 a:before {
 	/* Outillage - Matériaux 2nd-oeuvre */
 
 	content: url("img/FontAwesome/svg/trowel-bricks-solid.svg");
 }
 
-.screen#actu .list .ad.cat63 a:before,
-.screen#dormant .list .ad.cat63 a:before,
-.screen#shippable .list .ad.cat63 a:before,
+.screen#actu       .list .ad.cat63 a:before ,
+.screen#dormant    .list .ad.cat63 a:before ,
+.screen#shippable  .list .ad.cat63 a:before ,
 .screen#immaterial .list .ad.cat63 a:before,
-.screen#luxuries .list .ad.cat63 a:before {
+.screen#luxuries   .list .ad.cat63 a:before {
 	/* Commerces et Marchés */
 
 	content: url("img/FontAwesome/svg/store-solid.svg");
 }
 
-.screen#actu .list .ad.cat70 a:before,
-.screen#dormant .list .ad.cat70 a:before,
-.screen#shippable .list .ad.cat70 a:before,
+.screen#actu       .list .ad.cat70 a:before ,
+.screen#dormant    .list .ad.cat70 a:before ,
+.screen#shippable  .list .ad.cat70 a:before ,
 .screen#immaterial .list .ad.cat70 a:before,
-.screen#luxuries .list .ad.cat70 a:before {
+.screen#luxuries   .list .ad.cat70 a:before {
 	/* Formations */
 
 	content: url("img/FontAwesome/svg/igloo-solid.svg");
 }
 
-.screen#actu .list .ad.cat74 a:before,
-.screen#dormant .list .ad.cat74 a:before,
-.screen#shippable .list .ad.cat74 a:before,
+.screen#actu       .list .ad.cat74 a:before ,
+.screen#dormant    .list .ad.cat74 a:before ,
+.screen#shippable  .list .ad.cat74 a:before ,
 .screen#immaterial .list .ad.cat74 a:before,
-.screen#luxuries .list .ad.cat74 a:before {
+.screen#luxuries   .list .ad.cat74 a:before {
 	/* Formations */
 
 	content: url("img/FontAwesome/svg/graduation-cap-solid.svg");
 }
 
-.screen#actu .list .ad.cat81 a:before,
-.screen#dormant .list .ad.cat81 a:before,
-.screen#shippable .list .ad.cat81 a:before,
+.screen#actu       .list .ad.cat81 a:before ,
+.screen#dormant    .list .ad.cat81 a:before ,
+.screen#shippable  .list .ad.cat81 a:before ,
 .screen#immaterial .list .ad.cat81 a:before,
-.screen#luxuries .list .ad.cat81 a:before {
+.screen#luxuries   .list .ad.cat81 a:before {
 	/* Soins */
 
 	content: url("img/FontAwesome/svg/life-ring-solid.svg");
 }
 
-.screen#actu .list .ad.cat91 a:before,
-.screen#dormant .list .ad.cat91 a:before,
-.screen#shippable .list .ad.cat91 a:before,
+.screen#actu       .list .ad.cat91 a:before ,
+.screen#dormant    .list .ad.cat91 a:before ,
+.screen#shippable  .list .ad.cat91 a:before ,
 .screen#immaterial .list .ad.cat91 a:before,
-.screen#luxuries .list .ad.cat91 a:before {
+.screen#luxuries   .list .ad.cat91 a:before {
 	/* Commerces & Marchés */
 
 	content: url("img/FontAwesome/svg/store-solid.svg");
 }
 
-.screen#actu .list .ad.cat92 a:before,
-.screen#dormant .list .ad.cat92 a:before,
-.screen#shippable .list .ad.cat92 a:before,
+.screen#actu       .list .ad.cat92 a:before ,
+.screen#dormant    .list .ad.cat92 a:before ,
+.screen#shippable  .list .ad.cat92 a:before ,
 .screen#immaterial .list .ad.cat92 a:before,
-.screen#luxuries .list .ad.cat92 a:before {
+.screen#luxuries   .list .ad.cat92 a:before {
 	/* Fruits et légumes */
 
 	content: url("img/FontAwesome/svg/carrot-solid.svg");
 }
 
-.screen#actu .list .ad.cat93 a:before,
-.screen#dormant .list .ad.cat93 a:before,
-.screen#shippable .list .ad.cat93 a:before,
+.screen#actu       .list .ad.cat93 a:before ,
+.screen#dormant    .list .ad.cat93 a:before ,
+.screen#shippable  .list .ad.cat93 a:before ,
 .screen#immaterial .list .ad.cat93 a:before,
-.screen#luxuries .list .ad.cat93 a:before {
+.screen#luxuries   .list .ad.cat93 a:before {
 	/* Pains & Pâtisserie */
 
-	content: url("img/FontAwesome/svg/egg-solid.svg");
+	content: url("img/FontAwesome/svg/bread-slice-solid.svg");
 }
 
-.screen#actu .list .ad.cat94 a:before,
-.screen#dormant .list .ad.cat94 a:before,
-.screen#shippable .list .ad.cat94 a:before,
+.screen#actu       .list .ad.cat94 a:before ,
+.screen#dormant    .list .ad.cat94 a:before ,
+.screen#shippable  .list .ad.cat94 a:before ,
 .screen#immaterial .list .ad.cat94 a:before,
-.screen#luxuries .list .ad.cat94 a:before {
+.screen#luxuries   .list .ad.cat94 a:before {
 	/* Frais */
 
 	content: url("img/FontAwesome/svg/egg-solid.svg");
 }
 
-.screen#actu .list .ad.cat95 a:before,
-.screen#dormant .list .ad.cat95 a:before,
-.screen#shippable .list .ad.cat95 a:before,
+.screen#actu       .list .ad.cat95 a:before ,
+.screen#dormant    .list .ad.cat95 a:before ,
+.screen#shippable  .list .ad.cat95 a:before ,
 .screen#immaterial .list .ad.cat95 a:before,
-.screen#luxuries .list .ad.cat95 a:before {
+.screen#luxuries   .list .ad.cat95 a:before {
 	/* Épicerie salée */
 
 	content: url("img/FontAwesome/svg/pepper-hot-solid.svg");
 }
 
-.screen#actu .list .ad.cat98 a:before,
-.screen#dormant .list .ad.cat98 a:before,
-.screen#shippable .list .ad.cat98 a:before,
+.screen#actu       .list .ad.cat98 a:before ,
+.screen#dormant    .list .ad.cat98 a:before ,
+.screen#shippable  .list .ad.cat98 a:before ,
 .screen#immaterial .list .ad.cat98 a:before,
-.screen#luxuries .list .ad.cat98 a:before {
+.screen#luxuries   .list .ad.cat98 a:before {
 	/* Vêtements bébé */
 
 	content: url("img/FontAwesome/svg/person-breastfeeding-solid.svg");
