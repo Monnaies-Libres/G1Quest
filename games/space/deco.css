@@ -1,11 +1,13 @@
 :root {
 
 	--vert-qui-pete: hsl(120, 100%, 50%);
-
-	--noir: hsl(120, 0%, 0%);
+	--rouge-sang:    hsl(  0, 100%, 50%);
+	--noir:          hsl(120,   0%,  0%);
 
 	--color--primary:   var(--noir);
 	--color--secondary: var(--vert-qui-pete);
+	--color--need:      var(--rouge-sang);
+	--color--offer:     var(--vert-qui-pete);
 
 }
 
@@ -202,9 +204,12 @@ a:visited {
 
 .buttonContainer .detect {
 
+	border-style: solid;
 	border-color: var(--color--secondary);
+
 	background-color: var(--color--primary);
 	color: var(--color--secondary);
+
 	cursor: pointer;
 }
 
@@ -229,17 +234,21 @@ a:visited {
 
 .screen#actu    > .list {
 
+	border-style: solid;
 	border-color: var(--color--secondary);
 }
 
 .screen#events  > .list {
 
+	border-style: solid;
 	border-color: red;
 }
 
 .screen#dormant > .list {
 
+	border-style: solid;
 	border-color: hsl(42.2, 100%, 54.3%);
+
 	background: hsl(53.7, 100%, 81.4%);
 }
 
@@ -313,9 +322,13 @@ a:visited {
 	.screen#events  .list .ad,
 	.screen#dormant .list .ad {
 
+		cursor: pointer;
+
 		background-color: white;
 
 		box-shadow: 0 0 0.125rem 0 black;
+
+		border-style: solid;
 		border-color: black;
 	}
 }
@@ -379,25 +392,25 @@ a:visited {
 	background-color: white;
 	opacity: 1 !important;
 	animation: none !important;
-
-	border-color: hsl(120, 100%, 50%);
 }
 
 #actu    .list .ad.record.selected.offer ,
 #dormant .list .ad.record.selected.offer {
 
-	background-color: hsl(120, 100%, 50%);
+	border-color: var(--color--offer);
+	background-color: var(--color--offer);
 	box-shadow:
-		0 0 3px 3px hsl(120, 100%, 50%),
+		0 0 3px 3px var(--color--offer),
 		0 0 3px 6px hsl(120, 100%,  0%);
 }
 
 #actu    .list .ad.record.selected.need ,
 #dormant .list .ad.record.selected.need {
 
-	background-color: hsl(0, 100%, 50%);
+	border-color: var(--color--need);
+	background-color: var(--color--need);
 	box-shadow:
-		0 0 3px 3px hsl(0, 100%, 50%),
+		0 0 3px 3px var(--color--need),
 		0 0 3px 6px hsl(0, 100%,  0%);
 }
 

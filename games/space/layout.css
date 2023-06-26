@@ -5,6 +5,8 @@
 	--menu-img-height: calc(100vh/var(--menu-nb-items) - (2 * var(--menu-img-padding)));
 	--menu-img-width: var(--menu-img-height);
 	--menu-width: calc(var(--menu-img-width) + 2 * var(--menu-img-padding));
+
+	--max-simultaneous-ads: 5;
 }
 
 body {
@@ -194,30 +196,13 @@ main {
 
 }
 
-.screen#dormant > .list,
-.screen#events  > .list,
+.screen#dormant > .list ,
+.screen#events  > .list ,
 .screen#actu    > .list {
 
     border-radius: 50%;
     position: relative;
-}
-
-.screen#actu > .list {
-
-	border-width: 0.125rem;
-	border-style: solid;
-}
-
-.screen#events > .list {
-
-	border-width: 0.125rem;
-	border-style: solid;
-}
-
-.screen#dormant > .list {
-
-	border-width: 0.25rem;
-	border-style: solid;
+	overflow: hidden;
 }
 
 .buttonContainer {
@@ -244,7 +229,6 @@ main {
 
     padding: 1em 2em;
 	border-width: 0.0625rem;
-	border-style: solid;
 }
 
 .buttonContainer .errorMessage {
@@ -317,45 +301,86 @@ body[data-active-screen="luxuries"]       #radius {
 
 @media screen and (min-width: 50rem) {
 
-	.screen#actu    .list .ad,
-	.screen#events  .list .ad,
+	.screen#actu    .list .ad ,
+	.screen#events  .list .ad ,
 	.screen#dormant .list .ad {
 
-	    position: absolute;
-	    width: 1.5rem;
+		position: absolute;
+		width: 1.5rem;
 		height: 1.5rem;
+
 		border-radius: 50%;
+		border-width: 0.125rem;
+
 	    transform: translate(-50%, -50%); /* center the dot relative to the calculated position */
 
-	    cursor: pointer;
-
-		border-width: 0.125rem;
-		border-style: solid;
+		transition-property: transform;
+		transition-delay: 0s;
+		transition-duration: 0.5s;
+		transition-timing-function: ease-out;
 	}
 
-	.screen#actu    .list .ad a .title,
-	.screen#events  .list .ad a .title,
+	.screen#actu    .list .ad:nth-child(n+5 of :not(.visited)) ,
+	.screen#events  .list .ad:nth-child(n+5 of :not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(n+5 of :not(.visited)) {
+
+		transform: translate(-50%, -100vh);
+
+		transition-property: transform;
+		transition-delay: 0s;
+		transition-duration: 750ms;
+		transition-timing-function: ease-out;
+	}
+
+	.screen#actu    .list .ad:nth-child(-n+5 of :not(.visited)) ,
+	.screen#events  .list .ad:nth-child(-n+5 of :not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(-n+5 of :not(.visited)) {
+
+		transform: translate(-50%, -50%);
+	}
+
+	.screen#actu    .list .ad.visited.selected ,
+	.screen#events  .list .ad.visited.selected ,
+	.screen#dormant .list .ad.visited.selected {
+
+		transform: translate(-50%, -50%);
+	}
+
+	.screen#actu    .list .ad.visited:not(.selected) ,
+	.screen#events  .list .ad.visited:not(.selected) ,
+	.screen#dormant .list .ad.visited:not(.selected) {
+
+		transition-property: transform;
+		transition-delay: 0s;
+		transition-duration: 750ms;
+		transition-timing-function: ease-in;
+
+		transform: translate(-50%, 100vh);
+	}
+
+	.screen#actu    .list .ad a .title ,
+	.screen#events  .list .ad a .title ,
 	.screen#dormant .list .ad a .title {
 
 		display: none;
 	}
 
-	.screen#actu    .list.paused .ad,
-	.screen#events  .list.paused .ad,
+	.screen#actu    .list.paused .ad ,
+	.screen#events  .list.paused .ad ,
 	.screen#dormant .list.paused .ad {
 
 		animation-play-state: paused !important;
 	}
 
-	.screen#dormant .list > :not(.paused) .ad,
+	.screen#dormant .list > :not(.paused) .ad ,
 	.screen#actu    .list > :not(.paused) .ad ,
 	.screen#events  .list > :not(.paused) .ad {
 
 		animation-play-state: running !important;
 	}
 
-	.screen#actu    .list .ad a,
-	.screen#events  .list .ad a,
+	.screen#actu    .list .ad a ,
+	.screen#events  .list .ad a ,
 	.screen#dormant .list .ad a {
 
 		width: 100%;
@@ -365,28 +390,14 @@ body[data-active-screen="luxuries"]       #radius {
 		justify-content: center;
 	}
 
-	.screen#actu    .list .ad a:before,
-	.screen#events  .list .ad a:before,
+	.screen#actu    .list .ad a:before ,
+	.screen#events  .list .ad a:before ,
 	.screen#dormant .list .ad a:before {
 
 		width: 50%;
 		height: auto;
 	}
 }
-
-#actu .list .ad.visited ,
-#dormant .list .ad.visited  {
-
-    display: none;
-}
-
-#actu .list .ad.visited.selected ,
-#dormant .list .ad.visited.selected  {
-
-    display: block;
-}
-
-
 
 
 
