@@ -82,7 +82,9 @@ export const fetchShippable = async function (minTimestamp, n) {
 
 	if (r.ok === true) {
 
-		return r.json()
+		let records = await r.json();
+
+		return records.hits.hits;
 	}
 
 	throw new Error(r.status)

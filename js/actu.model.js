@@ -49,7 +49,7 @@ export const getActu = async (userLocation, radius, minTimestamp) => {
 					}, {
 
 						range: {
-							stock: {
+							'stock': {
 								gte: 1
 							}
 						}

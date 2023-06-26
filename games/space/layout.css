@@ -1,8 +1,8 @@
 :root {
 
-	--menu-nb-items: 7;
+	--menu-nb-items-in-viewport: 8;
 	--menu-img-padding: 1rem;
-	--menu-img-height: calc(100vh/var(--menu-nb-items) - (2 * var(--menu-img-padding)));
+	--menu-img-height: calc(100vh/var(--menu-nb-items-in-viewport) - (2 * var(--menu-img-padding)));
 	--menu-img-width: var(--menu-img-height);
 	--menu-width: calc(var(--menu-img-width) + 2 * var(--menu-img-padding));
 
@@ -113,31 +113,56 @@ main {
 
 .screen#shippable  .list > .ad a ,
 .screen#immaterial .list > .ad a ,
-.screen#luxuries   .list > .ad a {
+.screen#luxuries   .list > .ad a ,
+.screen#exchange   .list > .ad a {
+
+	display: flex;
+	align-items: center;
+
+	width: calc(100% - 2rem);
+	padding-left:   1rem;
+	padding-right:  1rem;
 
 	padding-top:    1rem;
 	padding-bottom: 1rem;
 
-	padding-left:   1rem;
-	padding-right:  1rem;
+	height: 3rem;
+}
 
-	height: 100%;
-	width: calc(100% - 2rem);
-	display: flex;
-	align-items: center;
+.screen#shippable  .list .ad.selected ,
+.screen#immaterial .list .ad.selected ,
+.screen#luxuries   .list .ad.selected ,
+.screen#exchange   .list .ad.selected {
+
+	height: 5rem;
+}
+
+.screen#shippable  .list .ad.visited:not(.selected) ,
+.screen#immaterial .list .ad.visited:not(.selected) ,
+.screen#luxuries   .list .ad.visited:not(.selected) ,
+.screen#exchange   .list .ad.visited:not(.selected) {
+
+	height: 0;
+	overflow: hidden;
+
+	transition-property: height, padding;
+	transition-delay: 0s, 0.5s, 1s;
+	transition-duration: 0.5s, 0.5s, 0.5s;
+	transition-timing-function: linear;
 }
 
 .screen#shippable  .list > .ad a:before ,
 .screen#immaterial .list > .ad a:before ,
-.screen#luxuries   .list > .ad a:before {
+.screen#luxuries   .list > .ad a:before ,
+.screen#exchange   .list > .ad a:before {
 
 	content: "";
 
-	width: 2rem;
-	height: 3rem;
-	margin-right: 1rem;
-
 	display: flex;
+
+	width: 2rem;
+	margin-right: 1rem;
+	height: 3rem;
 }
 
 #panel {
@@ -145,7 +170,7 @@ main {
     overflow: auto;
 }
 
-#panel:not(.loading) #panel-details {
+#panel > #panel-details {
 
 	height: 100%;
 	width: 100%;
@@ -155,6 +180,93 @@ main {
 	top: 0;
 	left: 0;
 	z-index: 9;
+}
+
+#panel > #panel-details > article {
+
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+#panel > #panel-details > article > * {
+
+	order: 3;
+
+	margin-left:  1rem;
+	margin-right: 1rem;
+}
+
+#panel > #panel-details > article > .last-edit-date {
+
+	order: 1;
+
+	margin-top: 1rem;
+}
+
+#panel > #panel-details > article > .price {
+
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+
+#panel > #panel-details > article > .title {
+
+	order: 2;
+
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#panel > #panel-details > article > .category {
+
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+#panel > #panel-details > article .category {
+
+	display: flex;
+	align-items: center;
+}
+
+#panel > #panel-details > article .category:before {
+
+	width: 1rem;
+	height: auto;
+	margin-left: 0;
+	margin-right: 1rem;
+}
+
+#panel > #panel-details > article > .pictures {
+
+	margin-left:  0rem;
+	margin-right: 0rem;
+}
+
+#panel > #panel-details > article > .pictures > img {
+
+	max-width: 100%;
+	display: block;
+	margin: auto;
+}
+
+#panel > #panel-details > article > .link-to-gchange {
+
+	order: 4;
+
+	text-align: center;
+
+	margin-bottom: 1rem;
+}
+
+#panel > #panel-details > article > .link-to-gchange a {
+
+	display: inline-block;
+	padding: 1rem;
+	border-width: 0.25rem;
 }
 
 .screen:not(.active) {
@@ -167,7 +279,8 @@ main {
 .screen#dormant    ol,
 .screen#immaterial ol,
 .screen#shippable  ol ,
-.screen#luxuries   ol {
+.screen#luxuries   ol ,
+.screen#exchange   ol {
 
     list-style: none;
     padding: 0;

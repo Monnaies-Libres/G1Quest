@@ -69,8 +69,6 @@ export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 			ad.classList.add('visited');
 
 			let panel = document.getElementById('panel');
-			let panelDetails = panel.querySelector('#panel-details');
-			panelDetails.innerHTML = '';
 			panel.classList.add('loading');
 
 			fetchRecordDetails(record._id)

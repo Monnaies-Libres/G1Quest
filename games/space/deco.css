@@ -9,6 +9,8 @@
 	--color--need:      var(--rouge-sang);
 	--color--offer:     var(--vert-qui-pete);
 
+	--color--gchange-primary:   hsl(44.8, 86.1%, 60.4%);
+	--color--gchange-secondary: hsl(28.2, 70.8%, 52.9%);
 }
 
 body {
@@ -39,13 +41,74 @@ a:visited {
 
 	color: white;
 
+	background-image: url('img/textures/dark_repeating_texture_that_look_like_the_floor_of_a_submarine_2252539355.cropped.2.resized-256.seamless-texture.jpg');
+	background-size: 128px;
+	background-repeat: repeat;
+}
+
+#panel > #panel-details {
+
+	background-image:
+		  linear-gradient(to bottom, hsla(0, 0%, 10%, 0.75) 0%, hsla(0, 0%, 10%, 0.60) 100%)
+		  , url('img/textures/dark_repeating_texture_that_look_like_the_floor_of_a_submarine_2252539355.cropped.2.resized-256.seamless-texture.jpg');
+	  background-size: cover, 128px;
+	  background-repeat: no-repeat, repeat;
+
+	margin: 0 0 0 0;
+
+	transition: margin;
+	transition-duration: 0.333s;
+	transition-timing-function: ease-out;
+	transition-delay: 0s;
+}
+
+#panel > #panel-details > article {
+
+	background-image:
+		  linear-gradient(to bottom, hsla(0, 0%, 10%, 0.95) 0%, hsla(0, 0%, 10%, 0.80) 100%)
+		  , url('img/textures/dark_repeating_texture_that_look_like_the_floor_of_a_submarine_2252539355.cropped.2.resized-256.seamless-texture.jpg');
+	  background-size: cover, 128px;
+	  background-repeat: no-repeat, repeat;
+
+	box-shadow: 0 0 0.5rem black;
+}
+
+#panel.loading > #panel-details {
+
+  margin: 100vh 0 0 0;
+}
+
+#panel:not(.loading) > #panel-details {
+
+  margin: 0 0 0 0;
+
+  transition-property: margin;
+  transition-duration: 1s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+
+#panel:before ,
+#panel:after  {
+
+	content: "";
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#panel:before {
+
 	animation-name: vertical-sweep;
 	animation-duration: 2.71828182846s;
 	animation-direction: normal;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
-
-	background-color: #333;
 
 	background-image:
 		linear-gradient(to bottom, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%), /* verticale 1 */
@@ -115,15 +178,6 @@ a:visited {
 
 #panel:after {
 
-	content: "";
-
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: block;
-	width: 100%;
-	height: 100%;
-
 	animation-name: horizontal-sweep;
 	animation-duration: 3.14159265359s;
 	animation-direction: normal;
@@ -192,9 +246,23 @@ a:visited {
 	}
 }
 
-#panel:not(.loading) #panel-details {
 
-	background-color: #333;
+
+#panel > #panel-details > article > .pictures {
+
+	background-color: black;
+}
+
+#panel > #panel-details > article > .link-to-gchange a {
+
+	background-color: var(--color--gchange-primary);
+	border-color: var(--color--gchange-secondary);
+	border-style: solid;
+	border-radius: 1rem;
+
+	color: black;
+	font-weight: bold;
+	font-family: sans-serif;
 }
 
 .screen.loading:after {
@@ -270,28 +338,46 @@ a:visited {
 	background-color: hsl(240, 50%, 58%);
 }
 
+.screen#shippable  .list .ad.selected a ,
+.screen#immaterial .list .ad.selected a {
+
+	color: hsl(240, 50%, 53%);
+	background-color: hsl(240, 50%, 97%);
+}
 
 
-.screen#luxuries  .list > .ad > a {
+
+.screen#luxuries  .list > .ad > a ,
+.screen#exchange  .list > .ad > a {
 
 	color: black;
 }
 
-.screen#luxuries  .list > .ad:nth-child(3n + 1) {
+.screen#luxuries  .list > .ad:nth-child(3n + 1) ,
+.screen#exchange  .list > .ad:nth-child(3n + 1) {
 
 	background-color: hsl(40, 60%, 50%);
 }
 
-.screen#luxuries  .list > .ad:nth-child(3n + 2) {
+.screen#luxuries  .list > .ad:nth-child(3n + 2) ,
+.screen#exchange  .list > .ad:nth-child(3n + 2) {
 
 	background-color: hsl(40, 60%, 55%);
 }
 
-.screen#luxuries  .list > .ad:nth-child(3n + 3) {
+.screen#luxuries  .list > .ad:nth-child(3n + 3) ,
+.screen#exchange  .list > .ad:nth-child(3n + 3) {
 
 	background-color: hsl(40, 60%, 58%);
 }
 
+
+.screen#luxuries   .list .ad.selected a ,
+.screen#exchange   .list .ad.selected a {
+
+	color: hsl(40, 60%, 58%);
+	background-color: hsl(40, 60%, 3%);
+}
 
 #radius {
 

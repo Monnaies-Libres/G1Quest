@@ -53,4 +53,5 @@ FontAwesome : Creative Commons BY 4.0
 - `drone.png` par [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect)
 - `diamond-out-of-a-bag.512.png` par [ultimatearm](https://www.flaticon.com/authors/ultimatearm)
 - `calendar.512.png`par [freepik](https://www.flaticon.com/authors/freepik)
+- `euro.512.png`par [freepik](https://www.flaticon.com/authors/freepik)
 

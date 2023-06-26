@@ -54,8 +54,6 @@ export const displayNeeds = function (needs, radius) {
 		li.addEventListener('click', (event) => {
 
 			let panel = document.getElementById('panel');
-			let panelDetails = panel.querySelector('#panel-details');
-			panelDetails.innerHTML = '';
 			panel.classList.add('loading');
 
 			fetchRecordDetails(record._id)

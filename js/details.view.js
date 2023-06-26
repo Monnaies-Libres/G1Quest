@@ -1,11 +1,12 @@
 import { categoriesNames } from './categoriesNames.js'
 
 export const displayPageDetails = (data) => {
-	// Get the panel element
-	const panel = document.getElementById('panel-details');
 
-	// Clear any existing content in the panel
-	panel.innerHTML = '';
+	const panelDetails = document.getElementById('panel-details');
+
+	let article = document.createElement('article');
+
+	// panelDetails.innerHTML = '';
 
 	// Remove 'selected' class from any dot that might have it
 	const selectedDot = document.querySelector('.dot.selected');
@@ -42,39 +43,53 @@ export const displayPageDetails = (data) => {
 	const address = document.createElement('p');
 	address.textContent = data._source.address;
 
-	// Append the elements to the panel
-	panel.appendChild(title);
+	// Append the elements to the article
+
+	article.appendChild(title);
 
 	if (typeof image !== 'undefined'
 		&&	 image !== null) {
 
-		panel.appendChild(image);
+		article.appendChild(image);
 	}
 
-	panel.appendChild(description);
-	panel.appendChild(address);
+	article.appendChild(description);
+	article.appendChild(address);
+
+	panelDetails.prepend(article);
 };
 
 export const displayRecordDetails = (data) => {
 
 	// Get the panel element
-	const panel = document.getElementById('panel-details');
+	let panelDetails = document.getElementById('panel-details');
+
+	let article = document.createElement('article');
+	article.classList.add(data._source.category.id );
 
 	// Clear any existing content in the panel
-	panel.innerHTML = '';
+	// panelDetails.innerHTML = '';
 
 	// Send a GET request to the Elastic Search endpoint /market/record/{id}
 	console.log('record data : ', data);
 
 	// Create elements for the record details
 	const title = document.createElement('h2');
+	title.classList.add('title');
 	title.textContent = data._source.title;
 
 	let image = null;
+	let image_outer = null;
 
 	if (data._source.picturesCount > 0) {
+
 		image = document.createElement('img');
+		image_outer = document.createElement('p');
+		image_outer.classList.add('pictures');
+
 		image.src = 'data:' + data._source.pictures[0].file._content_type + ';base64, ' + data._source.pictures[0].file._content;
+
+		image_outer.append(image);
 	}
 
 	const description = document.createElement('p');
@@ -84,11 +99,15 @@ export const displayRecordDetails = (data) => {
 	gchangeLink.href = 'https://www.gchange.fr/#/app/market/view/' + data._id + '/';
 	gchangeLink.textContent = 'Voir sur Gchange'
 	const gchangeLink_outer = document.createElement('p');
+	gchangeLink_outer.classList.add('link-to-gchange');
 	gchangeLink_outer.appendChild(gchangeLink);
 
-	let priceElt = document.createElement('p');
+	let priceElt = null;
 
 	if (data._source.price != null) {
+
+		priceElt = document.createElement('p');
+		priceElt.classList.add('price');
 
 		if (data._source.unit == 'UD') {
 
@@ -108,27 +127,35 @@ export const displayRecordDetails = (data) => {
 	// Set the locale to French
 	recordDate.locale(navigator.language);  // Replace 'fr' with the desired locale
 
-	const lastEditDate = document.createElement('p');
+	const lastEditDate = document.createElement('time');
 	lastEditDate.textContent = recordDate.from(now);
+	const lastEditDate_outer = document.createElement('p');
+	lastEditDate_outer.classList.add('last-edit-date');
+	lastEditDate_outer.append(lastEditDate);
 
 	const category = document.createElement('p');
-	category.textContent = data._source.category.id + ' : ' + categoriesNames[data._source.category.id].localizedNames['fr-FR'];
+	category.classList.add('category');
+	category.textContent = categoriesNames[data._source.category.id].localizedNames['fr-FR'];
 
-	const address = document.createElement('p');
+	const address = document.createElement('address');
 	address.textContent = data._source.address;
 
-	// Append the elements to the panel
-	panel.appendChild(title);
-	panel.appendChild(lastEditDate);
-	panel.appendChild(priceElt);
-	panel.appendChild(category);
-	panel.appendChild(gchangeLink_outer);
+	// Append the elements to the article
+	article.appendChild(title);
+	article.appendChild(lastEditDate_outer);
+	if (priceElt != null) {
 
-	if (image !== null) {
-		panel.appendChild(image);
+		article.appendChild(priceElt);
+	}
+	article.appendChild(category);
+	article.appendChild(gchangeLink_outer);
+
+	if (image_outer !== null) {
+		article.appendChild(image_outer);
 	}
 
-	panel.appendChild(description);
-	panel.appendChild(address);
+	article.appendChild(description);
+	article.appendChild(address);
 
+	panelDetails.prepend(article);
 };

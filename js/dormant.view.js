@@ -38,8 +38,6 @@ export const displayDormant = (pages, userLocation, radius) => {
 		dot.addEventListener('click', () => {
 
 			let panel = document.getElementById('panel');
-			let panelDetails = panel.querySelector('#panel-details');
-			panelDetails.innerHTML = '';
 			panel.classList.add('loading');
 
 			fetchPageDetails(page._id)

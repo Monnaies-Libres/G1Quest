@@ -23,11 +23,11 @@ export const categoriesNames = {
 	},
 	cat13: {
 
-		name: "Bureaux &amp; Commerces",
+		name: "Bureaux & Commerces",
 		parent: "cat8",
 		localizedNames: {
-			"fr-FR": "Bureaux &amp; Commerces",
-			"en": "Offices &amp; Businesses",
+			"fr-FR": "Bureaux & Commerces",
+			"en": "Offices & Businesses",
 			"es-ES": "Oficinas y Comercios"
 		},
 		order: 28
@@ -38,8 +38,8 @@ export const categoriesNames = {
 		parent: "cat66",
 		localizedNames: {
 			"fr-FR": "Chambres d'hôtes",
-			"en": "Bed &amp; Breakfast",
-			"es-ES": "Hostales o B&amp;B"
+			"en": "Bed & Breakfast",
+			"es-ES": "Hostales o B&B"
 		},
 		order: 31
 	},
@@ -56,22 +56,22 @@ export const categoriesNames = {
 	},
 	cat43: {
 
-		name: "Consoles &amp; Jeux vidéo",
+		name: "Consoles & Jeux vidéo",
 		parent: "cat14",
 		localizedNames: {
-			"fr-FR": "Consoles &amp; Jeux vidéo",
-			"en": "VideoGames &amp; Consoles",
+			"fr-FR": "Consoles & Jeux vidéo",
+			"en": "VideoGames & Consoles",
 			"es-ES": "Consolas y Videojuegos"
 		},
 		order: 37
 	},
 	cat16: {
 
-		name: "Images &amp; Sons",
+		name: "Images & Sons",
 		parent: "cat14",
 		localizedNames: {
-			"fr-FR": "Images &amp; Sons",
-			"en": "Image &amp; Audio",
+			"fr-FR": "Images & Sons",
+			"en": "Image & Audio",
 			"es-ES": "Imagen y Sonido"
 		},
 		order: 38
@@ -166,11 +166,11 @@ export const categoriesNames = {
 	},
 	cat29: {
 
-		name: "Sports &amp; Hobbies",
+		name: "Sports & Hobbies",
 		parent: "cat24",
 		localizedNames: {
-			"fr-FR": "Sports &amp; Hobbies",
-			"en": "Sports &amp; Hobbies",
+			"fr-FR": "Sports & Hobbies",
+			"en": "Sports & Hobbies",
 			"es-ES": "Deportes y Hobbies"
 		},
 		order: 60
@@ -210,22 +210,22 @@ export const categoriesNames = {
 	},
 	cat91: {
 
-		name: "Viandes &amp; Poissons",
+		name: "Viandes & Poissons",
 		parent: "cat90",
 		localizedNames: {
-			"fr-FR": "Viandes &amp; Poissons",
-			"en": "Meat &amp; Fish",
+			"fr-FR": "Viandes & Poissons",
+			"en": "Meat & Fish",
 			"es-ES": "Carnes y Pescados"
 		},
 		order: 2
 	},
 	cat92: {
 
-		name: "Fruits &amp; Légumes",
+		name: "Fruits & Légumes",
 		parent: "cat90",
 		localizedNames: {
-			"fr-FR": "Fruits &amp; Légumes",
-			"en": "Fruits &amp; Vegetables",
+			"fr-FR": "Fruits & Légumes",
+			"en": "Fruits & Vegetables",
 			"es-ES": "Frutas y Vegetales"
 		},
 		order: 3
@@ -320,10 +320,10 @@ export const categoriesNames = {
 	},
 	cat12: {
 
-		name: "Locations &amp; Gîtes",
+		name: "Locations & Gîtes",
 		parent: "cat66",
 		localizedNames: {
-			"fr-FR": "Locations &amp; Gîtes",
+			"fr-FR": "Locations & Gîtes",
 			"en": "Rural Homes",
 			"es-ES": "Casas Rurales"
 		},
@@ -353,11 +353,11 @@ export const categoriesNames = {
 	},
 	cat42: {
 
-		name: "Montres &amp; Bijoux",
+		name: "Montres & Bijoux",
 		parent: "cat72",
 		localizedNames: {
-			"fr-FR": "Montres &amp; Bijoux",
-			"en": "Clocks &amp; Jewelry",
+			"fr-FR": "Montres & Bijoux",
+			"en": "Clocks & Jewelry",
 			"es-ES": "Relojes y Joyas"
 		},
 		order: 44
@@ -408,11 +408,11 @@ export const categoriesNames = {
 	},
 	cat41: {
 
-		name: "Jeux &amp; Jouets",
+		name: "Jeux & Jouets",
 		parent: "cat24",
 		localizedNames: {
-			"fr-FR": "Jeux &amp; Jouets",
-			"en": "Games &amp; Toys",
+			"fr-FR": "Jeux & Jouets",
+			"en": "Games & Toys",
 			"es-ES": "Juegos y juguetes"
 		},
 		order: 63
@@ -496,11 +496,11 @@ export const categoriesNames = {
 	},
 	cat93: {
 
-		name: "Pains &amp; Patisserie",
+		name: "Pains & Patisserie",
 		parent: "cat90",
 		localizedNames: {
-			"fr-FR": "Pains &amp; Pâtisserie",
-			"en": "Breads &amp; Pastry",
+			"fr-FR": "Pains & Pâtisserie",
+			"en": "Breads & Pastry",
 			"es-ES": "Pan y repostería"
 		},
 		order: 4
@@ -694,11 +694,11 @@ export const categoriesNames = {
 	},
 	cat47: {
 
-		name: "Accessoires &amp; Bagagerie",
+		name: "Accessoires & Bagagerie",
 		parent: "cat72",
 		localizedNames: {
-			"fr-FR": "Accessoires &amp; Bagagerie",
-			"en": "Accesories &amp; Bags",
+			"fr-FR": "Accessoires & Bagagerie",
+			"en": "Accesories & Bags",
 			"es-ES": "Accesorios y Maletas"
 		},
 		order: 43
@@ -870,11 +870,11 @@ export const categoriesNames = {
 	},
 	cat63: {
 
-		name: "Commerces &amp; Marchés",
+		name: "Commerces & Marchés",
 		parent: "cat56",
 		localizedNames: {
-			"fr-FR": "Commerces &amp; Marchés",
-			"en": "Businesses &amp; Markets",
+			"fr-FR": "Commerces & Marchés",
+			"en": "Businesses & Markets",
 			"es-ES": "Comercios y Mercados"
 		},
 		order: 75

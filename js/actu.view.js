@@ -56,21 +56,18 @@ export const displayActu = (records, userLocation, radius, minTimestamp) => {
 		// Add event listener for when the ad is clicked
 		ad.addEventListener('click', (event) => {
 
-			console.log('event.currentTarget.parentElement : ', event.currentTarget.parentElement);
 			event.currentTarget.parentElement.classList.add('paused');
 
 			// Remove 'selected' class from any ad that ad have it
-			const selectedDot = document.querySelector('.ad.selected');
-			if (selectedDot) {
-				selectedDot.classList.remove('selected');
+			const selectedAd = document.querySelector('.ad.selected');
+			if (selectedAd) {
+				selectedAd.classList.remove('selected');
 			}
 
 			ad.classList.add('selected');
 			ad.classList.add('visited');
 
 			let panel = document.getElementById('panel');
-			let panelDetails = panel.querySelector('#panel-details');
-			panelDetails.innerHTML = '';
 			panel.classList.add('loading');
 
 			fetchRecordDetails(record._id)

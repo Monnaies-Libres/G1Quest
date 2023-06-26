@@ -191,9 +191,9 @@ export const fetchImmaterial = async function (minTimestamp, n) {
 
 	if (r.ok === true) {
 
-		var obj = r.json()
-		console.log(obj)
-		return obj
+		let records = await r.json();
+
+		return records.hits.hits;
 	}
 
 	throw new Error(r.status)

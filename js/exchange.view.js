@@ -1,9 +1,9 @@
 import { fetchRecordDetails } from './details.model.js'
 import { displayRecordDetails } from './details.view.js'
 
-export const displayShippable = function (records) {
+export const displayExchange = function (records) {
 
-	let offersElt = document.querySelector('#shippable .list');
+	let offersElt = document.querySelector('#exchange .list');
 
 	for (const record of records) {
 

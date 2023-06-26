@@ -14,6 +14,8 @@ import { fetchEvents } from './events.model.js'
 import { displayEvents } from './events.view.js'
 import { fetchLuxuries } from './luxuries.model.js'
 import { displayLuxuries } from './luxuries.view.js'
+import { fetchExchange } from './exchange.model.js'
+import { displayExchange } from './exchange.view.js'
 
 const timestampBackThen_3_months = Math.floor((Date.now() - (     90 * 24 * 60 * 60 * 1000)) / 1000);
 const timestampBackThen_2_years  = Math.floor((Date.now() - (2 * 365 * 24 * 60 * 60 * 1000)) / 1000);
@@ -23,7 +25,7 @@ let userLocation = null;
 // userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
 // userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
 let radius = 150;
-let currentScreen = 'actu';
+let currentScreen = 'exchange';
 const screensWithRadiusPagination = ['actu', 'dormant', 'marketResearch', 'events', 'luxuries'];
 
 let radiusSelect = document.getElementById('radius');
@@ -269,7 +271,7 @@ function switchScreen (newScreenId) {
 
 					document.querySelector('.screen#'+newScreenId).classList.remove('loading');
 
-					displayShippable(records.hits.hits);
+					displayShippable(records);
 
 					isLoadedContents[newScreenId] = true;
 				})
@@ -287,7 +289,27 @@ function switchScreen (newScreenId) {
 
 					document.querySelector('.screen#'+newScreenId).classList.remove('loading');
 
-					displayImmaterial(records.hits.hits);
+					displayImmaterial(records);
+
+					isLoadedContents[newScreenId] = true;
+				})
+				.catch(error => {
+					if (error == 'Error: 400')
+						console.error('Mauvaise requête')
+						else
+							console.error(error)
+				})
+				break;
+			case 'exchange':
+
+				fetchExchange(timestampBackThen_2_years, 60)
+				.then(records => {
+
+					console.log("exchange records :\n", records);
+
+					document.querySelector('.screen#'+newScreenId).classList.remove('loading');
+
+					displayExchange(records);
 
 					isLoadedContents[newScreenId] = true;
 				})
