@@ -1,0 +1,405 @@
+:root {
+
+	--vert-qui-pete: hsl(120, 100%, 50%);
+
+	--noir: hsl(120, 0%, 0%);
+
+	--color--primary:   var(--noir);
+	--color--secondary: var(--vert-qui-pete);
+
+}
+
+body {
+
+	background-color: var(--noir);
+}
+
+
+a,
+a:visited {
+
+	color: white;
+	text-decoration: none;
+}
+
+#menu {
+
+    background-color: hsl(0, 0%, 10%);
+    box-shadow: 0.5rem 0 0.5rem hsl(0, 0%, 5%);
+}
+
+#menu > ul > li > a.active {
+
+    background-color: hsl(0, 0%, 20%);
+}
+
+#panel {
+
+	color: white;
+
+	animation-name: vertical-sweep;
+	animation-duration: 2.71828182846s;
+	animation-direction: normal;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	background-color: #333;
+
+	background-image:
+		linear-gradient(to bottom, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%), /* verticale 1 */
+		linear-gradient(to bottom, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%), /* verticale 2 */
+		linear-gradient(to bottom, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%); /* verticale 3 */
+	background-size:
+		100% 1rem,
+		100% 1rem,
+		100% 1rem;
+	background-repeat:
+		no-repeat,
+		no-repeat,
+		no-repeat;
+	background-position:
+		0%   0%,
+		0%  33%,
+		0%  66%;
+}
+
+@keyframes vertical-sweep {
+	0% {
+		background-position:
+			  0%     0%,
+				  0%    33%,
+					  0%    66%;
+	}
+	16.666% {
+		background-position:
+			  0%    33%,
+				  0%    66%,
+					  0%   100%;
+	}
+	33.333% {
+
+		background-position:
+			  0%    66%,
+				  0%   100%,
+					  0%    66%;
+	}
+	50% {
+		background-position:
+			  0%   100%,
+				  0%    66%,
+					  0%    33%;
+	}
+	66.666% {
+
+		background-position:
+			  0%    66%,
+				  0%    33%,
+					  0%     0%;
+	}
+	83.333% {
+
+		background-position:
+			  0%    33%,
+				  0%     0%,
+					  0%    33%;
+	}
+	100% {
+		background-position:
+			  0%     0%,
+				  0%    33%,
+					  0%    66%;
+	}
+}
+
+#panel:after {
+
+	content: "";
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+
+	animation-name: horizontal-sweep;
+	animation-duration: 3.14159265359s;
+	animation-direction: normal;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	background-image:
+		  linear-gradient(to right, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%)
+		, linear-gradient(to right, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%)
+		, linear-gradient(to right, transparent 0%, rgba(255, 0, 0, 0.5) 50%, transparent 100%);
+	background-size:
+		  1rem 100%
+		, 1rem 100%
+		, 1rem 100%;
+	background-repeat:
+		no-repeat,
+		no-repeat,
+		no-repeat;
+}
+
+@keyframes horizontal-sweep {
+	0% {
+		background-position:
+			  0%   0%,
+				 33%   0%,
+					 66%   0%;
+	}
+	16.666% {
+		background-position:
+			 33%   0%,
+				 66%   0%,
+					100%   0%;
+	}
+	33.333% {
+
+		background-position:
+			 66%   0%,
+				100%   0%,
+					 66%   0%;
+	}
+	50% {
+		background-position:
+			100%   0%,
+				 66%   0%,
+					 33%   0%;
+	}
+	66.666% {
+
+		background-position:
+			 66%   0%,
+				 33%   0%,
+					  0%   0%;
+	}
+	83.333% {
+
+		background-position:
+			 33%   0%,
+				  0%   0%,
+					 33%   0%;
+	}
+	100% {
+		background-position:
+			  0%   0%,
+				 33%   0%,
+					 66%   0%;
+	}
+}
+
+#panel:not(.loading) #panel-details {
+
+	background-color: #333;
+}
+
+.screen.loading:after {
+
+	color: var(--color--secondary);
+}
+
+.buttonContainer .detect {
+
+	border-color: var(--color--secondary);
+	background-color: var(--color--primary);
+	color: var(--color--secondary);
+	cursor: pointer;
+}
+
+.buttonContainer .errorMessage {
+
+	color: red;
+
+}
+
+.screen#marketResearch {
+
+	background-color: var(--color--secondary);
+	color: var(--color--primary);
+}
+
+.screen#dormant > .list ,
+.screen#events  > .list ,
+.screen#actu    > .list {
+
+	cursor: crosshair;
+}
+
+.screen#actu    > .list {
+
+	border-color: var(--color--secondary);
+}
+
+.screen#events  > .list {
+
+	border-color: red;
+}
+
+.screen#dormant > .list {
+
+	border-color: hsl(42.2, 100%, 54.3%);
+	background: hsl(53.7, 100%, 81.4%);
+}
+
+.screen#shippable   .list > .ad:nth-child(3n + 1) ,
+.screen#immaterial  .list > .ad:nth-child(3n + 1) {
+
+	background-color: hsl(240, 50%, 53%);
+}
+
+.screen#shippable   .list > .ad:nth-child(3n + 2) ,
+.screen#immaterial  .list > .ad:nth-child(3n + 2) {
+
+	background-color: hsl(240, 50%, 55%);
+}
+
+.screen#shippable   .list > .ad:nth-child(3n + 3) ,
+.screen#immaterial  .list > .ad:nth-child(3n + 3) {
+
+	background-color: hsl(240, 50%, 58%);
+}
+
+
+
+.screen#luxuries  .list > .ad > a {
+
+	color: black;
+}
+
+.screen#luxuries  .list > .ad:nth-child(3n + 1) {
+
+	background-color: hsl(40, 60%, 50%);
+}
+
+.screen#luxuries  .list > .ad:nth-child(3n + 2) {
+
+	background-color: hsl(40, 60%, 55%);
+}
+
+.screen#luxuries  .list > .ad:nth-child(3n + 3) {
+
+	background-color: hsl(40, 60%, 58%);
+}
+
+
+#radius {
+
+	color: var(--color--secondary);
+	background-color: var(--color--primary);
+}
+
+@media screen and (max-width: 49.999rem) {
+
+	.screen#actu    .list .ad,
+	.screen#events  .list .ad,
+	.screen#dormant .list .ad {
+
+		animation: none !important;
+
+		border-top-color:    var(--color--primary);
+		border-bottom-color: var(--color--primary);
+	}
+
+
+}
+
+@media screen and (min-width: 50rem) {
+
+
+
+	.screen#actu    .list .ad,
+	.screen#events  .list .ad,
+	.screen#dormant .list .ad {
+
+		background-color: white;
+
+		box-shadow: 0 0 0.125rem 0 black;
+		border-color: black;
+	}
+}
+
+
+@keyframes blink-offer {
+	0% {
+
+		background-color: hsl(120, 80%, 5%);
+		color: hsl(120, 80%, 5%);
+	}
+
+	50% {
+
+		background-color: hsl(120, 100%, 50%);
+		color: hsl(120, 0%, 0%);
+	}
+
+	100% {
+
+		background-color: hsl(120, 80%, 5%);
+		color: hsl(120, 80%, 5%);
+	}
+}
+
+@keyframes blink-need {
+	0% {
+
+		background-color: hsl(0, 80%, 5%);
+		color: hsl(0, 80%, 5%);
+	}
+
+	50% {
+
+		background-color: hsl(0, 100%, 50%);
+		color: hsl(0, 0%, 0%);
+	}
+
+	100% {
+
+		background-color: hsl(0, 80%, 5%);
+		color: hsl(0, 80%, 5%);
+	}
+}
+
+#actu    .list .ad.record.offer ,
+#dormant .list .ad.record.offer {
+
+    background-color: hsl(120, 100%, 50%);
+}
+
+#actu    .list .ad.record.need ,
+#dormant .list .ad.record.need {
+
+    background-color: hsl(0, 100%, 50%);
+}
+
+#actu    .list .ad.selected ,
+#dormant .list .ad.selected {
+
+	background-color: white;
+	opacity: 1 !important;
+	animation: none !important;
+
+	border-color: hsl(120, 100%, 50%);
+}
+
+#actu    .list .ad.record.selected.offer ,
+#dormant .list .ad.record.selected.offer {
+
+	background-color: hsl(120, 100%, 50%);
+	box-shadow:
+		0 0 3px 3px hsl(120, 100%, 50%),
+		0 0 3px 6px hsl(120, 100%,  0%);
+}
+
+#actu    .list .ad.record.selected.need ,
+#dormant .list .ad.record.selected.need {
+
+	background-color: hsl(0, 100%, 50%);
+	box-shadow:
+		0 0 3px 3px hsl(0, 100%, 50%),
+		0 0 3px 6px hsl(0, 100%,  0%);
+}
+
+
+

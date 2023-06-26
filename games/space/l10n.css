@@ -1,0 +1,19 @@
+
+
+/* ======================== Localization ======================== */
+
+.screen.loading:after {
+
+	content: url("./img/loading.gif");
+}
+
+html[lang="fr"] .screen.loading:after {
+
+	content: "Chargement des données depuis la nébuleuse…";
+}
+
+html[lang="en"] .screen.loading:after {
+
+	content: "ALL YOUR BASE ARE BELONG TO US.";
+}
+

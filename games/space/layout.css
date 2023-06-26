@@ -1,0 +1,392 @@
+:root {
+
+	--menu-nb-items: 7;
+	--menu-img-padding: 1rem;
+	--menu-img-height: calc(100vh/var(--menu-nb-items) - (2 * var(--menu-img-padding)));
+	--menu-img-width: var(--menu-img-height);
+	--menu-width: calc(var(--menu-img-width) + 2 * var(--menu-img-padding));
+}
+
+body {
+
+    width: 100%;
+
+    display: inline-flex;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 3vw;
+
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+
+	flex-grow: 1;
+
+	display: inline-flex;
+	align-items: stretch;
+	justify-content: space-between;
+	gap: 3vw;
+}
+
+#menu {
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+	height: 100vh;
+	width: fit-content;
+}
+
+#menu {
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+}
+
+#menu ul {
+
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#menu ul li {
+
+	margin: 0;
+	padding: 0;
+}
+
+#menu > ul > li > a {
+
+	display: block;
+	padding: 1rem;
+}
+
+#menu > ul > li > a > img {
+
+	display: block;
+	height: var(--menu-img-height);
+	width: auto;
+}
+
+#panel {
+
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	height: 100vh;
+
+	width: 33vw;
+}
+
+#mainArea {
+
+	position: fixed;
+	top: 0;
+	left: var(--menu-width);
+	overflow: hidden;
+
+	order: 1;
+
+	height: 100vh;
+	width: calc(100vw - var(--menu-width) - 33vw);
+}
+
+.screen {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: auto;
+
+	height: 100vh;
+	width: 100%;
+}
+
+.screen#shippable  .list > .ad a ,
+.screen#immaterial .list > .ad a ,
+.screen#luxuries   .list > .ad a {
+
+	padding-top:    1rem;
+	padding-bottom: 1rem;
+
+	padding-left:   1rem;
+	padding-right:  1rem;
+
+	height: 100%;
+	width: calc(100% - 2rem);
+	display: flex;
+	align-items: center;
+}
+
+.screen#shippable  .list > .ad a:before ,
+.screen#immaterial .list > .ad a:before ,
+.screen#luxuries   .list > .ad a:before {
+
+	content: "";
+
+	width: 2rem;
+	height: 3rem;
+	margin-right: 1rem;
+
+	display: flex;
+}
+
+#panel {
+
+    overflow: auto;
+}
+
+#panel:not(.loading) #panel-details {
+
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+}
+
+.screen:not(.active) {
+
+    display: none;
+}
+
+.screen#actu       ol,
+.screen#events     ol,
+.screen#dormant    ol,
+.screen#immaterial ol,
+.screen#shippable  ol ,
+.screen#luxuries   ol {
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.screen > .list {
+
+	display: none;
+}
+
+.screen > .list.active {
+
+	display: block;
+}
+
+
+.screen#dormant > .list,
+.screen#actu    > .list,
+.screen#events  > .list,
+.buttonContainer {
+
+    height: 90vh;
+    margin: 5vh;
+    width: 90vh;
+
+}
+
+.screen#dormant > .list,
+.screen#events  > .list,
+.screen#actu    > .list {
+
+    border-radius: 50%;
+    position: relative;
+}
+
+.screen#actu > .list {
+
+	border-width: 0.125rem;
+	border-style: solid;
+}
+
+.screen#events > .list {
+
+	border-width: 0.125rem;
+	border-style: solid;
+}
+
+.screen#dormant > .list {
+
+	border-width: 0.25rem;
+	border-style: solid;
+}
+
+.buttonContainer {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen.loading:after {
+
+	position: absolute;
+	font-size: 2rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.buttonContainer .detect {
+
+    padding: 1em 2em;
+	border-width: 0.0625rem;
+	border-style: solid;
+}
+
+.buttonContainer .errorMessage {
+
+    padding: 1em;
+	text-align: center;
+	display: none;
+}
+
+
+#radius {
+
+	position: fixed;
+	bottom: 1.5rem;
+	right: calc(33% + 2rem);
+
+	z-index: 15;
+
+	display: none;
+}
+
+body[data-active-screen="actu"]           #radius,
+body[data-active-screen="dormant"]        #radius,
+body[data-active-screen="events"]         #radius,
+body[data-active-screen="marketResearch"] #radius,
+body[data-active-screen="luxuries"]       #radius {
+
+	display: block;
+}
+
+
+.screen#actu    .list .ad a,
+.screen#events  .list .ad a,
+.screen#dormant .list .ad a {
+
+	display: flex;
+	align-items: center;
+}
+
+@media screen and (max-width: 49.999rem) {
+
+	.screen#actu    .list .ad,
+	.screen#events  .list .ad,
+	.screen#dormant .list .ad {
+
+		height: 3rem;
+		border-top-width: 0.0625rem;
+		border-bottom-width: 0.0625rem;
+	}
+
+	.screen#actu    .list .ad a,
+	.screen#events  .list .ad a,
+	.screen#dormant .list .ad a {
+
+		height: 100%;
+		align-items: center;
+	}
+
+	.screen#actu    .list .ad a:before,
+	.screen#events  .list .ad a:before,
+	.screen#dormant .list .ad a:before {
+
+		width: 1rem;
+		height: auto;
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+
+}
+
+@media screen and (min-width: 50rem) {
+
+	.screen#actu    .list .ad,
+	.screen#events  .list .ad,
+	.screen#dormant .list .ad {
+
+	    position: absolute;
+	    width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
+	    transform: translate(-50%, -50%); /* center the dot relative to the calculated position */
+
+	    cursor: pointer;
+
+		border-width: 0.125rem;
+		border-style: solid;
+	}
+
+	.screen#actu    .list .ad a .title,
+	.screen#events  .list .ad a .title,
+	.screen#dormant .list .ad a .title {
+
+		display: none;
+	}
+
+	.screen#actu    .list.paused .ad,
+	.screen#events  .list.paused .ad,
+	.screen#dormant .list.paused .ad {
+
+		animation-play-state: paused !important;
+	}
+
+	.screen#dormant .list > :not(.paused) .ad,
+	.screen#actu    .list > :not(.paused) .ad ,
+	.screen#events  .list > :not(.paused) .ad {
+
+		animation-play-state: running !important;
+	}
+
+	.screen#actu    .list .ad a,
+	.screen#events  .list .ad a,
+	.screen#dormant .list .ad a {
+
+		width: 100%;
+		height: 100%;
+
+		display: flex;
+		justify-content: center;
+	}
+
+	.screen#actu    .list .ad a:before,
+	.screen#events  .list .ad a:before,
+	.screen#dormant .list .ad a:before {
+
+		width: 50%;
+		height: auto;
+	}
+}
+
+#actu .list .ad.visited ,
+#dormant .list .ad.visited  {
+
+    display: none;
+}
+
+#actu .list .ad.visited.selected ,
+#dormant .list .ad.visited.selected  {
+
+    display: block;
+}
+
+
+
+
+
