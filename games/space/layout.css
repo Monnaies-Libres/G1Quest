@@ -182,29 +182,29 @@ main {
 	z-index: 9;
 }
 
-#panel > #panel-details > article {
+#panel > #panel-details > article > div > div {
 
 	display: flex;
 	flex-direction: column;
 	position: relative;
 }
 
-#panel > #panel-details > article > * {
+#panel > #panel-details > article > div > div > * {
 
-	order: 3;
+	order: 13;
 
 	margin-left:  1rem;
 	margin-right: 1rem;
 }
 
-#panel > #panel-details > article > .last-edit-date {
+#panel > #panel-details > article .last-edit-date {
 
 	order: 1;
 
 	margin-top: 1rem;
 }
 
-#panel > #panel-details > article > .price {
+#panel > #panel-details > article .price {
 
 	position: absolute;
 	top: 0;
@@ -212,7 +212,7 @@ main {
 }
 
 
-#panel > #panel-details > article > .title {
+#panel > #panel-details > article .title {
 
 	order: 2;
 
@@ -220,13 +220,17 @@ main {
 	margin-bottom: 0;
 }
 
-#panel > #panel-details > article > .category {
+#panel > #panel-details > article.page .title {
 
-	margin-top: 0.5rem;
-	margin-bottom: 1rem;
+	margin-top: 1rem;
 }
 
 #panel > #panel-details > article .category {
+
+	order: 3;
+
+	margin-top: 0.25rem;
+	margin-bottom: 0.5rem;
 
 	display: flex;
 	align-items: center;
@@ -240,29 +244,44 @@ main {
 	margin-right: 1rem;
 }
 
-#panel > #panel-details > article > .pictures {
+#panel > #panel-details > article .pictures {
+
+	order: 4;
 
 	margin-left:  0rem;
 	margin-right: 0rem;
+
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
-#panel > #panel-details > article > .pictures > img {
+#panel > #panel-details > article .pictures > img {
 
 	max-width: 100%;
 	display: block;
 	margin: auto;
 }
 
-#panel > #panel-details > article > .link-to-gchange {
+#panel > #panel-details > article .description {
 
-	order: 4;
+	order: 5;
+}
+
+#panel > #panel-details > article address {
+
+	order: 6;
+}
+
+#panel > #panel-details > article .link-to-gchange {
+
+	order: 666;
 
 	text-align: center;
 
 	margin-bottom: 1rem;
 }
 
-#panel > #panel-details > article > .link-to-gchange a {
+#panel > #panel-details > article .link-to-gchange a {
 
 	display: inline-block;
 	padding: 1rem;

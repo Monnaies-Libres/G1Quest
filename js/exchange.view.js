@@ -1,5 +1,5 @@
 import { fetchRecordDetails } from './details.model.js'
-import { displayRecordDetails } from './details.view.js'
+import { displayRecordDetails, preparePanel, finishPanel } from './details.view.js'
 
 export const displayExchange = function (records) {
 
@@ -46,6 +46,8 @@ export const displayExchange = function (records) {
 		// Add event listener for when the dot is clicked
 		offerLink.addEventListener('click', (event) => {
 
+			preparePanel();
+
 			// Remove 'selected' class from any ad that ad have it
 			const selectedAd = document.querySelector('.ad.selected');
 			if (selectedAd) {
@@ -55,19 +57,17 @@ export const displayExchange = function (records) {
 			offerLi.classList.add('selected');
 			offerLi.classList.add('visited');
 
-			let panel = document.getElementById('panel');
-			panel.classList.add('loading');
-
 			fetchRecordDetails(record._id)
 			.then(details => {
 
-					panel.classList.remove('loading');
-
 					displayRecordDetails(details);
+
+					finishPanel();
 				})
 				.catch(error => {
 					console.error('Error:', error)
-					panel.classList.remove('loading');
+
+					finishPanel();
 				})
 
 			event.stopPropagation();

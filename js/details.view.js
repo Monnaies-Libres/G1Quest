@@ -1,44 +1,92 @@
 import { categoriesNames } from './categoriesNames.js'
 
-export const displayPageDetails = (data) => {
 
+export const finishPanel = () => {
+
+	panel.classList.remove('loading');
+};
+
+
+export const preparePanel = () => {
+
+	let panel = document.getElementById('panel');
 	const panelDetails = document.getElementById('panel-details');
+	panelDetails.scrollTop = 0;
+
+	let previousLastArticleFullyLoaded = null;
+	previousLastArticleFullyLoaded = panelDetails.querySelector('article.last-fully-loaded');
+	if (previousLastArticleFullyLoaded != null) {
+
+		previousLastArticleFullyLoaded.classList.remove('last-fully-loaded');
+	}
+
+	let lastArticleFullyLoaded = null;
+	lastArticleFullyLoaded = panel.querySelector('article:first-of-type');
+	if (lastArticleFullyLoaded != null) {
+
+		lastArticleFullyLoaded.classList.add('last-fully-loaded');
+	}
 
 	let article = document.createElement('article');
+	panelDetails.prepend(article);
 
-	// panelDetails.innerHTML = '';
+	panel.classList.add('loading');
+};
 
-	// Remove 'selected' class from any dot that might have it
-	const selectedDot = document.querySelector('.dot.selected');
-	if (selectedDot) {
-		selectedDot.classList.remove('selected');
-	}
+export const displayPageDetails = (data) => {
 
-	// Add 'selected' class to the clicked dot
-	const clickedDot = document.getElementById(data._id);
-	if (clickedDot) {
-		clickedDot.classList.add('selected');
-	}
+	// Get the panel element
+	let panelDetails = document.getElementById('panel-details');
+
+	let article_outer_outer = panelDetails.querySelector('article:first-of-type');
+
+	article_outer_outer.classList.add('page-cat-' + data._source.category.id);
+	article_outer_outer.classList.add('page');
+
+	let article_outer = document.createElement('div');
+	let article = document.createElement('div');
+
+	article_outer.appendChild(article);
+	article_outer_outer.appendChild(article_outer);
 
 	// Send a GET request to the Elastic Search endpoint /page/record/{id}
 	console.log('page data : ', data);
 
 	// Create elements for the page details
 	const title = document.createElement('h2');
+	title.classList.add('title');
 	title.textContent = data._source.title;
 
 
 	let image = null;
+	let image_outer = null;
 
 	if (   typeof data._source.picturesCount !== 'undefined'
 		&& data._source.picturesCount > 0) {
 
 		image = document.createElement('img');
+		image_outer = document.createElement('p');
+		image_outer.classList.add('pictures');
+
 		image.src = 'data:' + data._source.pictures[0].file._content_type + ';base64, ' + data._source.pictures[0].file._content;
+
+		image_outer.append(image);
 	}
 
 	const description = document.createElement('p');
+	description.classList.add('description');
 	description.textContent = data._source.description;
+
+	const gchangeLink	   = document.createElement('a');
+	gchangeLink.href = 'https://www.gchange.fr/#/app/page/view/' + data._id + '/';
+	gchangeLink.textContent = 'Voir sur Gchange'
+	gchangeLink.addEventListener('click', (event) => {
+		window.open(event.target.href);
+		return false;
+	});
+	const gchangeLink_outer = document.createElement('p');
+	gchangeLink_outer.classList.add('link-to-gchange');
+	gchangeLink_outer.appendChild(gchangeLink);
 
 	const address = document.createElement('p');
 	address.textContent = data._source.address;
@@ -55,8 +103,7 @@ export const displayPageDetails = (data) => {
 
 	article.appendChild(description);
 	article.appendChild(address);
-
-	panelDetails.prepend(article);
+	article.appendChild(gchangeLink_outer);
 };
 
 export const displayRecordDetails = (data) => {
@@ -64,11 +111,14 @@ export const displayRecordDetails = (data) => {
 	// Get the panel element
 	let panelDetails = document.getElementById('panel-details');
 
-	let article = document.createElement('article');
-	article.classList.add(data._source.category.id );
+	let article_outer_outer = panelDetails.querySelector('article:first-of-type');
+	article_outer_outer.classList.add(data._source.category.id );
 
-	// Clear any existing content in the panel
-	// panelDetails.innerHTML = '';
+	let article_outer = document.createElement('div');
+	let article = document.createElement('div');
+
+	article_outer.appendChild(article);
+	article_outer_outer.appendChild(article_outer);
 
 	// Send a GET request to the Elastic Search endpoint /market/record/{id}
 	console.log('record data : ', data);
@@ -93,11 +143,16 @@ export const displayRecordDetails = (data) => {
 	}
 
 	const description = document.createElement('p');
+	description.classList.add('description');
 	description.textContent = data._source.description;
 
 	const gchangeLink	   = document.createElement('a');
 	gchangeLink.href = 'https://www.gchange.fr/#/app/market/view/' + data._id + '/';
 	gchangeLink.textContent = 'Voir sur Gchange'
+	gchangeLink.addEventListener('click', (event) => {
+		window.open(event.target.href);
+		return false;
+	});
 	const gchangeLink_outer = document.createElement('p');
 	gchangeLink_outer.classList.add('link-to-gchange');
 	gchangeLink_outer.appendChild(gchangeLink);
@@ -156,6 +211,4 @@ export const displayRecordDetails = (data) => {
 
 	article.appendChild(description);
 	article.appendChild(address);
-
-	panelDetails.prepend(article);
 };

@@ -1,5 +1,5 @@
 import { fetchRecordDetails } from './details.model.js'
-import { displayRecordDetails } from './details.view.js'
+import { displayRecordDetails, preparePanel, finishPanel } from './details.view.js'
 
 export const displayImmaterial = function (records) {
 
@@ -44,6 +44,8 @@ export const displayImmaterial = function (records) {
 		// Add event listener for when the dot is clicked
 		offerLink.addEventListener('click', (event) => {
 
+			preparePanel();
+
 			// Remove 'selected' class from any ad that ad have it
 			const selectedAd = document.querySelector('.ad.selected');
 			if (selectedAd) {
@@ -53,15 +55,31 @@ export const displayImmaterial = function (records) {
 			offerLi.classList.add('selected');
 			offerLi.classList.add('visited');
 
-			let panel = document.getElementById('panel');
-			panel.classList.add('loading');
-
 			fetchRecordDetails(record._id)
 			.then(details => {
 
-				panel.classList.remove('loading');
-
 				displayRecordDetails(details);
+
+				finishPanel();
+
+				/*
+
+				panel.classList.add('loaded');*
+				setTimeout(() => {
+
+					let panelDetails = document.getElementById('panel-details');
+					let emptyArticle = document.createElement('article');
+					emptyArticle.classList.add('empty');
+					panelDetails.prepend(emptyArticle);
+
+				}, 3000);
+				*/
+				/*
+				let panelDetails = document.getElementById('panel-details');
+				let emptyArticle = document.createElement('article');
+				emptyArticle.classList.add('empty');
+				panelDetails.prepend(emptyArticle);
+				*/
 			})
 			.catch(error => {
 				console.error('Error:', error)

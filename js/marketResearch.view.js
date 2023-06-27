@@ -1,6 +1,6 @@
 import { categoriesNames } from './categoriesNames.js'
 import { fetchRecordDetails } from './details.model.js'
-import { displayRecordDetails } from './details.view.js'
+import { displayRecordDetails, preparePanel, finishPanel } from './details.view.js'
 
 export const displayCategories = function (categories, radius) {
 		console.log('categoriesNames :', categoriesNames);
@@ -53,19 +53,19 @@ export const displayNeeds = function (needs, radius) {
 		// Add event listener for when the dot is clicked
 		li.addEventListener('click', (event) => {
 
-			let panel = document.getElementById('panel');
-			panel.classList.add('loading');
+			preparePanel();
 
 			fetchRecordDetails(record._id)
 			.then(details => {
 
-				panel.classList.remove('loading');
-
 				displayRecordDetails(details);
+
+				finishPanel();
 			})
 			.catch(error => {
 				console.error('Error:', error)
-				panel.classList.remove('loading');
+
+				finishPanel();
 			})
 
 			event.stopPropagation();

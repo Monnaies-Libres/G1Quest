@@ -22,10 +22,10 @@ const timestampBackThen_2_years  = Math.floor((Date.now() - (2 * 365 * 24 * 60 *
 const timestampBackThen_1_year   = Math.floor((Date.now() - (1 * 365 * 24 * 60 * 60 * 1000)) / 1000);
 
 let userLocation = null;
-// userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
+userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
 // userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
 let radius = 150;
-let currentScreen = 'exchange';
+let currentScreen = 'dormant';
 const screensWithRadiusPagination = ['actu', 'dormant', 'marketResearch', 'events', 'luxuries'];
 
 let radiusSelect = document.getElementById('radius');
@@ -284,7 +284,7 @@ function switchScreen (newScreenId) {
 				break;
 			case 'immaterial':
 
-				fetchImmaterial(timestampBackThen_1_year, 30)
+				fetchImmaterial(timestampBackThen_1_year, 10)
 				.then(records => {
 
 					document.querySelector('.screen#'+newScreenId).classList.remove('loading');

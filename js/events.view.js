@@ -1,6 +1,6 @@
 import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage, toRadians } from './helpers.js'
 import { fetchRecordDetails } from './details.model.js'
-import { displayRecordDetails } from './details.view.js'
+import { displayRecordDetails, preparePanel, finishPanel } from './details.view.js'
 
 export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 
@@ -56,6 +56,8 @@ export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 		// Add event listener for when the ad is clicked
 		ad.addEventListener('click', (event) => {
 
+			preparePanel();
+
 			console.log('event.currentTarget.parentElement : ', event.currentTarget.parentElement);
 			event.currentTarget.parentElement.classList.add('paused');
 
@@ -68,19 +70,17 @@ export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 			ad.classList.add('selected');
 			ad.classList.add('visited');
 
-			let panel = document.getElementById('panel');
-			panel.classList.add('loading');
-
 			fetchRecordDetails(record._id)
 			.then(details => {
 
-				panel.classList.remove('loading');
-
 				displayRecordDetails(details);
+
+				finishPanel();
 			})
 			.catch(error => {
 				console.error('Error:', error)
-				panel.classList.remove('loading');
+
+				finishPanel();
 			})
 
 			event.stopPropagation();

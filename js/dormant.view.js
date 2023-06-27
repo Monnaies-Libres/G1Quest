@@ -1,6 +1,6 @@
 import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage } from './helpers.js'
 import { fetchRecordDetails, fetchPageDetails } from './details.model.js'
-import { displayRecordDetails, displayPageDetails } from './details.view.js'
+import { displayRecordDetails, displayPageDetails, preparePanel, finishPanel } from './details.view.js'
 
 export const displayDormant = (pages, userLocation, radius) => {
 
@@ -37,19 +37,31 @@ export const displayDormant = (pages, userLocation, radius) => {
 		// Add event listener for when the dot is clicked
 		dot.addEventListener('click', () => {
 
-			let panel = document.getElementById('panel');
-			panel.classList.add('loading');
+			preparePanel();
+
+			// Remove 'selected' class from any dot that might have it
+			const selectedDot = document.querySelector('.dot.selected');
+			if (selectedDot) {
+				selectedDot.classList.remove('selected');
+			}
+
+			// Add 'selected' class to the clicked dot
+			const clickedDot = document.getElementById(page._id);
+			if (clickedDot) {
+				clickedDot.classList.add('selected');
+			}
 
 			fetchPageDetails(page._id)
 			.then(details => {
 
-				panel.classList.remove('loading');
-
 				displayPageDetails(details);
+
+				finishPanel();
 			})
 			.catch(error => {
 				console.error('Error:', error)
-				panel.classList.remove('loading');
+
+				finishPanel();
 			})
 		});
 

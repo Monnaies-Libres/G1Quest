@@ -48,19 +48,41 @@ a:visited {
 
 #panel > #panel-details {
 
+	/*
 	background-image:
 		  linear-gradient(to bottom, hsla(0, 0%, 10%, 0.75) 0%, hsla(0, 0%, 10%, 0.60) 100%)
 		  , url('img/textures/dark_repeating_texture_that_look_like_the_floor_of_a_submarine_2252539355.cropped.2.resized-256.seamless-texture.jpg');
 	  background-size: cover, 128px;
 	  background-repeat: no-repeat, repeat;
+	*/
 
-	margin: 0 0 0 0;
 
-	transition: margin;
+	/*
+	padding: 0 0 0 0;
+
+	transition: padding;
 	transition-duration: 0.333s;
 	transition-timing-function: ease-out;
 	transition-delay: 0s;
+	*/
 }
+/*
+#panel.loading > #panel-details {
+
+  padding: 100vh 0 0 0;
+}
+
+#panel:not(.loading) > #panel-details {
+
+  padding: 0 0 0 0;
+
+  transition-property: padding;
+  transition-duration: 1s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+*/
+
 
 #panel > #panel-details > article {
 
@@ -71,22 +93,97 @@ a:visited {
 	  background-repeat: no-repeat, repeat;
 
 	box-shadow: 0 0 0.5rem black;
+
+	position: relative;
+}
+
+
+/*
+#panel         > #panel-details {
+
+	margin: 0vh 0 0 0;
+	padding: 0vh 0 0 0;
+
+	transition-property: margin, padding;
+	transition-duration: 0.5s, 0.5s;
+	transition-delay: 0s, 0s;
+	transition-timing-function: ease-out, ease-out;
 }
 
 #panel.loading > #panel-details {
 
-  margin: 100vh 0 0 0;
+	margin: -1050vh 0 0 0;
+	padding: 1000vh 0 0 0;
 }
 
-#panel:not(.loading) > #panel-details {
+#panel         > #panel-details > article.last-fully-loaded {
 
-  margin: 0 0 0 0;
+	margin-top: 0vh
 
-  transition-property: margin;
-  transition-duration: 1s;
-  transition-timing-function: ease-in;
-  transition-delay: 0s;
+	transition-property: margin;
+	transition-duration: 0.5s;
+	transition-delay: 0s;
+	transition-timing-function: ease-out;
 }
+
+#panel.loading > #panel-details > article.last-fully-loaded {
+
+	margin-top: 50vh
+}
+*/
+
+
+#panel         > #panel-details > article:first-of-type:not(.last-fully-loaded) > div {
+
+	display: flex;
+	flex-direction: column-reverse;
+	overflow: hidden;
+}
+
+#panel         > #panel-details > article:first-of-type:not(.last-fully-loaded) {
+
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+	height: auto;
+	max-height: 666vh;
+
+	transition-property: max-height;
+}
+
+#panel.loading > #panel-details > article:first-of-type:not(.last-fully-loaded) {
+
+	max-height: 0vh;
+}
+
+#panel         > #panel-details > article:first-of-type:not(.last-fully-loaded)  {
+
+	transition-duration: 2s;
+}
+
+#panel         > #panel-details > article.last-fully-loaded {
+
+
+	transition-duration: 2s;
+
+	transition-property: margin;
+
+	margin-top: 0vh;
+}
+
+#panel.loading > #panel-details > article.last-fully-loaded {
+
+	margin-top: 50vh;
+}
+
+#panel         > #panel-details > article:first-of-type,
+#panel         > #panel-details > article.last-fully-loaded {
+
+	transition-delay: 0s;
+	transition-timing-function: ease-out;
+}
+
 
 
 #panel:before ,
@@ -248,12 +345,12 @@ a:visited {
 
 
 
-#panel > #panel-details > article > .pictures {
+#panel > #panel-details > article .pictures {
 
 	background-color: black;
 }
 
-#panel > #panel-details > article > .link-to-gchange a {
+#panel > #panel-details > article .link-to-gchange a {
 
 	background-color: var(--color--gchange-primary);
 	border-color: var(--color--gchange-secondary);
