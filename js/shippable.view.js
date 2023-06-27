@@ -54,8 +54,8 @@ export const displayShippable = function (records) {
 				selectedAd.classList.remove('selected');
 			}
 
-			let panel = document.getElementById('panel');
-			panel.classList.add('loading');
+			offerLi.classList.add('selected');
+			offerLi.classList.add('visited');
 
 			fetchRecordDetails(record._id)
 			.then(details => {
