@@ -1,4 +1,4 @@
-import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, getDirection, switchPage } from './helpers.js'
+import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, getDirection, getSectionalCSSClasses, switchPage } from './helpers.js'
 import { fetchRecordDetails, fetchPageDetails } from './details.model.js'
 import { displayRecordDetails, displayPageDetails, preparePanel, finishPanel } from './details.view.js'
 
@@ -73,6 +73,11 @@ export const displayDormant = (pages, userLocation, radius) => {
 
 		const dir = getDirection(x, y);
 		ad.classList.add('dir-' + dir);
+
+		const portion = Math.sqrt(x * x + y * y) / 50;
+		for (const cssClass of getSectionalCSSClasses(portion)) {
+			ad.classList.add(cssClass);
+		}
 
 		ad.style.top  = (50 - y).toString() + '%';
 		ad.style.left = (50 + x).toString() + '%';

@@ -1,4 +1,4 @@
-import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, getDirection, switchPage, toRadians } from './helpers.js'
+import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, getDirection, getSectionalCSSClasses, switchPage, toRadians } from './helpers.js'
 import { fetchRecordDetails } from './details.model.js'
 import { displayRecordDetails, preparePanel, finishPanel } from './details.view.js'
 
@@ -96,6 +96,11 @@ export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 
 		const dir = getDirection(x, y);
 		ad.classList.add('dir-' + dir);
+
+		const portion = Math.sqrt(x * x + y * y) / 50;
+		for (const cssClass of getSectionalCSSClasses(portion)) {
+			ad.classList.add(cssClass);
+		}
 
 		ad.style.top  = (50 - y).toString() + '%';
 		ad.style.left = (50 + x).toString() + '%';

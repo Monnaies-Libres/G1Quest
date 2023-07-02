@@ -437,35 +437,35 @@ body[data-active-screen="luxuries"]       #radius {
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+1 of .dir-N.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-N.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+3 of .dir-N.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-N.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+1 of .dir-S.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-S.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+3 of .dir-S.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-S.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+1 of .dir-E.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-E.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+3 of .dir-E.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-E.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+1 of .dir-W.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-W.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+3 of .dir-W.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-W.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+1 of .dir-NE.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-NE.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+3 of .dir-NE.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-NE.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+1 of .dir-SE.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-SE.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+3 of .dir-SE.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-SE.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+1 of .dir-NW.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-NW.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+3 of .dir-NW.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-NW.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+1 of .dir-SW.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-SW.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+3 of .dir-SW.thirds--3rd:not(.visited)) {
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(n+2 of .dir-SW.thirds--3rd:not(.visited)) {
 
 		transform: translate(-50%, -100vh);
 
@@ -477,35 +477,35 @@ body[data-active-screen="luxuries"]       #radius {
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+1 of .dir-N.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-N.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+3 of .dir-N.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-N.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+1 of .dir-S.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-S.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+3 of .dir-S.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-S.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+1 of .dir-E.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-E.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+3 of .dir-E.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-E.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+1 of .dir-W.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-W.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+3 of .dir-W.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-W.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+1 of .dir-NE.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-NE.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+3 of .dir-NE.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-NE.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+1 of .dir-SE.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-SE.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+3 of .dir-SE.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-SE.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+1 of .dir-NW.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-NW.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+3 of .dir-NW.thirds--3rd:not(.visited)) ,
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-NW.thirds--3rd:not(.visited)) ,
 
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+1 of .dir-SW.thirds--1st:not(.visited)) ,
 	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-SW.thirds--2nd:not(.visited)) ,
-	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+3 of .dir-SW.thirds--3rd:not(.visited)) {
+	.screen:is(#actu, #events, #dormant) .list .ad:nth-child(-n+2 of .dir-SW.thirds--3rd:not(.visited)) {
 
 		transform: translate(-50%, -50%);
 	}
