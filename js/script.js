@@ -23,7 +23,7 @@ const timestampBackThen_1_year   = Math.floor((Date.now() - (1 * 365 * 24 * 60 *
 
 let userLocation = null;
 // userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
-// userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
+userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
 let radius = 150;
 let currentScreen = 'actu';
 const screensWithRadiusPagination = ['actu', 'dormant', 'marketResearch', 'events', 'luxuries'];
@@ -76,15 +76,20 @@ let isLoadedContents = {
  *                                     |
  *                                     V
  */
-for (let list of document.querySelectorAll('#actu > .list, #dormant > .list')) {
+for (let list of document.querySelectorAll(':is(#actu, #dormant, #events) > .list')) {
 
 	list.addEventListener('click', function (event) {
 
-		event.target.classList.remove('paused');
+		console.log('event.target\n', event.target);
 
-		const selectedDot = document.querySelector('.ad.selected');
-		if (selectedDot) {
-			selectedDot.classList.remove('selected');
+		if (event.target.classList.contains('list')) {
+
+			event.target.classList.remove('has-ad-selected');
+
+			const selectedDot = document.querySelector('.ad.selected');
+			if (selectedDot) {
+				selectedDot.classList.remove('selected');
+			}
 		}
 	});
 }

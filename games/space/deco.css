@@ -70,6 +70,14 @@ a:visited {
 	position: relative;
 }
 
+#panel:not(.loading) > #panel-details > article:nth-of-type(n).closed:not(.last-fully-loaded) ,
+#panel.loading       > #panel-details > article:nth-of-type(n).closed.last-fully-loaded       ,
+#panel:not(.loading) > #panel-details > article:nth-of-type(n).closed.last-fully-loaded       ,
+#panell.loading      > #panel-details > article:nth-of-type(n).closed:not(.last-fully-loaded) {
+
+	max-height: 0 !important;
+	overflow: hidden;
+}
 
 #panel         > #panel-details > article:first-of-type:not(.last-fully-loaded) > div {
 
@@ -435,6 +443,19 @@ a:visited {
 	background: hsl(53.7, 100%, 81.4%);
 }
 
+.screen#actu    .list.has-ad-selected .ad ,
+.screen#events  .list.has-ad-selected .ad ,
+.screen#dormant .list.has-ad-selected .ad {
+
+	animation-play-state: paused !important;
+}
+
+.screen#dormant .list:not(.has-ad-selected) .ad ,
+.screen#actu    .list:not(.has-ad-selected) .ad ,
+.screen#events  .list:not(.has-ad-selected) .ad {
+
+	animation-play-state: running !important;
+}
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Ads in
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> screens displayed as a radar (on desktop)

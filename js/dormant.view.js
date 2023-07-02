@@ -1,4 +1,4 @@
-import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage } from './helpers.js'
+import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, getDirection, switchPage } from './helpers.js'
 import { fetchRecordDetails, fetchPageDetails } from './details.model.js'
 import { displayRecordDetails, displayPageDetails, preparePanel, finishPanel } from './details.view.js'
 
@@ -22,34 +22,32 @@ export const displayDormant = (pages, userLocation, radius) => {
 
 	pages.forEach(page => {
 
-		// Create a dot for each page
-		const dot = document.createElement('div');
-		dot.classList.add('ad');
-		dot.classList.add('page');
-		dot.id = page._id;
+		const ad = document.createElement('li');
+		ad.classList.add('ad');
+		ad.classList.add('page');
+		ad.id = page._id;
 
-		// Map the page's timestamp to an opacity value between 0.25 and 1
-		let opacity = calculateDotOpacity(0.25, 1, minTime, maxTime, page._source.time);
-
-		// Set the dot's opacity
-		dot.style.opacity = opacity.toString();
-
-		// Add event listener for when the dot is clicked
-		dot.addEventListener('click', () => {
+		ad.addEventListener('click', (event) => {
 
 			preparePanel();
 
-			// Remove 'selected' class from any dot that might have it
-			const selectedDot = document.querySelector('.dot.selected');
-			if (selectedDot) {
-				selectedDot.classList.remove('selected');
+			event.currentTarget.parentElement.classList.add('has-ad-selected');
+
+			// Remove 'selected' class from any ad that ad have it
+			const selectedAd = document.querySelector('.ad.selected');
+			if (selectedAd) {
+				selectedAd.classList.remove('selected');
 			}
 
+			ad.classList.add('visited');
+			ad.classList.add('selected');
+			/*
 			// Add 'selected' class to the clicked dot
 			const clickedDot = document.getElementById(page._id);
 			if (clickedDot) {
 				clickedDot.classList.add('selected');
 			}
+			*/
 
 			fetchPageDetails(page._id)
 			.then(details => {
@@ -73,10 +71,19 @@ export const displayDormant = (pages, userLocation, radius) => {
 
 		const {x, y} = calculateRelativePosition(userLocation, pageLocation, radius);
 
-		dot.style.top  = (50 - y).toString() + '%';
-		dot.style.left = (50 + x).toString() + '%';
+		const dir = getDirection(x, y);
+		ad.classList.add('dir-' + dir);
+
+		ad.style.top  = (50 - y).toString() + '%';
+		ad.style.left = (50 + x).toString() + '%';
+
+		// Map the page's timestamp to an opacity value between 0.25 and 1
+		let opacity = calculateDotOpacity(0.25, 1, minTime, maxTime, page._source.time);
+
+		// Set the dot's opacity
+		ad.style.opacity = opacity.toString();
 
 		// Add the dot to the sonar
-		dormantDisplay.appendChild(dot);
+		dormantDisplay.appendChild(ad);
 	});
 };

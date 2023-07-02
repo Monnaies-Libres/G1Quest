@@ -228,6 +228,17 @@
 	background-image: url("img/FontAwesome/svg/handshake-angle-solid.svg");
 }
 
+.screen#actu       .list .ad.cat35 a:before   ,
+.screen#dormant    .list .ad.cat35 a:before   ,
+.screen#shippable  .list .ad.cat35 a:before   ,
+.screen#immaterial .list .ad.cat35 a:before   ,
+.screen#luxuries   .list .ad.cat35 a:before   ,
+#panel-details article.cat35 .category:before {
+	/* Billeterie */
+
+	background-image: url("img/FontAwesome/svg/ticket-solid.svg");
+}
+
 .screen#actu       .list .ad.cat36 a:before   ,
 .screen#dormant    .list .ad.cat36 a:before   ,
 .screen#shippable  .list .ad.cat36 a:before   ,

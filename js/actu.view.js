@@ -1,35 +1,6 @@
-import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage, toRadians } from './helpers.js'
+import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, getDirection, switchPage, toRadians } from './helpers.js'
 import { fetchRecordDetails } from './details.model.js'
 import { displayRecordDetails, preparePanel, finishPanel } from './details.view.js'
-
-const getDirection = (x, y) => {
-
-	let angle = Math.atan2(y, x);
-	let dir = null;
-	console.log(angle)
-
-	if ((angle > (-1 * Math.PI/8)) && angle <= (1 * Math.PI/8)) {
-		dir = 'E';
-	} else if ((angle > (1 * Math.PI/8)) && angle <= (3 * Math.PI/8)) {
-		dir = 'NE';
-	} else if ((angle > (3 * Math.PI/8)) && angle <= (5 * Math.PI/8)) {
-		dir = 'N';
-	} else if ((angle > (5 * Math.PI/8)) && angle <= (7 * Math.PI/8)) {
-		dir = 'NW';
-	} else if ((angle > (7 * Math.PI/8)) || angle <= (-7 * Math.PI/8)) {
-		dir = 'W';
-	} else if ((angle > (-7 * Math.PI/8)) && angle <= (-5 * Math.PI/8)) {
-		dir = 'SW';
-	} else if ((angle >= (-5 * Math.PI/8)) && angle <= (-3 * Math.PI/8)) {
-		dir = 'S';
-	} else if ((angle >= (-3 * Math.PI/8)) && angle <= (-1 * Math.PI/8)) {
-		dir = 'SE';
-	}
-
-	console.log(dir);
-
-	return dir;
-}
 
 export const displayActu = (records, userLocation, radius, minTimestamp) => {
 
@@ -87,7 +58,7 @@ export const displayActu = (records, userLocation, radius, minTimestamp) => {
 
 			preparePanel();
 
-			event.currentTarget.parentElement.classList.add('paused');
+			event.currentTarget.parentElement.classList.add('has-ad-selected');
 
 			// Remove 'selected' class from any ad that ad have it
 			const selectedAd = document.querySelector('.ad.selected');
@@ -123,7 +94,6 @@ export const displayActu = (records, userLocation, radius, minTimestamp) => {
 		const {x, y} = calculateRelativePosition(userLocation, adLocation, radius);
 
 		const dir = getDirection(x, y);
-
 		ad.classList.add('dir-' + dir);
 
 		ad.style.top  = (50 - y).toString() + '%';

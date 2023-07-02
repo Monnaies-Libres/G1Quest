@@ -1,10 +1,10 @@
-import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, switchPage, toRadians } from './helpers.js'
+import { getBlinkDuration, calculateDotOpacity, calculateRelativePosition, getDirection, switchPage, toRadians } from './helpers.js'
 import { fetchRecordDetails } from './details.model.js'
 import { displayRecordDetails, preparePanel, finishPanel } from './details.view.js'
 
 export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 
-	switchPage('actu', radius);
+	switchPage('events', radius);
 
 	const recordsNb = records.length;
 
@@ -59,12 +59,12 @@ export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 			preparePanel();
 
 			console.log('event.currentTarget.parentElement : ', event.currentTarget.parentElement);
-			event.currentTarget.parentElement.classList.add('paused');
+			event.currentTarget.parentElement.classList.add('has-ad-selected');
 
 			// Remove 'selected' class from any ad that ad have it
-			const selectedDot = document.querySelector('.ad.selected');
-			if (selectedDot) {
-				selectedDot.classList.remove('selected');
+			const selectedAd = document.querySelector('.ad.selected');
+			if (selectedAd) {
+				selectedAd.classList.remove('selected');
 			}
 
 			ad.classList.add('selected');
@@ -93,6 +93,9 @@ export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 		};
 
 		const {x, y} = calculateRelativePosition(userLocation, adLocation, radius);
+
+		const dir = getDirection(x, y);
+		ad.classList.add('dir-' + dir);
 
 		ad.style.top  = (50 - y).toString() + '%';
 		ad.style.left = (50 + x).toString() + '%';

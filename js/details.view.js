@@ -100,7 +100,7 @@ export const displayPageDetails = (data) => {
 	address.textContent  = data._source.address;
 	const city = document.createElement('p');
 	city.classList.add('city');
-	city.textContent  = data._source.city;
+	city.textContent = data._source.city;
 	address_outer.append(address);
 	address_outer.append(city);
 
@@ -211,9 +211,19 @@ export const displayRecordDetails = (data) => {
 	address.textContent  = data._source.address;
 	const city = document.createElement('p');
 	city.classList.add('city');
-	city.textContent  = data._source.city;
+	city.textContent = data._source.city;
 	address_outer.append(address);
 	address_outer.append(city);
+
+	const closingButton = document.createElement('button');
+	closingButton.type = 'button';
+	closingButton.classList.add('closing-button');
+	closingButton.textContent = 'Zigouiller';
+
+	closingButton.addEventListener('click', (event) => {
+
+		article_outer_outer.classList.add('closed');
+	});
 
 	// Append the elements to the article
 	article.appendChild(title);
@@ -231,4 +241,6 @@ export const displayRecordDetails = (data) => {
 
 	article.appendChild(description);
 	article.appendChild(address_outer);
+
+	article.appendChild(closingButton);
 };

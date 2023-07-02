@@ -132,7 +132,7 @@ main {
 
 #panel > #panel-details > article > div > div > * {
 
-	order: 13;
+	order: 12;
 
 	margin-left:  1rem;
 	margin-right: 1rem;
@@ -215,7 +215,7 @@ main {
 
 #panel > #panel-details > article .link-to-gchange {
 
-	order: 666;
+	order: 13;
 
 	text-align: center;
 
@@ -227,6 +227,15 @@ main {
 	display: inline-block;
 	padding: 1rem;
 	border-width: 0.25rem;
+}
+
+#panel > #panel-details > article .closing-button {
+
+	order: 666;
+
+	text-align: center;
+
+	margin-bottom: 1rem;
 }
 
 
@@ -521,20 +530,6 @@ body[data-active-screen="luxuries"]       #radius {
 	.screen#dormant .list .ad a .title {
 
 		display: none;
-	}
-
-	.screen#actu    .list.paused .ad ,
-	.screen#events  .list.paused .ad ,
-	.screen#dormant .list.paused .ad {
-
-		animation-play-state: paused !important;
-	}
-
-	.screen#dormant .list > :not(.paused) .ad ,
-	.screen#actu    .list > :not(.paused) .ad ,
-	.screen#events  .list > :not(.paused) .ad {
-
-		animation-play-state: running !important;
 	}
 
 	.screen#actu    .list .ad a ,
