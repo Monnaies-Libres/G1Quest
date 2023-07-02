@@ -1,3 +1,34 @@
+export const getSectionalCSSClasses = (portion) => {
+
+	let cssClasses = [];
+
+	if (portion < 0.5) {
+		cssClasses.push('half--1st');
+	} else {
+		cssClasses.push('half--2nd');
+	}
+
+	if (portion < 0.333) {
+		cssClasses.push('thirds--1st');
+	} else if (portion < 0.667) {
+		cssClasses.push('thirds--2nd');
+	} else {
+		cssClasses.push('thirds--3rd');
+	}
+
+	if (portion < 0.25) {
+		cssClasses.push('quarters--1st');
+	} else if (portion < 0.5) {
+		cssClasses.push('quarters--2nd');
+	} else if (portion < 0.75) {
+		cssClasses.push('quarters--3rd');
+	} else {
+		cssClasses.push('quarters--4th');
+	}
+
+	return cssClasses;
+};
+
 export const toRadians = function (degrees) {
 	return degrees * (Math.PI / 180);
 }

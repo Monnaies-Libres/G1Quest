@@ -173,6 +173,17 @@
 	background-image: url("img/FontAwesome/svg/baby-carriage-solid.svg");
 }
 
+.screen#actu       .list .ad.cat26 a:before   ,
+.screen#dormant    .list .ad.cat26 a:before   ,
+.screen#shippable  .list .ad.cat26 a:before   ,
+.screen#immaterial .list .ad.cat26 a:before   ,
+.screen#luxuries   .list .ad.cat26 a:before   ,
+#panel-details article.cat26 .category:before {
+	/* CD / Musique */
+
+	background-image: url("img/FontAwesome/svg/compact-disc-solid.svg");
+}
+
 .screen#actu       .list .ad.cat27 a:before   ,
 .screen#dormant    .list .ad.cat27 a:before   ,
 .screen#shippable  .list .ad.cat27 a:before   ,
