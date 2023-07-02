@@ -32,6 +32,22 @@ main {
 	gap: 3vw;
 }
 
+#mainArea {
+
+	position: fixed;
+	top: 0;
+	left: var(--menu-width);
+	/*overflow: hidden;*/
+
+	order: 1;
+
+	height: 100vh;
+	width: calc(100vw - var(--menu-width) - 33vw);
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Menu
+ */
+
 #menu {
 
 	position: fixed;
@@ -76,6 +92,9 @@ main {
 	width: auto;
 }
 
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Panel
+ */
+
 #panel {
 
 	position: fixed;
@@ -85,84 +104,6 @@ main {
 	height: 100vh;
 
 	width: 33vw;
-}
-
-#mainArea {
-
-	position: fixed;
-	top: 0;
-	left: var(--menu-width);
-	overflow: hidden;
-
-	order: 1;
-
-	height: 100vh;
-	width: calc(100vw - var(--menu-width) - 33vw);
-}
-
-.screen {
-
-	position: absolute;
-	top: 0;
-	left: 0;
-	overflow: auto;
-
-	height: 100vh;
-	width: 100%;
-}
-
-.screen#shippable  .list > .ad a ,
-.screen#immaterial .list > .ad a ,
-.screen#luxuries   .list > .ad a ,
-.screen#exchange   .list > .ad a {
-
-	display: flex;
-	align-items: center;
-
-	width: calc(100% - 2rem);
-	padding-left:   1rem;
-	padding-right:  1rem;
-
-	padding-top:    1rem;
-	padding-bottom: 1rem;
-
-	height: 3rem;
-}
-
-.screen#shippable  .list .ad.selected ,
-.screen#immaterial .list .ad.selected ,
-.screen#luxuries   .list .ad.selected ,
-.screen#exchange   .list .ad.selected {
-
-	height: 5rem;
-}
-
-.screen#shippable  .list .ad.visited:not(.selected) ,
-.screen#immaterial .list .ad.visited:not(.selected) ,
-.screen#luxuries   .list .ad.visited:not(.selected) ,
-.screen#exchange   .list .ad.visited:not(.selected) {
-
-	height: 0;
-	overflow: hidden;
-
-	transition-property: height, padding;
-	transition-delay: 0s, 0.5s, 1s;
-	transition-duration: 0.5s, 0.5s, 0.5s;
-	transition-timing-function: linear;
-}
-
-.screen#shippable  .list > .ad a:before ,
-.screen#immaterial .list > .ad a:before ,
-.screen#luxuries   .list > .ad a:before ,
-.screen#exchange   .list > .ad a:before {
-
-	content: "";
-
-	display: flex;
-
-	width: 2rem;
-	margin-right: 1rem;
-	height: 3rem;
 }
 
 #panel {
@@ -239,9 +180,9 @@ main {
 #panel > #panel-details > article .category:before {
 
 	width: 1rem;
-	height: auto;
+	height: 1rem;
 	margin-left: 0;
-	margin-right: 1rem;
+	margin-right: 0.5rem;
 }
 
 #panel > #panel-details > article .pictures {
@@ -288,9 +229,61 @@ main {
 	border-width: 0.25rem;
 }
 
-.screen:not(.active) {
 
-    display: none;
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Radius
+ */
+
+#radius {
+
+	position: fixed;
+	bottom: 1.5rem;
+	right: calc(33% + 2rem);
+
+	z-index: 2000;
+
+	display: none;
+}
+
+body[data-active-screen="actu"]           #radius,
+body[data-active-screen="dormant"]        #radius,
+body[data-active-screen="events"]         #radius,
+body[data-active-screen="marketResearch"] #radius,
+body[data-active-screen="luxuries"]       #radius {
+
+	display: block;
+}
+
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Categories icons
+ */
+
+.screen#shippable  .list > .ad a:before ,
+.screen#immaterial .list > .ad a:before ,
+.screen#luxuries   .list > .ad a:before ,
+.screen#exchange   .list > .ad a:before {
+
+	display: flex;
+
+	width: 2rem;
+	margin-right: 1rem;
+	height: 3rem;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Screens
+ */
+
+.screen {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: auto;
+
+	height: 100vh;
+	width: 100%;
 }
 
 .screen#actu       ol,
@@ -314,27 +307,6 @@ main {
 .screen > .list.active {
 
 	display: block;
-}
-
-
-.screen#dormant > .list,
-.screen#actu    > .list,
-.screen#events  > .list,
-.buttonContainer {
-
-    height: 90vh;
-    margin: 5vh;
-    width: 90vh;
-
-}
-
-.screen#dormant > .list ,
-.screen#events  > .list ,
-.screen#actu    > .list {
-
-    border-radius: 50%;
-    position: relative;
-	overflow: hidden;
 }
 
 .buttonContainer {
@@ -371,26 +343,28 @@ main {
 }
 
 
-#radius {
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Screens displayed as a RADAR (on desktop)
+ */
 
-	position: fixed;
-	bottom: 1.5rem;
-	right: calc(33% + 2rem);
+.screen#dormant > .list,
+.screen#actu    > .list,
+.screen#events  > .list,
+.buttonContainer {
 
-	z-index: 15;
+    height: 90vh;
+    margin: 0vh; /* 5vh */
+    width: 90vh;
 
-	display: none;
 }
 
-body[data-active-screen="actu"]           #radius,
-body[data-active-screen="dormant"]        #radius,
-body[data-active-screen="events"]         #radius,
-body[data-active-screen="marketResearch"] #radius,
-body[data-active-screen="luxuries"]       #radius {
+.screen#dormant > .list ,
+.screen#events  > .list ,
+.screen#actu    > .list {
 
-	display: block;
+    border-radius: 50%;
+    position: relative;
+	overflow: hidden;
 }
-
 
 .screen#actu    .list .ad a,
 .screen#events  .list .ad a,
@@ -452,9 +426,35 @@ body[data-active-screen="luxuries"]       #radius {
 		transition-timing-function: ease-out;
 	}
 
-	.screen#actu    .list .ad:nth-child(n+5 of :not(.visited)) ,
-	.screen#events  .list .ad:nth-child(n+5 of :not(.visited)) ,
-	.screen#dormant .list .ad:nth-child(n+5 of :not(.visited)) {
+	.screen#actu    .list .ad:nth-child(n+5 of .dir-N:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(n+5 of .dir-S:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(n+5 of .dir-E:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(n+5 of .dir-W:not(.visited)) ,
+
+	.screen#actu    .list .ad:nth-child(n+5 of .dir-NE:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(n+5 of .dir-SE:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(n+5 of .dir-NW:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(n+5 of .dir-SW:not(.visited)) ,
+
+	.screen#events  .list .ad:nth-child(n+5 of .dir-N:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(n+5 of .dir-S:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(n+5 of .dir-E:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(n+5 of .dir-W:not(.visited)) ,
+
+	.screen#events  .list .ad:nth-child(n+5 of .dir-NE:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(n+5 of .dir-SE:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(n+5 of .dir-NW:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(n+5 of .dir-SW:not(.visited)) ,
+
+	.screen#dormant .list .ad:nth-child(n+5 of .dir-N:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(n+5 of .dir-S:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(n+5 of .dir-E:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(n+5 of .dir-W:not(.visited)) ,
+
+	.screen#dormant .list .ad:nth-child(n+5 of .dir-NE:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(n+5 of .dir-SE:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(n+5 of .dir-NW:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(n+5 of .dir-SW:not(.visited)) {
 
 		transform: translate(-50%, -100vh);
 
@@ -464,9 +464,35 @@ body[data-active-screen="luxuries"]       #radius {
 		transition-timing-function: ease-out;
 	}
 
-	.screen#actu    .list .ad:nth-child(-n+5 of :not(.visited)) ,
-	.screen#events  .list .ad:nth-child(-n+5 of :not(.visited)) ,
-	.screen#dormant .list .ad:nth-child(-n+5 of :not(.visited)) {
+	.screen#actu    .list .ad:nth-child(-n+5 of .dir-N:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(-n+5 of .dir-S:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(-n+5 of .dir-E:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(-n+5 of .dir-W:not(.visited)) ,
+
+	.screen#actu    .list .ad:nth-child(-n+5 of .dir-NE:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(-n+5 of .dir-SE:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(-n+5 of .dir-NW:not(.visited)) ,
+	.screen#actu    .list .ad:nth-child(-n+5 of .dir-SW:not(.visited)) ,
+
+	.screen#events  .list .ad:nth-child(-n+5 of .dir-N:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(-n+5 of .dir-S:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(-n+5 of .dir-E:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(-n+5 of .dir-W:not(.visited)) ,
+
+	.screen#events  .list .ad:nth-child(-n+5 of .dir-NE:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(-n+5 of .dir-SE:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(-n+5 of .dir-NW:not(.visited)) ,
+	.screen#events  .list .ad:nth-child(-n+5 of .dir-SW:not(.visited)) ,
+
+	.screen#dormant .list .ad:nth-child(-n+5 of .dir-N:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(-n+5 of .dir-S:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(-n+5 of .dir-E:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(-n+5 of .dir-W:not(.visited))
+
+	.screen#dormant .list .ad:nth-child(-n+5 of .dir-NE:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(-n+5 of .dir-SE:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(-n+5 of .dir-NW:not(.visited)) ,
+	.screen#dormant .list .ad:nth-child(-n+5 of .dir-SW:not(.visited)) {
 
 		transform: translate(-50%, -50%);
 	}
@@ -527,9 +553,51 @@ body[data-active-screen="luxuries"]       #radius {
 	.screen#dormant .list .ad a:before {
 
 		width: 50%;
-		height: auto;
+		height: 50%;
 	}
 }
 
 
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Screens displayed as a LIST (on desktop)
+ */
+
+.screen#shippable  .list > .ad a ,
+.screen#immaterial .list > .ad a ,
+.screen#luxuries   .list > .ad a ,
+.screen#exchange   .list > .ad a {
+
+	display: flex;
+	align-items: center;
+
+	width: calc(100% - 2rem);
+	padding-left:   1rem;
+	padding-right:  1rem;
+
+	padding-top:    1rem;
+	padding-bottom: 1rem;
+
+	height: 3rem;
+}
+
+.screen#shippable  .list .ad.selected ,
+.screen#immaterial .list .ad.selected ,
+.screen#luxuries   .list .ad.selected ,
+.screen#exchange   .list .ad.selected {
+
+	height: 5rem;
+}
+
+.screen#shippable  .list .ad.visited:not(.selected) ,
+.screen#immaterial .list .ad.visited:not(.selected) ,
+.screen#luxuries   .list .ad.visited:not(.selected) ,
+.screen#exchange   .list .ad.visited:not(.selected) {
+
+	height: 0;
+	overflow: hidden;
+
+	transition-property: height, padding;
+	transition-delay: 0s, 0.5s, 1s;
+	transition-duration: 0.5s, 0.5s, 0.5s;
+	transition-timing-function: linear;
+}
 

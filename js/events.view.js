@@ -51,7 +51,7 @@ export const displayEvents = (records, userLocation, radius, minTimestamp) => {
 			Math.floor(Date.now()/1000)
 		);
 
-		ad.style.animation = `blink-${recordType} ${blinkDuration}s infinite`;
+		ad.style.animation = `blink-event ${blinkDuration}s infinite`;
 
 		// Add event listener for when the ad is clicked
 		ad.addEventListener('click', (event) => {

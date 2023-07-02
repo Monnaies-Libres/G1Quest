@@ -65,9 +65,17 @@ let isLoadedContents = {
 	,immaterial: false
 }
 
-// When the radar is clicked :
-//	1. pause animation
-//	2. unselect dot
+/*                      ---------------------------------
+ *                       When the radar is clicked :
+ *                      ---------------------------------
+ *                       1. pause animation
+ *                       2. unselect dot
+ *                      ---------------------------------
+ *                                     |
+ *                                     |
+ *                                     |
+ *                                     V
+ */
 for (let list of document.querySelectorAll('#actu > .list, #dormant > .list')) {
 
 	list.addEventListener('click', function (event) {
@@ -212,7 +220,16 @@ async function detect (radius) {
 	}
 }
 
-// When "detect" button is clicked
+
+/*                      ---------------------------------
+ *                       When "detect" button is clicked
+ *                      ---------------------------------
+ *                                     |
+ *                                     |
+ *                                     |
+ *                                     V
+ */
+
 for (let button of document.getElementsByClassName('detect')) {
 
 	button.addEventListener('click', function (buttonEvent) {
@@ -221,7 +238,14 @@ for (let button of document.getElementsByClassName('detect')) {
 	});
 }
 
-// When radius is changed…
+/*                      ---------------------------------
+ *                           When radius is changed…
+ *                      ---------------------------------
+ *                                     |
+ *                                     |
+ *                                     |
+ *                                     V
+ */
 document.getElementById('radius').addEventListener('change', function () {
 
 	radius = radiusSelect.options[radiusSelect.selectedIndex].value;
@@ -251,12 +275,18 @@ function switchScreen (newScreenId) {
 	document.querySelector('#menu > ul > li > a[href="#'+newScreenId+'"]').classList.add('active');
 
 	// Change which screen is active
+	const lastActiveScreen = document.querySelector('.screen.last-active-screen');
+	if (lastActiveScreen !== null) {
+		lastActiveScreen.classList.remove('last-active-screen');
+	}
 	const activeScreen = document.querySelector('.screen.active');
 	if (activeScreen !== null) {
 		activeScreen.classList.remove('active');
+		activeScreen.classList.add('last-active-screen');
 	}
 	document.querySelector('.screen#'+newScreenId).classList.add('active');
 
+	//
 	if (screensWithRadiusPagination.includes(newScreenId)) {
 
 		switchPage(newScreenId, radius);

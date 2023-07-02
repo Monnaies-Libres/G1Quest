@@ -35,12 +35,18 @@ export const preparePanel = () => {
 
 export const displayPageDetails = (data) => {
 
+	console.log(data);
+
 	// Get the panel element
 	let panelDetails = document.getElementById('panel-details');
 
 	let article_outer_outer = panelDetails.querySelector('article:first-of-type');
 
-	article_outer_outer.classList.add('page-cat-' + data._source.category.id);
+	if (data._source.category !== undefined && data._source.category.id !== undefined) {
+
+		article_outer_outer.classList.add('page-cat-' + data._source.category.id);
+	}
+
 	article_outer_outer.classList.add('page');
 
 	let article_outer = document.createElement('div');
@@ -88,8 +94,15 @@ export const displayPageDetails = (data) => {
 	gchangeLink_outer.classList.add('link-to-gchange');
 	gchangeLink_outer.appendChild(gchangeLink);
 
+	const address_outer = document.createElement('address');
 	const address = document.createElement('p');
-	address.textContent = data._source.address;
+	address.classList.add('address');
+	address.textContent  = data._source.address;
+	const city = document.createElement('p');
+	city.classList.add('city');
+	city.textContent  = data._source.city;
+	address_outer.append(address);
+	address_outer.append(city);
 
 	// Append the elements to the article
 
@@ -102,7 +115,7 @@ export const displayPageDetails = (data) => {
 	}
 
 	article.appendChild(description);
-	article.appendChild(address);
+	article.appendChild(address_outer);
 	article.appendChild(gchangeLink_outer);
 };
 
@@ -192,8 +205,15 @@ export const displayRecordDetails = (data) => {
 	category.classList.add('category');
 	category.textContent = categoriesNames[data._source.category.id].localizedNames['fr-FR'];
 
-	const address = document.createElement('address');
-	address.textContent = data._source.address;
+	const address_outer = document.createElement('address');
+	const address = document.createElement('p');
+	address.classList.add('address');
+	address.textContent  = data._source.address;
+	const city = document.createElement('p');
+	city.classList.add('city');
+	city.textContent  = data._source.city;
+	address_outer.append(address);
+	address_outer.append(city);
 
 	// Append the elements to the article
 	article.appendChild(title);
@@ -210,5 +230,5 @@ export const displayRecordDetails = (data) => {
 	}
 
 	article.appendChild(description);
-	article.appendChild(address);
+	article.appendChild(address_outer);
 };

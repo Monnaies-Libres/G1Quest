@@ -1,6 +1,23 @@
 
-/* =========================== Icons =========================== */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Events
+ */
 
+.screen#events     .list .ad.cat49 a:before   ,
+
+.screen#actu       .list .ad.cat49 a:before   ,
+.screen#dormant    .list .ad.cat49 a:before   ,
+.screen#shippable  .list .ad.cat49 a:before   ,
+.screen#immaterial .list .ad.cat49 a:before   ,
+.screen#luxuries   .list .ad.cat49 a:before   ,
+#panel-details article.cat49 .category:before {
+/* Évènements */
+
+	background-image: url("img/FontAwesome/svg/calendar-check-regular.svg");
+}
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Other icons
+ */
 
 .screen#actu       .list .ad.cat3 a:before   ,
 .screen#dormant    .list .ad.cat3 a:before   ,
@@ -10,7 +27,7 @@
 #panel-details article.cat3 .category:before {
 	/* Moto */
 
-	content: url("img/FontAwesome/svg/motorcycle-solid.svg");
+	background-image: url("img/FontAwesome/svg/motorcycle-solid.svg");
 }
 
 .screen#actu       .list .ad.cat6 a:before   ,
@@ -21,7 +38,7 @@
 #panel-details article.cat6 .category:before {
 	/* Équipement auto */
 
-	content: url("img/FontAwesome/svg/car-side-solid.svg");
+	background-image: url("img/FontAwesome/svg/car-side-solid.svg");
 }
 
 .screen#actu       .list .ad.cat10 a:before   ,
@@ -32,7 +49,7 @@
 #panel-details article.cat10 .category:before {
 	/* Locations */
 
-	content: url("img/FontAwesome/svg/retweet-solid.svg");
+	background-image: url("img/FontAwesome/svg/retweet-solid.svg");
 }
 
 .screen#actu       .list .ad.cat11 a:before   ,
@@ -43,7 +60,7 @@
 #panel-details article.cat11 .category:before {
 	/* Colocations */
 
-	content: url("img/FontAwesome/svg/house-flag-solid.svg");
+	background-image: url("img/FontAwesome/svg/house-flag-solid.svg");
 }
 
 .screen#actu       .list .ad.cat12 a:before   ,
@@ -54,7 +71,7 @@
 #panel-details article.cat12 .category:before {
 	/* Location & Gîtes */
 
-	content: url("img/FontAwesome/svg/bed-solid.svg");
+	background-image: url("img/FontAwesome/svg/bed-solid.svg");
 }
 
 .screen#actu       .list .ad.cat13 a:before   ,
@@ -65,7 +82,7 @@
 #panel-details article.cat13 .category:before {
 	/* Bureaux & Commerces */
 
-	content: url("img/FontAwesome/svg/building-solid.svg");
+	background-image: url("img/FontAwesome/svg/building-solid.svg");
 }
 
 .screen#actu       .list .ad.cat15 a:before   ,
@@ -76,7 +93,7 @@
 #panel-details article.cat15 .category:before {
 	/* Informatique */
 
-	content: url("img/FontAwesome/svg/computer-solid.svg");
+	background-image: url("img/FontAwesome/svg/computer-solid.svg");
 }
 
 .screen#actu       .list .ad.cat16 a:before   ,
@@ -87,7 +104,7 @@
 #panel-details article.cat16 .category:before {
 	/* Image & Son */
 
-	content: url("img/FontAwesome/svg/compact-disc-solid.svg");
+	background-image: url("img/FontAwesome/svg/compact-disc-solid.svg");
 }
 
 .screen#actu       .list .ad.cat17 a:before   ,
@@ -98,7 +115,7 @@
 #panel-details article.cat17 .category:before {
 	/* Téléphonie */
 
-	content: url("img/FontAwesome/svg/mobile-solid.svg");
+	background-image: url("img/FontAwesome/svg/mobile-solid.svg");
 }
 
 .screen#actu       .list .ad.cat19 a:before   ,
@@ -109,7 +126,7 @@
 #panel-details article.cat19 .category:before {
 	/* Ameublement */
 
-	content: url("img/FontAwesome/svg/couch-solid.svg");
+	background-image: url("img/FontAwesome/svg/couch-solid.svg");
 }
 
 .screen#actu       .list .ad.cat20 a:before   ,
@@ -120,7 +137,7 @@
 #panel-details article.cat20 .category:before {
 	/* Électroménager */
 
-	content: url("img/FontAwesome/svg/blender-solid.svg");
+	background-image: url("img/FontAwesome/svg/blender-solid.svg");
 }
 
 .screen#actu       .list .ad.cat21 a:before   ,
@@ -131,7 +148,7 @@
 #panel-details article.cat21 .category:before {
 	/* Bricolage */
 
-	content: url("img/FontAwesome/svg/hammer-solid.svg");
+	background-image: url("img/FontAwesome/svg/hammer-solid.svg");
 }
 
 .screen#actu       .list .ad.cat22 a:before   ,
@@ -142,7 +159,7 @@
 #panel-details article.cat22 .category:before {
 	/* Vêtements */
 
-	content: url("img/FontAwesome/svg/shirt-solid.svg");
+	background-image: url("img/FontAwesome/svg/shirt-solid.svg");
 }
 
 .screen#actu       .list .ad.cat23 a:before   ,
@@ -153,7 +170,7 @@
 #panel-details article.cat23 .category:before {
 	/* Vêtements */
 
-	content: url("img/FontAwesome/svg/baby-carriage-solid.svg");
+	background-image: url("img/FontAwesome/svg/baby-carriage-solid.svg");
 }
 
 .screen#actu       .list .ad.cat27 a:before   ,
@@ -164,7 +181,7 @@
 #panel-details article.cat27 .category:before {
 	/* Livres */
 
-	content: url("img/FontAwesome/svg/book-solid.svg");
+	background-image: url("img/FontAwesome/svg/book-solid.svg");
 }
 
 .screen#actu       .list .ad.cat28 a:before   ,
@@ -175,7 +192,7 @@
 #panel-details article.cat28 .category:before {
 	/* Animaux */
 
-	content: url("img/FontAwesome/svg/dog-solid.svg");
+	background-image: url("img/FontAwesome/svg/dog-solid.svg");
 }
 
 .screen#actu       .list .ad.cat29 a:before   ,
@@ -186,7 +203,7 @@
 #panel-details article.cat29 .category:before {
 	/* Sports & Hobbies */
 
-	content: url("img/FontAwesome/svg/baseball-bat-ball-solid.svg");
+	background-image: url("img/FontAwesome/svg/baseball-bat-ball-solid.svg");
 }
 
 .screen#actu       .list .ad.cat30 a:before   ,
@@ -197,7 +214,7 @@
 #panel-details article.cat30 .category:before {
 	/* Instruments de musique */
 
-	content: url("img/FontAwesome/svg/guitar-solid.svg");
+	background-image: url("img/FontAwesome/svg/guitar-solid.svg");
 }
 
 .screen#actu       .list .ad.cat34 a:before   ,
@@ -208,7 +225,7 @@
 #panel-details article.cat34 .category:before {
 	/* Prestations de services */
 
-	content: url("img/FontAwesome/svg/handshake-angle-solid.svg");
+	background-image: url("img/FontAwesome/svg/handshake-angle-solid.svg");
 }
 
 .screen#actu       .list .ad.cat36 a:before   ,
@@ -219,7 +236,7 @@
 #panel-details article.cat36 .category:before {
 	/* Cours particuliers */
 
-	content: url("img/FontAwesome/svg/person-chalkboard-solid.svg");
+	background-image: url("img/FontAwesome/svg/person-chalkboard-solid.svg");
 }
 
 .screen#actu       .list .ad.cat38 a:before   ,
@@ -230,7 +247,7 @@
 #panel-details article.cat38 .category:before {
 	/* Autres */
 
-	content: url("img/FontAwesome/svg/question-solid.svg");
+	background-image: url("img/FontAwesome/svg/question-solid.svg");
 }
 
 .screen#actu       .list .ad.cat39 a:before   ,
@@ -241,7 +258,7 @@
 #panel-details article.cat39 .category:before {
 	/* Décoration */
 
-	content: url("img/FontAwesome/svg/holly-berry-solid.svg");
+	background-image: url("img/FontAwesome/svg/holly-berry-solid.svg");
 }
 
 .screen#actu       .list .ad.cat40 a:before   ,
@@ -252,7 +269,7 @@
 #panel-details article.cat40 .category:before {
 	/* Collection */
 
-	content: url("img/FontAwesome/svg/gem-regular.svg");
+	background-image: url("img/FontAwesome/svg/gem-regular.svg");
 }
 
 .screen#actu       .list .ad.cat41 a:before   ,
@@ -263,7 +280,7 @@
 #panel-details article.cat41 .category:before {
 	/* Jeux */
 
-	content: url("img/FontAwesome/svg/chess-knight-solid.svg");
+	background-image: url("img/FontAwesome/svg/chess-knight-solid.svg");
 }
 
 .screen#actu       .list .ad.cat42 a:before   ,
@@ -274,7 +291,7 @@
 #panel-details article.cat42 .category:before {
 	/* Montres et Bijoux */
 
-	content: url("img/FontAwesome/svg/ring-solid.svg");
+	background-image: url("img/FontAwesome/svg/ring-solid.svg");
 }
 
 .screen#actu       .list .ad.cat45 a:before   ,
@@ -285,7 +302,7 @@
 #panel-details article.cat45 .category:before {
 	/* Arts de la table */
 
-	content: url("img/FontAwesome/svg/wine-glass-empty-solid.svg");
+	background-image: url("img/FontAwesome/svg/wine-glass-empty-solid.svg");
 }
 
 .screen#actu       .list .ad.cat46 a:before   ,
@@ -296,7 +313,7 @@
 #panel-details article.cat46 .category:before {
 	/* Linge de maison */
 
-	content: url("img/FontAwesome/svg/mattress-pillow-solid.svg");
+	background-image: url("img/FontAwesome/svg/mattress-pillow-solid.svg");
 }
 
 .screen#actu       .list .ad.cat47 a:before   ,
@@ -307,7 +324,7 @@
 #panel-details article.cat47 .category:before {
 	/* Accessoires & Bagagerie */
 
-	content: url("img/FontAwesome/svg/suitcase-rolling-solid.svg");
+	background-image: url("img/FontAwesome/svg/suitcase-rolling-solid.svg");
 }
 .screen#actu       .list .ad.cat48 a:before   ,
 .screen#dormant    .list .ad.cat48 a:before   ,
@@ -317,18 +334,7 @@
 #panel-details article.cat48 .category:before {
 	/* Divers (sous-catégorie de "Alimentation"   , en théorie) */
 
-	content: url("img/FontAwesome/svg/question-solid.svg");
-}
-
-.screen#actu       .list .ad.cat49 a:before   ,
-.screen#dormant    .list .ad.cat49 a:before   ,
-.screen#shippable  .list .ad.cat49 a:before   ,
-.screen#immaterial .list .ad.cat49 a:before   ,
-.screen#luxuries   .list .ad.cat49 a:before   ,
-#panel-details article.cat49 .category:before {
-	/* Évènements */
-
-	content: url("img/FontAwesome/svg/calendar-check-regular.svg");
+	background-image: url("img/FontAwesome/svg/question-solid.svg");
 }
 
 .screen#actu       .list .ad.cat50 a:before   ,
@@ -339,7 +345,7 @@
 #panel-details article.cat50 .category:before {
 	/* Equipement Caravaning */
 
-	content: url("img/FontAwesome/svg/caravan-solid.svg");
+	background-image: url("img/FontAwesome/svg/caravan-solid.svg");
 }
 
 .screen#actu       .list .ad.cat52 a:before   ,
@@ -350,7 +356,7 @@
 #panel-details article.cat52 .category:before {
 	/* Jardinage */
 
-	content: url("img/FontAwesome/svg/seedling-solid.svg");
+	background-image: url("img/FontAwesome/svg/seedling-solid.svg");
 }
 
 .screen#actu       .list .ad.cat53 a:before   ,
@@ -361,7 +367,7 @@
 #panel-details article.cat53 .category:before {
 	/* Chaussures */
 
-	content: url("img/FontAwesome/svg/shoe-prints-solid.svg");
+	background-image: url("img/FontAwesome/svg/shoe-prints-solid.svg");
 }
 
 .screen#actu       .list .ad.cat54 a:before   ,
@@ -372,7 +378,7 @@
 #panel-details article.cat54 .category:before {
 	/* Vêtements bébé */
 
-	content: url("img/FontAwesome/svg/baby-solid.svg");
+	background-image: url("img/FontAwesome/svg/baby-solid.svg");
 }
 
 .screen#actu       .list .ad.cat55 a:before   ,
@@ -383,7 +389,18 @@
 #panel-details article.cat55 .category:before {
 	/* Vélos */
 
-	content: url("img/FontAwesome/svg/bicycle-solid.svg");
+	background-image: url("img/FontAwesome/svg/bicycle-solid.svg");
+}
+
+.screen#actu       .list .ad.cat57 a:before   ,
+.screen#dormant    .list .ad.cat57 a:before   ,
+.screen#shippable  .list .ad.cat57 a:before   ,
+.screen#immaterial .list .ad.cat57 a:before   ,
+.screen#luxuries   .list .ad.cat57 a:before   ,
+#panel-details article.cat57 .category:before {
+	/* Matériel agricole */
+
+	background-image: url("img/FontAwesome/svg/tractor-solid.svg");
 }
 
 .screen#actu       .list .ad.cat58 a:before   ,
@@ -394,7 +411,7 @@
 #panel-details article.cat58 .category:before {
 	/* Transport - Manutention */
 
-	content: url("img/FontAwesome/svg/truck-solid.svg");
+	background-image: url("img/FontAwesome/svg/truck-solid.svg");
 }
 
 .screen#actu .list .ad.cat6à a:before   ,
@@ -405,7 +422,7 @@
 #panel-details article.cat60 .category:before {
 	/* Outillage - Matériaux 2nd-oeuvre */
 
-	content: url("img/FontAwesome/svg/trowel-bricks-solid.svg");
+	background-image: url("img/FontAwesome/svg/trowel-bricks-solid.svg");
 }
 
 .screen#actu       .list .ad.cat63 a:before   ,
@@ -414,9 +431,20 @@
 .screen#immaterial .list .ad.cat63 a:before   ,
 .screen#luxuries   .list .ad.cat63 a:before   ,
 #panel-details article.cat63 .category:before {
-	/* Commerces et Marchés */
+/* Commerces et Marchés */
 
-	content: url("img/FontAwesome/svg/store-solid.svg");
+background-image: url("img/FontAwesome/svg/store-solid.svg");
+}
+
+.screen#actu       .list .ad.cat65 a:before   ,
+.screen#dormant    .list .ad.cat65 a:before   ,
+.screen#shippable  .list .ad.cat65 a:before   ,
+.screen#immaterial .list .ad.cat65 a:before   ,
+.screen#luxuries   .list .ad.cat65 a:before   ,
+#panel-details article.cat53 .category:before {
+	/* Covoiturage */
+
+	background-image: url("img/FontAwesome/svg/car-solid.svg");
 }
 
 .screen#actu       .list .ad.cat70 a:before   ,
@@ -427,7 +455,7 @@
 #panel-details article.cat70 .category:before {
 	/* Formations */
 
-	content: url("img/FontAwesome/svg/igloo-solid.svg");
+	background-image: url("img/FontAwesome/svg/igloo-solid.svg");
 }
 
 .screen#actu       .list .ad.cat74 a:before   ,
@@ -438,7 +466,7 @@
 #panel-details article.cat74 .category:before {
 	/* Formations */
 
-	content: url("img/FontAwesome/svg/graduation-cap-solid.svg");
+	background-image: url("img/FontAwesome/svg/graduation-cap-solid.svg");
 }
 
 .screen#actu       .list .ad.cat81 a:before   ,
@@ -449,7 +477,7 @@
 #panel-details article.cat81 .category:before {
 	/* Soins */
 
-	content: url("img/FontAwesome/svg/life-ring-solid.svg");
+	background-image: url("img/FontAwesome/svg/life-ring-solid.svg");
 }
 
 .screen#actu       .list .ad.cat91 a:before   ,
@@ -460,7 +488,7 @@
 #panel-details article.cat91 .category:before {
 	/* Commerces & Marchés */
 
-	content: url("img/FontAwesome/svg/store-solid.svg");
+	background-image: url("img/FontAwesome/svg/store-solid.svg");
 }
 
 .screen#actu       .list .ad.cat92 a:before   ,
@@ -471,7 +499,7 @@
 #panel-details article.cat92 .category:before {
 	/* Fruits et légumes */
 
-	content: url("img/FontAwesome/svg/carrot-solid.svg");
+	background-image: url("img/FontAwesome/svg/carrot-solid.svg");
 }
 
 .screen#actu       .list .ad.cat93 a:before   ,
@@ -482,7 +510,7 @@
 #panel-details article.cat93 .category:before {
 	/* Pains & Pâtisserie */
 
-	content: url("img/FontAwesome/svg/bread-slice-solid.svg");
+	background-image: url("img/FontAwesome/svg/bread-slice-solid.svg");
 }
 
 .screen#actu       .list .ad.cat94 a:before   ,
@@ -493,7 +521,7 @@
 #panel-details article.cat94 .category:before {
 	/* Frais */
 
-	content: url("img/FontAwesome/svg/egg-solid.svg");
+	background-image: url("img/FontAwesome/svg/egg-solid.svg");
 }
 
 .screen#actu       .list .ad.cat95 a:before   ,
@@ -504,7 +532,18 @@
 #panel-details article.cat95 .category:before {
 	/* Épicerie salée */
 
-	content: url("img/FontAwesome/svg/pepper-hot-solid.svg");
+	background-image: url("img/FontAwesome/svg/pepper-hot-solid.svg");
+}
+
+.screen#actu       .list .ad.cat97 a:before   ,
+.screen#dormant    .list .ad.cat97 a:before   ,
+.screen#shippable  .list .ad.cat97 a:before   ,
+.screen#immaterial .list .ad.cat97 a:before   ,
+.screen#luxuries   .list .ad.cat97 a:before   ,
+#panel-details article.cat97 .category:before {
+	/* Boissons */
+
+	background-image: url("img/FontAwesome/svg/wine-bottle-solid.svg");
 }
 
 .screen#actu       .list .ad.cat98 a:before   ,
@@ -515,7 +554,7 @@
 #panel-details article.cat98 .category:before {
 	/* Vêtements bébé */
 
-	content: url("img/FontAwesome/svg/person-breastfeeding-solid.svg");
+	background-image: url("img/FontAwesome/svg/person-breastfeeding-solid.svg");
 }
 
 

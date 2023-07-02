@@ -26,6 +26,11 @@ a:visited {
 	text-decoration: none;
 }
 
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Menu
+ */
+
 #menu {
 
     background-color: hsl(0, 0%, 10%);
@@ -37,58 +42,26 @@ a:visited {
     background-color: hsl(0, 0%, 20%);
 }
 
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Panel
+ */
+
+
 #panel {
 
 	color: white;
 
-	background-image: url('img/textures/dark_repeating_texture_that_look_like_the_floor_of_a_submarine_2252539355.cropped.2.resized-256.seamless-texture.jpg');
+	background-image: url('img/textures/panel-bg.jpg');
 	background-size: 128px;
 	background-repeat: repeat;
 }
-
-#panel > #panel-details {
-
-	/*
-	background-image:
-		  linear-gradient(to bottom, hsla(0, 0%, 10%, 0.75) 0%, hsla(0, 0%, 10%, 0.60) 100%)
-		  , url('img/textures/dark_repeating_texture_that_look_like_the_floor_of_a_submarine_2252539355.cropped.2.resized-256.seamless-texture.jpg');
-	  background-size: cover, 128px;
-	  background-repeat: no-repeat, repeat;
-	*/
-
-
-	/*
-	padding: 0 0 0 0;
-
-	transition: padding;
-	transition-duration: 0.333s;
-	transition-timing-function: ease-out;
-	transition-delay: 0s;
-	*/
-}
-/*
-#panel.loading > #panel-details {
-
-  padding: 100vh 0 0 0;
-}
-
-#panel:not(.loading) > #panel-details {
-
-  padding: 0 0 0 0;
-
-  transition-property: padding;
-  transition-duration: 1s;
-  transition-timing-function: ease-in;
-  transition-delay: 0s;
-}
-*/
 
 
 #panel > #panel-details > article {
 
 	background-image:
 		  linear-gradient(to bottom, hsla(0, 0%, 10%, 0.95) 0%, hsla(0, 0%, 10%, 0.80) 100%)
-		  , url('img/textures/dark_repeating_texture_that_look_like_the_floor_of_a_submarine_2252539355.cropped.2.resized-256.seamless-texture.jpg');
+		  , url('img/textures/panel-bg.jpg');
 	  background-size: cover, 128px;
 	  background-repeat: no-repeat, repeat;
 
@@ -96,41 +69,6 @@ a:visited {
 
 	position: relative;
 }
-
-
-/*
-#panel         > #panel-details {
-
-	margin: 0vh 0 0 0;
-	padding: 0vh 0 0 0;
-
-	transition-property: margin, padding;
-	transition-duration: 0.5s, 0.5s;
-	transition-delay: 0s, 0s;
-	transition-timing-function: ease-out, ease-out;
-}
-
-#panel.loading > #panel-details {
-
-	margin: -1050vh 0 0 0;
-	padding: 1000vh 0 0 0;
-}
-
-#panel         > #panel-details > article.last-fully-loaded {
-
-	margin-top: 0vh
-
-	transition-property: margin;
-	transition-duration: 0.5s;
-	transition-delay: 0s;
-	transition-timing-function: ease-out;
-}
-
-#panel.loading > #panel-details > article.last-fully-loaded {
-
-	margin-top: 50vh
-}
-*/
 
 
 #panel         > #panel-details > article:first-of-type:not(.last-fully-loaded) > div {
@@ -345,6 +283,16 @@ a:visited {
 
 
 
+#panel-details article .category {
+
+	color: hsl(0, 0%, 80%);
+}
+
+#panel-details article .category:before {
+
+	filter: saturate(0) brightness(2.5);
+}
+
 #panel > #panel-details > article .pictures {
 
 	background-color: black;
@@ -361,6 +309,76 @@ a:visited {
 	font-weight: bold;
 	font-family: sans-serif;
 }
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Radius
+ */
+
+#radius {
+
+	color: var(--color--secondary);
+	background-color: var(--color--primary);
+}
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Categories icons
+ */
+
+.screen#actu       .list .ad a:before   ,
+.screen#dormant    .list .ad a:before   ,
+.screen#events     .list .ad a:before   ,
+.screen#shippable  .list > .ad a:before ,
+.screen#immaterial .list > .ad a:before ,
+.screen#luxuries   .list > .ad a:before ,
+.screen#exchange   .list > .ad a:before ,
+#panel-details article .category:before {
+
+	content: " ";
+
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Screens
+ */
+
+.screen {
+
+	background-color: var(--color--primary);
+
+	height: 90vh;
+	width: calc(100% - 10vh);
+	border-width: 5vh;
+	border-style: inset;
+	border-color: gray;
+
+	display: block;
+
+	transform: translateY(-125vh) scale(1.25);
+
+	z-index: 1000;
+}
+
+.screen.active {
+
+	transform: translateY(0vh) scale(1);
+
+	transition-property: transform;
+	transition-duration: 1s;
+	transition-delay: 0;
+	transition-timing-function: ease-out;
+}
+
+.screen.last-active-screen {
+
+	transform: translateY(100vh)  scale(1);
+
+	transition-property: transform;
+	transition-duration: 0.5s;
+	transition-delay: 0;
+	transition-timing-function: ease-in;
+}
+
 
 .screen.loading:after {
 
@@ -384,32 +402,32 @@ a:visited {
 
 }
 
-.screen#marketResearch {
 
-	background-color: var(--color--secondary);
-	color: var(--color--primary);
-}
 
-.screen#dormant > .list ,
-.screen#events  > .list ,
-.screen#actu    > .list {
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Screens displayed as a radar (on desktop)
+ */
+
+
+.screen#dormant    .list ,
+.screen#events     .list ,
+.screen#actu       .list {
 
 	cursor: crosshair;
 }
 
-.screen#actu    > .list {
+.screen#actu        .list {
 
 	border-style: solid;
 	border-color: var(--color--secondary);
 }
 
-.screen#events  > .list {
+.screen#events      .list {
 
 	border-style: solid;
 	border-color: red;
 }
 
-.screen#dormant > .list {
+.screen#dormant     .list {
 
 	border-style: solid;
 	border-color: hsl(42.2, 100%, 54.3%);
@@ -417,70 +435,10 @@ a:visited {
 	background: hsl(53.7, 100%, 81.4%);
 }
 
-.screen#shippable   .list > .ad:nth-child(3n + 1) ,
-.screen#immaterial  .list > .ad:nth-child(3n + 1) {
 
-	background-color: hsl(240, 50%, 53%);
-}
-
-.screen#shippable   .list > .ad:nth-child(3n + 2) ,
-.screen#immaterial  .list > .ad:nth-child(3n + 2) {
-
-	background-color: hsl(240, 50%, 55%);
-}
-
-.screen#shippable   .list > .ad:nth-child(3n + 3) ,
-.screen#immaterial  .list > .ad:nth-child(3n + 3) {
-
-	background-color: hsl(240, 50%, 58%);
-}
-
-.screen#shippable  .list .ad.selected a ,
-.screen#immaterial .list .ad.selected a {
-
-	color: hsl(240, 50%, 53%);
-	background-color: hsl(240, 50%, 97%);
-}
-
-
-
-.screen#luxuries  .list > .ad > a ,
-.screen#exchange  .list > .ad > a {
-
-	color: black;
-}
-
-.screen#luxuries  .list > .ad:nth-child(3n + 1) ,
-.screen#exchange  .list > .ad:nth-child(3n + 1) {
-
-	background-color: hsl(40, 60%, 50%);
-}
-
-.screen#luxuries  .list > .ad:nth-child(3n + 2) ,
-.screen#exchange  .list > .ad:nth-child(3n + 2) {
-
-	background-color: hsl(40, 60%, 55%);
-}
-
-.screen#luxuries  .list > .ad:nth-child(3n + 3) ,
-.screen#exchange  .list > .ad:nth-child(3n + 3) {
-
-	background-color: hsl(40, 60%, 58%);
-}
-
-
-.screen#luxuries   .list .ad.selected a ,
-.screen#exchange   .list .ad.selected a {
-
-	color: hsl(40, 60%, 58%);
-	background-color: hsl(40, 60%, 3%);
-}
-
-#radius {
-
-	color: var(--color--secondary);
-	background-color: var(--color--primary);
-}
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Ads in
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> screens displayed as a radar (on desktop)
+ */
 
 @media screen and (max-width: 49.999rem) {
 
@@ -494,12 +452,50 @@ a:visited {
 		border-bottom-color: var(--color--primary);
 	}
 
+	.screen#actu        .list > .ad ,
+	.screen#events      .list > .ad ,
+	.screen#dormant     .list > .ad {
+
+		transition-property: color;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+	}
+
+	.screen#actu        .list > .ad ,
+	.screen#events      .list > .ad ,
+	.screen#dormant     .list > .ad {
+
+		background-color: hsl(40, 60%, 50%);
+		color: hsl(0, 0%, 0%);
+	}
+
+	.screen#actu        .list > .ad:hover ,
+	.screen#events      .list > .ad:hover ,
+	.screen#dormant     .list > .ad:hover {
+
+		background-color: hsl(40, 60%, 50%);
+		color: hsl(0, 0%, 0%);
+	}
+
+
+	.screen#actu       .list > .ad.selected ,
+	.screen#events     .list > .ad.selected ,
+	.screen#dormant    .list > .ad.selected {
+
+		color: hsl(0, 60%, 58%);
+		background-color: hsl(40, 60%, 3%);
+	}
+
+	.screen#actu       .list > .ad.selected a:before ,
+	.screen#events     .list > .ad.selected a:before ,
+	.screen#dormant    .list > .ad.selected a:before {
+
+		filter: saturate(0.38) brightness(2) contrast(1.50);
+	}
 
 }
 
 @media screen and (min-width: 50rem) {
-
-
 
 	.screen#actu    .list .ad,
 	.screen#events  .list .ad,
@@ -516,6 +512,123 @@ a:visited {
 	}
 }
 
+.screen#actu       .list > .ad.record.offer ,
+.screen#dormant    .list > .ad.record.offer {
+
+    background-color: hsl(120, 100%, 50%);
+}
+
+.screen#actu       .list > .ad.record.need ,
+.screen#dormant    .list > .ad.record.need {
+
+    background-color: hsl(0, 100%, 50%);
+}
+
+.screen#actu        .list > .ad.record.offer a:before ,
+.screen#dormant     .list > .ad.record.offer a:before {
+
+	filter: hue-rotate(60deg) saturate(0.02) brightness(0.4);
+}
+
+.screen#actu        .list > .ad.record.need a:before ,
+.screen#dormant     .list > .ad.record.need a:before {
+
+	filter: hue-rotate(00deg) saturate(0.02) brightness(0.4);
+}
+
+.screen#actu       .list > .ad.selected ,
+.screen#dormant    .list > .ad.selected {
+
+	opacity: 1 !important;
+	animation: none !important;
+}
+
+.screen#actu       .list > .ad.record.offer.selected ,
+.screen#dormant    .list > .ad.record.offer.selected {
+
+	border-color: white;
+	background-color: white;
+	box-shadow:
+		0 0 3px 3px white,
+		0 0 3px 6px hsl(120, 100%,  0%);
+}
+
+.screen#actu       .list > .ad.record.need.selected ,
+.screen#dormant    .list > .ad.record.need.selected {
+
+	border-color: white;
+	background-color: white;
+	box-shadow:
+		0 0 3px 3px white,
+		0 0 3px 6px hsl(0, 100%,  0%);
+}
+
+.screen#actu        .list > .ad.record.offer.selected a:before ,
+.screen#dormant     .list > .ad.record.offer.selected a:before {
+
+	filter: hue-rotate(60deg) saturate(0.02) brightness(0.4);
+}
+
+.screen#actu        .list > .ad.record.need.selected a:before ,
+.screen#dormant     .list > .ad.record.need.selected a:before {
+
+	filter: hue-rotate(00deg) saturate(0.02) brightness(0.4);
+}
+
+
+.screen#events     .list > .ad {
+
+	background-color: white;
+	background-image: radial-gradient(white 0%, red 50%, red 100%);
+
+	animation-timing-function: linear;
+	animation-duration: infinite;
+}
+
+.screen#events     .list > .ad a:before {
+
+	filter: hue-rotate(0deg) saturate(0.02) brightness(0.4);
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Ads animations
+ */
+
+@keyframes blink-event {
+	0% {
+
+		background-image: radial-gradient(white 0%, red 50%, red 100%);
+	}
+
+	16.666% {
+
+		background-image: radial-gradient(white 0%, white 50%, red 100%)
+	}
+
+	33.333% {
+
+		background-image: radial-gradient(red 0%, red 25%, white 75%, red 100%)
+	}
+
+	50% {
+
+		background-image: radial-gradient(red 0%, red 50%, white 100%)
+	}
+
+	66.666% {
+
+		background-image: radial-gradient(white 0%, red 25%, red 75%, white 100%)
+	}
+
+	83.333% {
+
+		background-image: radial-gradient(white 0%, red 50%, red 100%);
+	}
+
+	100% {
+
+		background-image: radial-gradient(white 0%, red 50%, red 100%);
+	}
+}
 
 @keyframes blink-offer {
 	0% {
@@ -557,45 +670,189 @@ a:visited {
 	}
 }
 
-#actu    .list .ad.record.offer ,
-#dormant .list .ad.record.offer {
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Shippable & Immaterial
+ */
 
-    background-color: hsl(120, 100%, 50%);
+
+.screen#shippable   .list > .ad a ,
+.screen#immaterial  .list > .ad a {
+
+	transition-property: color;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
 }
 
-#actu    .list .ad.record.need ,
-#dormant .list .ad.record.need {
+.screen#shippable   .list > .ad:nth-child(3n + 1) a ,
+.screen#immaterial  .list > .ad:nth-child(3n + 1) a {
 
-    background-color: hsl(0, 100%, 50%);
+	background-color: hsl(240, 50%, 53%);
+	color: hsl(240, 50%, 90%);
 }
 
-#actu    .list .ad.selected ,
-#dormant .list .ad.selected {
+.screen#shippable   .list > .ad:nth-child(3n + 1) a:hover ,
+.screen#immaterial  .list > .ad:nth-child(3n + 1) a:hover {
 
-	background-color: white;
-	opacity: 1 !important;
-	animation: none !important;
+	background-color: hsl(240, 50%, 43%);
+	color: hsl(240, 50%, 99%);
 }
 
-#actu    .list .ad.record.selected.offer ,
-#dormant .list .ad.record.selected.offer {
+.screen#shippable   .list > .ad:nth-child(3n + 2) a ,
+.screen#immaterial  .list > .ad:nth-child(3n + 2) a {
 
-	border-color: var(--color--offer);
-	background-color: var(--color--offer);
-	box-shadow:
-		0 0 3px 3px var(--color--offer),
-		0 0 3px 6px hsl(120, 100%,  0%);
+	background-color: hsl(240, 50%, 55%);
+	color: hsl(240, 50%, 90%);
 }
 
-#actu    .list .ad.record.selected.need ,
-#dormant .list .ad.record.selected.need {
+.screen#shippable   .list > .ad:nth-child(3n + 2) a:hover ,
+.screen#immaterial  .list > .ad:nth-child(3n + 2) a:hover {
 
-	border-color: var(--color--need);
-	background-color: var(--color--need);
-	box-shadow:
-		0 0 3px 3px var(--color--need),
-		0 0 3px 6px hsl(0, 100%,  0%);
+	background-color: hsl(240, 50%, 45%);
+	color: hsl(240, 50%, 99%);
 }
 
+.screen#shippable   .list > .ad:nth-child(3n + 3) a ,
+.screen#immaterial  .list > .ad:nth-child(3n + 3) a {
+
+	background-color: hsl(240, 50%, 58%);
+	color: hsl(240, 50%, 90%);
+}
+
+.screen#shippable   .list > .ad:nth-child(3n + 3) a:hover ,
+.screen#immaterial  .list > .ad:nth-child(3n + 3) a:hover {
+
+	background-color: hsl(240, 50%, 45%);
+	color: hsl(240, 50%, 99%);
+}
+
+.screen#shippable   .list > .ad:nth-child(3n + 1) a:before ,
+.screen#immaterial  .list > .ad:nth-child(3n + 1) a:before {
+
+	filter: hue-rotate(240deg) saturate(0.02) brightness(4.0);
+}
+
+
+.screen#shippable   .list > .ad:nth-child(3n + 2) a:before ,
+.screen#immaterial  .list > .ad:nth-child(3n + 2) a:before {
+
+	filter: hue-rotate(240deg) saturate(0.02) brightness(4.0);
+}
+
+
+.screen#shippable   .list > .ad:nth-child(3n + 3) a:before ,
+.screen#immaterial  .list > .ad:nth-child(3n + 3) a:before {
+
+	filter: hue-rotate(240deg) saturate(0.02) brightness(4.0);
+}
+
+.screen#shippable  .list .ad:nth-child(n).selected a ,
+.screen#immaterial .list .ad:nth-child(n).selected a {
+
+	color: hsl(210, 4.5%, 8.6%);
+	background-color: hsl(240, 50%, 97%);
+}
+
+
+.screen#shippable  .list .ad:nth-child(n).selected a:before ,
+.screen#immaterial .list .ad:nth-child(n).selected a:before {
+
+	filter: hue-rotate(240deg) saturate(0.02) brightness(0.4);
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Luxuries & Exchange
+ */
+
+.screen#luxuries    .list > .ad a ,
+.screen#exchange    .list > .ad a {
+
+	transition-property: color;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+}
+
+.screen#luxuries    .list > .ad:nth-child(3n + 1) a ,
+.screen#exchange    .list > .ad:nth-child(3n + 1) a {
+
+	background-color: hsl(40, 60%, 50%);
+	color: hsl(40, 0%, 0%);
+}
+
+.screen#luxuries    .list > .ad:nth-child(3n + 1) a:hover ,
+.screen#exchange    .list > .ad:nth-child(3n + 1) a:hover {
+
+	background-color: hsl(40, 80%, 85%);
+	color: hsl(40, 0%, 0%);
+}
+
+.screen#luxuries    .list > .ad:nth-child(3n + 2) a ,
+.screen#exchange    .list > .ad:nth-child(3n + 2) a {
+
+	background-color: hsl(40, 60%, 55%);
+	color: hsl(40, 0%, 0%);
+}
+
+.screen#luxuries    .list > .ad:nth-child(3n + 2) a:hover ,
+.screen#exchange    .list > .ad:nth-child(3n + 2) a:hover {
+
+	background-color: hsl(40, 80%, 85%);
+	color: hsl(40, 0%, 0%);
+}
+
+.screen#luxuries    .list > .ad:nth-child(3n + 3) a ,
+.screen#exchange    .list > .ad:nth-child(3n + 3) a {
+
+	background-color: hsl(40, 60%, 58%);
+	color: hsl(40, 0%, 0%);
+}
+
+.screen#luxuries    .list > .ad:nth-child(3n + 3) a:hover ,
+.screen#exchange    .list > .ad:nth-child(3n + 3) a:hover {
+
+	background-color: hsl(40, 80%, 85%);
+	color: hsl(40, 0%, 0%);
+}
+
+.screen#luxuries    .list > .ad:nth-child(3n + 1) a:before ,
+.screen#exchange    .list > .ad:nth-child(3n + 1) a:before {
+
+	filter: hue-rotate(40deg) saturate(0.02) brightness(0.4);
+}
+
+
+.screen#luxuries    .list > .ad:nth-child(3n + 2) a:before ,
+.screen#exchange    .list > .ad:nth-child(3n + 2) a:before {
+
+	filter: hue-rotate(40deg) saturate(0.02) brightness(0.4);
+}
+
+
+.screen#luxuries    .list > .ad:nth-child(3n + 3) a:before ,
+.screen#exchange    .list > .ad:nth-child(3n + 3) a:before {
+
+	filter: hue-rotate(40deg) saturate(0.02) brightness(0.4);
+}
+
+.screen#luxuries   .list .ad:nth-child(n).selected a ,
+.screen#exchange   .list .ad:nth-child(n).selected a {
+
+	color: hsl(40, 60%, 58%);
+	background-color: hsl(40, 60%, 3%);
+}
+
+.screen#luxuries   .list .ad:nth-child(n).selected a:before ,
+.screen#exchange   .list .ad:nth-child(n).selected a:before {
+
+	filter: hue-rotate(60deg) saturate(0.38) brightness(2) contrast(1.50);
+}
+
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Market research
+ */
+
+.screen#marketResearch {
+
+	background-color: var(--color--secondary);
+	color: var(--color--primary);
+}
 
 
