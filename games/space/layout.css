@@ -291,14 +291,32 @@ body[data-active-screen="luxuries"]       #radius {
 	left: 0;
 	overflow: auto;
 
-	height: 100vh;
-	width: 100%;
+	display: block;
 }
 
-.screen#actu       ol,
-.screen#events     ol,
-.screen#dormant    ol,
-.screen#immaterial ol,
+@media screen and (max-width: 49.999rem) {
+
+	.screen {
+
+		height: 100vh;
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 50rem) {
+
+	.screen {
+
+		height: 90vh;
+		width: calc(100% - 10vh);
+		border-width: 5vh;
+	}
+}
+
+.screen#actu       ol ,
+.screen#events     ol ,
+.screen#dormant    ol ,
+.screen#immaterial ol ,
 .screen#shippable  ol ,
 .screen#luxuries   ol ,
 .screen#exchange   ol {
@@ -355,33 +373,7 @@ body[data-active-screen="luxuries"]       #radius {
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Screens displayed as a RADAR (on desktop)
  */
 
-.screen#dormant > .list,
-.screen#actu    > .list,
-.screen#events  > .list,
-.buttonContainer {
 
-    height: 90vh;
-    margin: 0vh; /* 5vh */
-    width: 90vh;
-
-}
-
-.screen#dormant > .list ,
-.screen#events  > .list ,
-.screen#actu    > .list {
-
-    border-radius: 50%;
-    position: relative;
-	overflow: hidden;
-}
-
-.screen#actu    .list .ad a,
-.screen#events  .list .ad a,
-.screen#dormant .list .ad a {
-
-	display: flex;
-	align-items: center;
-}
 
 @media screen and (max-width: 49.999rem) {
 
@@ -415,6 +407,40 @@ body[data-active-screen="luxuries"]       #radius {
 }
 
 @media screen and (min-width: 50rem) {
+
+	.screen:is(#dormant, #actu, #events) {
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.buttonContainer {
+
+		height: 100%;
+		width: 100%;
+	}
+
+	.screen#dormant > .list ,
+	.screen#actu    > .list ,
+	.screen#events  > .list {
+
+		height: calc(90vh - 2 * 0.125rem - 1rem);
+		margin: 0vh; /* 5vh */
+		width: calc(90vh - 2 * 0.125rem - 1rem);
+
+		border-width: 0.125rem;
+	}
+
+	.screen#dormant > .list ,
+	.screen#events  > .list ,
+	.screen#actu    > .list {
+
+		border-radius: 50%;
+		position: relative;
+		overflow: hidden;
+	}
 
 	.screen#actu    .list .ad ,
 	.screen#events  .list .ad ,
@@ -545,6 +571,7 @@ body[data-active-screen="luxuries"]       #radius {
 
 		display: flex;
 		justify-content: center;
+		align-items: center;
 	}
 
 	.screen#actu    .list .ad a:before ,

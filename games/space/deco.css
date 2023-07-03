@@ -354,13 +354,8 @@ a:visited {
 
 	background-color: var(--color--primary);
 
-	height: 90vh;
-	width: calc(100% - 10vh);
-	border-width: 5vh;
 	border-style: inset;
 	border-color: gray;
-
-	display: block;
 
 	transform: translateY(-125vh) scale(1.25);
 
