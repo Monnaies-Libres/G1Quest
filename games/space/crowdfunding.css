@@ -1,0 +1,14 @@
+body[data-active-screen="crowdfunding"] #mainArea {
+
+	width: calc(100vw - var(--menu-width));
+}
+
+body[data-current-screen="crowdfunding"] #panel {
+
+	display: none;
+}
+
+#crowdfunding {
+
+	color: white;
+}

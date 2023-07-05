@@ -54,4 +54,8 @@ FontAwesome : Creative Commons BY 4.0
 - `diamond-out-of-a-bag.512.png` par [ultimatearm](https://www.flaticon.com/authors/ultimatearm)
 - `calendar.512.png`par [freepik](https://www.flaticon.com/authors/freepik)
 - `euro.512.png`par [freepik](https://www.flaticon.com/authors/freepik)
-
+- `teamwork.512.png` par [Flat Icons](https://www.flaticon.com/authors/flat-icons)
+- `working.png` par [dreamicons](https://www.flaticon.com/authors/dreamicons)
+- `hard-work.lined.png` par [monkik](https://www.flaticon.com/authors/monkik)
+- `hard-work.png` par [monkik](https://www.flaticon.com/authors/monkik)
+- `process.png` par [Aranagraphics](https://www.flaticon.com/authors/aranagraphics)

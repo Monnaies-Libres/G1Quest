@@ -50,12 +50,38 @@ main {
 
 #menu {
 
-	position: fixed;
-	top: 0;
-	left: 0;
 	overflow: auto;
 	height: 100vh;
 	width: fit-content;
+
+	position: fixed;
+	left: 0;
+
+	top: 100vh;
+
+	animation-name: slide-to-top;
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-duration: 0.8s;
+	animation-delay: 0.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+/*
+body:not(.starting) #menu {
+
+	top: 0vh;
+}
+*/
+
+@keyframes slide-to-top {
+	from {
+		top: 100vh;
+	}
+	to {
+		top: 0vh;
+	}
 }
 
 #menu {

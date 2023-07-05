@@ -16,6 +16,9 @@ import { fetchLuxuries } from './luxuries.model.js'
 import { displayLuxuries } from './luxuries.view.js'
 import { fetchExchange } from './exchange.model.js'
 import { displayExchange } from './exchange.view.js'
+import { crowdfundings } from '../data/crowdfunding.js'
+import { displayCrowdfundings } from './crowdfunding.view.js'
+import { fetchDonations } from './crowdfunding.model.js'
 
 const timestampBackThen_3_months = Math.floor((Date.now() - (     90 * 24 * 60 * 60 * 1000)) / 1000);
 const timestampBackThen_2_years  = Math.floor((Date.now() - (2 * 365 * 24 * 60 * 60 * 1000)) / 1000);
@@ -25,7 +28,7 @@ let userLocation = null;
 // userLocation = {lat: 47.5, lon:-2.5}; // test values ; Theix
 // userLocation = {lat: 43.5, lon:1.5}; // test values ; Toulouse
 let radius = 150;
-let currentScreen = 'actu';
+let currentScreen = 'crowdfunding';
 const screensWithRadiusPagination = ['actu', 'dormant', 'marketResearch', 'events', 'luxuries'];
 
 let radiusSelect = document.getElementById('radius');
@@ -63,6 +66,7 @@ let isLoadedContents = {
 	}
 	,shippable:  false
 	,immaterial: false
+	,crowdfunding: false
 }
 
 /*                      ---------------------------------
@@ -299,6 +303,23 @@ function switchScreen (newScreenId) {
 	} else if (!isLoadedContents[newScreenId]) {
 
 		switch (newScreenId) {
+			case 'crowdfunding':
+				(async () => {
+
+					let donations = {};
+					let totalAmounts = {};
+
+					for (const pubkey in crowdfundings) {
+						const result = await fetchDonations(pubkey);
+						console.log('result: \n', result);
+						donations[pubkey] = result.donations;
+						totalAmounts[pubkey] = result.totalAmount;
+					}
+					displayCrowdfundings(crowdfundings, donations, totalAmounts);
+
+					isLoadedContents[newScreenId] = true;
+				})();
+				break;
 			case 'shippable':
 
 				fetchShippable(timestampBackThen_3_months, 30)
@@ -313,8 +334,8 @@ function switchScreen (newScreenId) {
 				.catch(error => {
 					if (error == 'Error: 400')
 						console.error('Mauvaise requête')
-						else
-							console.error(error)
+					else
+						console.error(error)
 				})
 				break;
 			case 'immaterial':
@@ -331,8 +352,8 @@ function switchScreen (newScreenId) {
 				.catch(error => {
 					if (error == 'Error: 400')
 						console.error('Mauvaise requête')
-						else
-							console.error(error)
+					else
+						console.error(error)
 				})
 				break;
 			case 'exchange':
@@ -360,12 +381,11 @@ function switchScreen (newScreenId) {
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-	// Add screen-switching mechanism
 
-	// Get all the anchor tags inside the navigation menu
+	document.querySelector('body').classList.remove('starting');
+
+	// Menu : changement d'écran
 	const menuLinks = document.querySelectorAll('#menu a');
-
-	// Add an event listener to each of them
 	menuLinks.forEach(link => {
 		link.addEventListener('click', (event) => {
 			event.preventDefault();  // Prevent the default action (navigating to the link)
@@ -376,9 +396,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		});
 	});
 
-	// Lorsqu'une catégorie est cliquée
+	// Étude de marché : lorsqu'une catégorie est cliquée…
 	const categoriesLists = document.querySelectorAll('#marketResearch .list .categories');
-
 	categoriesLists.forEach(categoriesList => {
 		categoriesList.addEventListener('click', function (event) {
 			if (event.target.tagName === 'LI') {
